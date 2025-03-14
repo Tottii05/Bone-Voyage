@@ -8,6 +8,7 @@ public class GameManagerScript : MonoBehaviour
 {
     public GameObject spawn;
     public GameObject player;
+    public GameObject playerWorldMap;
     public static GameManagerScript instance;
     public void Awake()
     {
@@ -28,7 +29,7 @@ public class GameManagerScript : MonoBehaviour
         spawn = GameObject.Find("SpawnPoint");
         if (SceneManager.GetActiveScene().name == "WorldMap")
         {
-            Instantiate(player, spawn.transform.position, spawn.transform.rotation);
+            Instantiate(playerWorldMap, spawn.transform.position, spawn.transform.rotation);
         }
     }
 }

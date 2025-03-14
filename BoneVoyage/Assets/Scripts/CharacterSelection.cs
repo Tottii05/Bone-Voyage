@@ -2,20 +2,22 @@ using UnityEngine;
 
 public class CharacterSelection : MonoBehaviour
 {
-    public GameObject glowObject; // Asigna la malla duplicada en el Inspector
+    public GameObject characterPrefab;
+    public GameObject characterWorldMapPrefab;
+    public Animator animator;
 
-    void Start()
+    private void Start()
     {
-        glowObject.SetActive(false); // Ocultar el glow al inicio
+        animator = GetComponent<Animator>();
     }
 
     void OnMouseEnter()
     {
-        glowObject.SetActive(true); // Mostrar el glow al pasar el mouse
+        animator.SetBool("selected", true);
     }
 
     void OnMouseExit()
     {
-        glowObject.SetActive(false); // Ocultar el glow al salir el mouse
+        animator.SetBool("selected", false);
     }
 }
