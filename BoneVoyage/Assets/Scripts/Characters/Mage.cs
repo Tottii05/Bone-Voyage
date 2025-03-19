@@ -26,13 +26,13 @@ public class Mage : ACharacter
     }
     public IEnumerator PerformAttack()
     {
-        characterBehaviour.isWaiting = true;
+        characterBehaviour.isWaiting = false;
         animator.SetTrigger("Attack");
         yield return new WaitForSeconds(0.7f);
         if (bulletPrefab != null)
         {
             Instantiate(bulletPrefab, spawnPoint.position, spawnPoint.rotation);
         }
-        characterBehaviour.isWaiting = false;
+        characterBehaviour.isWaiting = true;
     }
 }

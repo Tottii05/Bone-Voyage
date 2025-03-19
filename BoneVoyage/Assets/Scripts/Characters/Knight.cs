@@ -20,6 +20,17 @@ public class Kight : ACharacter
     }
     public override void Support()
     {
+        reduceDamage = !reduceDamage;
+        if (reduceDamage)
+        {
+            characterBehaviour.isWaiting = false;
+            animator.SetBool("blocking", true);
+        }
+        else
+        {
+            animator.SetBool("blocking", false);
+            characterBehaviour.isWaiting = true;
+        }
     }
     public override void Special()
     {

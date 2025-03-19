@@ -17,6 +17,7 @@ public abstract class ACharacter : MonoBehaviour, IDamageable
     public abstract void Special();
     public void TakeDamage(float damage)
     {
+        animator.SetTrigger("hit");
         health -= damage;
         if (health <= 0)
         {
@@ -25,7 +26,7 @@ public abstract class ACharacter : MonoBehaviour, IDamageable
     }
     public void Die()
     {
-        animator.SetTrigger("Die");
+        animator.SetTrigger("die");
         StartCoroutine(Respawn());
     }
     public IEnumerator Respawn()
