@@ -1773,7 +1773,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Spellcast_Shoot
+      name: t_Shootst_Shoot
       takeName: Spellcast_Shoot
       internalID: 5237015913805051347
       firstFrame: 0
