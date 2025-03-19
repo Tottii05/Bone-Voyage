@@ -1,25 +1,29 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BulletBehaviour : MonoBehaviour
 {
     public float speed = 10f;
-
+    public float damage = 20f;
     private Rigidbody rb;
+    private Mage mage;
 
-    void Start()
+    public void Initialize(Mage mageRef)
     {
+        mage = mageRef;
         rb = GetComponent<Rigidbody>();
+        rb.velocity = transform.forward * speed;
+        StartCoroutine(DeactivateAfterTime());
     }
 
-    void Update()
+    private IEnumerator DeactivateAfterTime()
     {
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        yield return new WaitForSeconds(mage.bulletLifeTime);
+        mage.ReturnBulletToPool(gameObject);
     }
 
-    void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
-        Destroy(gameObject);
+        mage.ReturnBulletToPool(gameObject);
     }
 }
