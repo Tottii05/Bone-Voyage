@@ -10,7 +10,7 @@ public class CharacterBehaviour : MonoBehaviour, IMovementActions, ISkillsAction
     public Camera mainCamera;
     public Animator animator;
 
-    public bool isAttacking = false;
+    public bool isWaiting = true;
     private Vector3 targetPosition;
     private Vector2 movementInput;
     private bool isMoving = false;
@@ -67,7 +67,7 @@ public class CharacterBehaviour : MonoBehaviour, IMovementActions, ISkillsAction
 
     private void Move()
     {
-        if (!isAttacking && isMoving)
+        if (isWaiting && isMoving)
         {
             float distanceToTarget = Vector3.Distance(transform.position, targetPosition);
             Vector3 directionToTarget = (targetPosition - transform.position).normalized;
@@ -141,16 +141,24 @@ public class CharacterBehaviour : MonoBehaviour, IMovementActions, ISkillsAction
 
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if (context.performed && !isAttacking)
+        if (context.performed && isWaiting)
         {
             character.Attack();
         }
     }
     public void OnSupport(InputAction.CallbackContext context)
     {
+        if (context.performed && isWaiting)
+        {
+            character.Support();
+        }
     }
     public void OnSpecial(InputAction.CallbackContext context)
     {
+        if (context.performed && isWaiting)
+        {
+            character.Special();
+        }
     }
     public void OnConsumable(InputAction.CallbackContext context)
     {

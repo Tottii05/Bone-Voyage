@@ -5,6 +5,8 @@ using UnityEngine;
 public class Kight : ACharacter
 {
     public BoxCollider attackCollider;
+    public bool reduceDamage = false;
+    public float damageReduction = 0.5f;
     public void Start()
     {
         characterBehaviour = GetComponent<CharacterBehaviour>();
@@ -25,5 +27,13 @@ public class Kight : ACharacter
     public IEnumerator PerformAttack()
     {
         yield return null;
+    }
+    public new void TakeDamage(float damage)
+    {
+        if (reduceDamage)
+        {
+            damage *= damageReduction;
+        }
+        base.TakeDamage(damage);
     }
 }

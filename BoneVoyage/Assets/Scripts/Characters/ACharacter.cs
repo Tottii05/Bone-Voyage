@@ -15,7 +15,7 @@ public abstract class ACharacter : MonoBehaviour, IDamageable
     public abstract void Attack();
     public abstract void Support();
     public abstract void Special();
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         health -= damage;
         if (health <= 0)
