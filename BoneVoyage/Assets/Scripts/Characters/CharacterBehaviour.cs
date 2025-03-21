@@ -11,10 +11,11 @@ public class CharacterBehaviour : MonoBehaviour, IMovementActions, ISkillsAction
     public Animator animator;
 
     public bool isWaiting = true;
+    public bool usingSpecial = false;
     private Vector3 targetPosition;
     private Vector2 movementInput;
     private bool isMoving = false;
-    private float minDistanceToTarget = 1f;
+    private float minDistanceToTarget = 0.75f;
 
     private ACharacter character;
 
@@ -108,6 +109,15 @@ public class CharacterBehaviour : MonoBehaviour, IMovementActions, ISkillsAction
                     animator.SetBool("Right", true);
                     animator.SetBool("Left", false);
                 }
+                if (distanceToTarget < minDistanceToTarget)
+                {
+                    moveDirection = Vector3.zero;
+                    rb.velocity = Vector3.zero;
+                    animator.SetBool("Run", false);
+                    animator.SetBool("Backwards", false);
+                    animator.SetBool("Right", false);
+                    animator.SetBool("Left", false);
+                }
             }
 
             if (moveDirection != Vector3.zero)
@@ -138,21 +148,24 @@ public class CharacterBehaviour : MonoBehaviour, IMovementActions, ISkillsAction
                 Vector3 lookAtPos = hit.point;
                 lookAtPos.y = transform.position.y;
                 Quaternion targetRotation = Quaternion.LookRotation(lookAtPos - transform.position);
-                transform.rotation = targetRotation;
+                if (!usingSpecial)
+                {
+                    transform.rotation = targetRotation;
+                }
             }
         }
     }
 
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if (context.performed && isWaiting)
+        if (context.performed && isWaiting && !usingSpecial)
         {
             character.Attack();
         }
     }
     public void OnSupport(InputAction.CallbackContext context)
     {
-        if (context.performed && isWaiting)
+        if (context.performed && isWaiting && !usingSpecial)
         {
             character.Support();
         }
@@ -163,7 +176,7 @@ public class CharacterBehaviour : MonoBehaviour, IMovementActions, ISkillsAction
     }
     public void OnSpecial(InputAction.CallbackContext context)
     {
-        if (context.performed && isWaiting)
+        if (context.performed && isWaiting && !usingSpecial)
         {
             character.Special();
         }

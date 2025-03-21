@@ -9,7 +9,6 @@ public abstract class ACharacter : MonoBehaviour, IDamageable
     public Vector3 checkPoint;
 
     public float health = 100;
-    public float baseDamage = 10;
     public float speed = 5f;
 
     public abstract void Attack();
@@ -34,6 +33,6 @@ public abstract class ACharacter : MonoBehaviour, IDamageable
         yield return new WaitForSeconds(2.5f);
         transform.position = checkPoint;
         health = 100;
-        animator.SetTrigger("Respawn");
+        animator.SetTrigger("respawn");
     }
 }
