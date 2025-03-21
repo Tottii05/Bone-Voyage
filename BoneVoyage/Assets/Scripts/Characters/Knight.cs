@@ -52,6 +52,11 @@ public class Kight : ACharacter
     }
     public override void Special()
     {
+        characterBehaviour.usingSpecial = true;
+        animator.SetBool("special", characterBehaviour.usingSpecial);
+        animator.SetTrigger("useSpecial");
+        currentWeapon.GetComponent<BoxCollider>().enabled = true;
+        StartCoroutine(PerformSpecial());
     }
     public IEnumerator PerformAttack()
     {
@@ -63,6 +68,13 @@ public class Kight : ACharacter
         currentWeapon.GetComponent<BoxCollider>().enabled = false;
         yield return new WaitForSeconds(0.1f);
         characterBehaviour.isWaiting = true;
+    }
+    public IEnumerator PerformSpecial()
+    {
+        yield return new WaitForSeconds(5f);
+        characterBehaviour.usingSpecial = false;
+        animator.SetBool("special", characterBehaviour.usingSpecial);
+        currentWeapon.GetComponent<BoxCollider>().enabled = false;
     }
     public override void TakeDamage(float damage)
     {
