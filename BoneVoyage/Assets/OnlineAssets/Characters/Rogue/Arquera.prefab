@@ -222,7 +222,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   mainCamera: {fileID: 0}
   animator: {fileID: 0}
-  isAttacking: 0
+  isWaiting: 1
 --- !u!114 &7383963730999916362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,5 +241,16 @@ MonoBehaviour:
   health: 100
   baseDamage: 10
   speed: 5
-  bulletPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 7638279312221773172, guid: 22f7ee7ec98bcdc40bf7487f95b03467, type: 3}
+  grenadePrefab: {fileID: 0}
+  specialAura: {fileID: 0}
   spawnPoint: {fileID: 0}
+  specialDuration: 100
+  specialCDTime: 7
+  arrowCD: 0.7
+  grenadeCD: 1
+  rollCD: 2
+  arrowPoolSize: 3
+  arrowLifeTime: 2
+  grenadePoolSize: 5
+  grenadeLifeTime: 3

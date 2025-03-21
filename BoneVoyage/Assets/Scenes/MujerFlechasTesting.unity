@@ -435,6 +435,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: floor_tile_large 1 (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 6458068447139726382, guid: 801813164c9fbf04b82783930d4f22f2, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -964,6 +968,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 46.779, y: 0, z: 0}
+--- !u!1 &1105332136 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8776683650202069051, guid: 0a12ca2b8c2fd8e4cbf4421846f30837, type: 3}
+  m_PrefabInstance: {fileID: 2452873672942519983}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1128858762
 GameObject:
   m_ObjectHideFlags: 0
@@ -2284,11 +2293,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1159490816529984565, guid: 0a12ca2b8c2fd8e4cbf4421846f30837, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.8049035
+      value: 2.81
       objectReference: {fileID: 0}
     - target: {fileID: 1159490816529984565, guid: 0a12ca2b8c2fd8e4cbf4421846f30837, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.09
+      value: -7.202
       objectReference: {fileID: 0}
     - target: {fileID: 1159490816529984565, guid: 0a12ca2b8c2fd8e4cbf4421846f30837, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2325,6 +2334,38 @@ PrefabInstance:
     - target: {fileID: 1971598541825029775, guid: 0a12ca2b8c2fd8e4cbf4421846f30837, type: 3}
       propertyPath: m_Name
       value: Arquera
+      objectReference: {fileID: 0}
+    - target: {fileID: 6407712856007871700, guid: 0a12ca2b8c2fd8e4cbf4421846f30837, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.383
+      objectReference: {fileID: 0}
+    - target: {fileID: 7383963730999916362, guid: 0a12ca2b8c2fd8e4cbf4421846f30837, type: 3}
+      propertyPath: rollCD
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7383963730999916362, guid: 0a12ca2b8c2fd8e4cbf4421846f30837, type: 3}
+      propertyPath: arrowCD
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7383963730999916362, guid: 0a12ca2b8c2fd8e4cbf4421846f30837, type: 3}
+      propertyPath: grenadeCD
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7383963730999916362, guid: 0a12ca2b8c2fd8e4cbf4421846f30837, type: 3}
+      propertyPath: specialAura
+      value: 
+      objectReference: {fileID: 1105332136}
+    - target: {fileID: 7383963730999916362, guid: 0a12ca2b8c2fd8e4cbf4421846f30837, type: 3}
+      propertyPath: specialCDTime
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7383963730999916362, guid: 0a12ca2b8c2fd8e4cbf4421846f30837, type: 3}
+      propertyPath: grenadeLifeTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7383963730999916362, guid: 0a12ca2b8c2fd8e4cbf4421846f30837, type: 3}
+      propertyPath: specialDuration
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

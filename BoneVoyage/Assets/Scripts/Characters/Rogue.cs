@@ -7,59 +7,132 @@ public class Rogue : ACharacter
 {
     public GameObject bulletPrefab;
     public GameObject grenadePrefab;
+    public GameObject specialAura;
     public Transform spawnPoint;
-    public bool isAttacking = false;
-    public bool isRolling = false;
-    public bool usingSpecial = false;
-    public bool specialCD = false;
+    private bool isAttacking = false;
+    private bool isRolling = false;
+    private bool usingSpecial = false;
+    private bool specialCD = false;
+    private bool dashCD = false;
 
+    public float specialDuration;
+    public float specialCDTime;
+    public float arrowCD;
+    public float grenadeCD;
+    public float rollCD;
+
+
+    public Stack<GameObject> arrowStack = new Stack<GameObject>();
+    public int arrowPoolSize = 3;
+    public float arrowLifeTime = 2f;
+
+    public Stack<GameObject> grenadeStack = new Stack<GameObject>();
+    public int grenadePoolSize = 5;
+    public float grenadeLifeTime = 3f;
     public void Start()
     {
+        specialAura.SetActive(false);
         characterBehaviour = GetComponent<CharacterBehaviour>();
         animator = GetComponent<Animator>();
         checkPoint = transform.position;
+        CreateArrowPool();
+        CreateGrenadePool();
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.H)) TakeDamage(50f);
     }
 
     public override void Attack()
     {
-        if (!isAttacking) StartCoroutine(PerformAttack()); 
+        StartCoroutine(PerformAttack()); 
     }
     public override void Support()
-    {
-        if (!isRolling) StartCoroutine(PerformRoll());
+    {   
+        if (!dashCD) StartCoroutine(PerformRoll());
     }
     public override void Special()
     {
-        if (!usingSpecial) StartCoroutine(useEspecial());
+        if (!specialCD)
+        {
+            StartCoroutine(useEspecial());
+        }
+    }
+
+    public void CreateArrowPool()
+    {
+        for (int i = 0; i < arrowPoolSize; i++)
+        {
+            GameObject bullet = Instantiate(bulletPrefab);
+            bullet.SetActive(false);
+            arrowStack.Push(bullet);
+        }
+    }
+
+    public void CreateGrenadePool()
+    {
+        for (int i = 0; i < grenadePoolSize; i++)
+        {
+            GameObject grenade = Instantiate(grenadePrefab);
+            grenade.SetActive(false);
+            grenadeStack.Push(grenade);
+        }
+    }
+
+    public void ReturnArrowToPool(GameObject bullet)
+    {
+        bullet.SetActive(false);
+        arrowStack.Push(bullet);
+    }
+
+    public void ReturnGrenadeToPool(GameObject grenade)
+    {
+        grenade.SetActive(false);
+        grenadeStack.Push(grenade);
     }
     public IEnumerator PerformAttack()
-    { 
-        characterBehaviour.isWaiting = false;
+    {         
         if (!usingSpecial)
         {
-            animator.SetTrigger("Attack");
-            yield return new WaitForSeconds(0.7f);
-            if (bulletPrefab != null)
+            if (arrowStack.Count > 0)
             {
-                Instantiate(bulletPrefab, spawnPoint.position, spawnPoint.rotation);
-            }
+                characterBehaviour.isWaiting = false;
+                animator.SetTrigger("Attack");
+                yield return new WaitForSeconds(0.7f);
+                if (bulletPrefab != null)
+                {
+                    GameObject bullet = arrowStack.Pop();
+                    bullet.SetActive(true);
+                    bullet.transform.position = spawnPoint.position;
+                    bullet.transform.rotation = spawnPoint.rotation;
+                    bullet.GetComponent<ArrowBehaviour>().Initialize(this);
+                }
+                yield return new WaitForSeconds(arrowCD);
+            }            
         } else
         {
+            characterBehaviour.isWaiting = false;
             animator.SetTrigger("Attack");
             yield return new WaitForSeconds(0.7f);
-            if (bulletPrefab != null)
+            if (grenadePrefab != null)
             {
-                Instantiate(grenadePrefab, spawnPoint.position, spawnPoint.rotation);
+                GameObject grenade = grenadeStack.Pop();
+                grenade.SetActive(true);
+                grenade.transform.position = spawnPoint.position;
+                grenade.transform.rotation = spawnPoint.rotation;
+                grenade.GetComponent<GrenadeBehaviour>().Initialize(this);
             }
-        }
-        
+            yield return new WaitForSeconds(grenadeCD);
+        }      
         characterBehaviour.isWaiting = true;
     }
 
     public IEnumerator PerformRoll()
     {
         Debug.Log("Roll");
-        isRolling = true;
+        characterBehaviour.isWaiting = false;
+        dashCD = true;
         animator.SetTrigger("Dash");
         gameObject.GetComponent<CapsuleCollider>().enabled = false;
         Rigidbody rb = gameObject.GetComponent<Rigidbody>();
@@ -67,7 +140,7 @@ public class Rogue : ACharacter
         rb.velocity = Vector3.zero;
 
         Vector3 startPos = transform.position;
-        Vector3 targetPos = startPos + transform.forward * 3f; // Ajusta el valor de 5f para la distancia del roll.
+        Vector3 targetPos = startPos + transform.forward * 3f; // Ajusta el valor de +Xf para la distancia del roll.
 
         float duration = 0.5f;
         float elapsedTime = 0f;
@@ -84,19 +157,22 @@ public class Rogue : ACharacter
         rb.MovePosition(targetPos);
         rb.detectCollisions = true;
         gameObject.GetComponent<CapsuleCollider>().enabled = true;
-        yield return new WaitForSeconds(2f);
+        characterBehaviour.isWaiting = true;
+        yield return new WaitForSeconds(rollCD);
+        dashCD = false; 
 
-        isRolling = false;
-        
     }
 
     public IEnumerator useEspecial()
     {
+        specialAura.SetActive(true);
         usingSpecial = true;
         specialCD = true;
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(specialDuration);
+        specialAura.SetActive(false);
         usingSpecial = false;
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(specialCDTime);
         specialCD = false;
     }
+
 }
