@@ -22,8 +22,12 @@ public class BulletBehaviour : MonoBehaviour
         mage.ReturnBulletToPool(gameObject);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void OnTriggerEnter(Collider other)
     {
         mage.ReturnBulletToPool(gameObject);
+        if (other.gameObject.TryGetComponent(out IDamageable damageable))
+        {
+            damageable.TakeDamage(damage);
+        }
     }
 }

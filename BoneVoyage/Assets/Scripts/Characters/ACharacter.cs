@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ACharacter : MonoBehaviour, IDamageable
+public abstract class 
+    ACharacter : MonoBehaviour, IDamageable
 {
     public CharacterBehaviour characterBehaviour;
     public Animator animator;

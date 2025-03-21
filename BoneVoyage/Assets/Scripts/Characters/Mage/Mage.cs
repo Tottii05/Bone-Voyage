@@ -7,9 +7,11 @@ public class Mage : ACharacter
     public GameObject bulletPrefab;
     public Transform spawnPoint;
     public GameObject UltVFXPrefab;
+    public GameObject shieldVFXPrefab;
     public Stack<GameObject> bulletStack = new Stack<GameObject>();
     public int bulletPoolSize = 3;
     public float bulletLifeTime = 2f;
+    public bool shielded = false;
 
     public void Start()
     {
@@ -24,11 +26,22 @@ public class Mage : ACharacter
         StartCoroutine(PerformAttack());
     }
 
-    public override void Support() { }
+    public override void Support()
+    {
+        StartCoroutine(PerfomSupport());
+    }
 
     public override void Special()
     {
         StartCoroutine(PerformSpecial());
+    }
+
+    public new void TakeDamage(float damage)
+    {
+        if (!shielded)
+        {
+            base.TakeDamage(damage);
+        }
     }
 
     public IEnumerator PerformAttack()
@@ -38,6 +51,22 @@ public class Mage : ACharacter
         yield return new WaitForSeconds(0.4f);
         Shoot();
         characterBehaviour.isWaiting = true;
+    }
+
+    public IEnumerator PerfomSupport()
+    {
+        characterBehaviour.isWaiting = false;
+        animator.SetTrigger("Support");
+        yield return new WaitForSeconds(0.4f);
+        shieldVFXPrefab.SetActive(true);
+        StartCoroutine(WaitSupport());
+        characterBehaviour.isWaiting = true;
+    }
+
+    public IEnumerator WaitSupport()
+    {
+        yield return new WaitForSeconds(4f);
+        shieldVFXPrefab.SetActive(false);
     }
 
     public IEnumerator PerformSpecial()
@@ -57,7 +86,7 @@ public class Mage : ACharacter
 
     public IEnumerator WaitUlt()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(4.5f);
         UltVFXPrefab.SetActive(false);
     }
 
