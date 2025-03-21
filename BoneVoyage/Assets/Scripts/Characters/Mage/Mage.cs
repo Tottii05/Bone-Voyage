@@ -4,14 +4,22 @@ using UnityEngine;
 
 public class Mage : ACharacter
 {
+    [Header("Prefabs references")]
+    [Header("----------------------------------------")]
     public GameObject bulletPrefab;
     public Transform spawnPoint;
     public GameObject UltVFXPrefab;
     public GameObject shieldVFXPrefab;
+    [Header("Pool variables")]
+    [Header("----------------------------------------")]
     public Stack<GameObject> bulletStack = new Stack<GameObject>();
     public int bulletPoolSize = 3;
     public float bulletLifeTime = 2f;
+    [Header("Combat variables")]
+    [Header("----------------------------------------")]
     public bool shielded = false;
+    public List<GameObject> weapons = new List<GameObject>();
+    public GameObject activeWeapon;
 
     public void Start()
     {
@@ -19,6 +27,12 @@ public class Mage : ACharacter
         animator = GetComponent<Animator>();
         checkPoint = transform.position;
         CreateBulletPool();
+        foreach (GameObject weapon in weapons)
+        {
+            weapon.SetActive(false);
+        }
+        activeWeapon = weapons[0];
+        activeWeapon.SetActive(true);
     }
 
     public override void Attack()
@@ -36,7 +50,7 @@ public class Mage : ACharacter
         StartCoroutine(PerformSpecial());
     }
 
-    public new void TakeDamage(float damage)
+    public override void TakeDamage(float damage)
     {
         if (!shielded)
         {

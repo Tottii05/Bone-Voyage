@@ -19,9 +19,16 @@ public class AOEBehaviour : MonoBehaviour
 
         while (elapsedTime < 5f)
         {
-            foreach (IDamageable enemy in enemiesInRange)
+            foreach (IDamageable enemy in new List<IDamageable>(enemiesInRange))
             {
-                enemy?.TakeDamage(damagePerTick);
+                if (IsAlive(enemy))
+                {
+                    enemy.TakeDamage(damagePerTick);
+                }
+                else
+                {
+                    enemiesInRange.Remove(enemy);
+                }
             }
 
             yield return new WaitForSeconds(tickInterval);
@@ -29,10 +36,15 @@ public class AOEBehaviour : MonoBehaviour
         }
     }
 
+    private bool IsAlive(IDamageable enemy)
+    {
+        return (enemy as MonoBehaviour) != null && (enemy as DamageTesting)?.health > 0;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         IDamageable damageable = other.GetComponent<IDamageable>();
-        if (damageable != null && !enemiesInRange.Contains(damageable))
+        if (damageable != null && !enemiesInRange.Contains(damageable) && IsAlive(damageable))
         {
             enemiesInRange.Add(damageable);
         }
