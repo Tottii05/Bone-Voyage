@@ -15,7 +15,7 @@ public abstract class ACharacter : MonoBehaviour, IDamageable
     public abstract void Attack();
     public abstract void Support();
     public abstract void Special();
-    public void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage)
     {
         animator.SetTrigger("hit");
         health -= damage;

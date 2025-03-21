@@ -73,7 +73,7 @@ public class CharacterBehaviour : MonoBehaviour, IMovementActions, ISkillsAction
             Vector3 directionToTarget = (targetPosition - transform.position).normalized;
             Vector3 moveDirection = Vector3.zero;
 
-            if (distanceToTarget > minDistanceToTarget || movementInput.y < 0 || movementInput.x != 0)
+            if (distanceToTarget > minDistanceToTarget || movementInput.y != 0 || movementInput.x != 0)
             {
                 if (movementInput.y > 0)
                 {
@@ -115,18 +115,14 @@ public class CharacterBehaviour : MonoBehaviour, IMovementActions, ISkillsAction
                 moveDirection = moveDirection.normalized;
                 rb.velocity = moveDirection * character.speed;
             }
-            else
-            {
-                rb.velocity = Vector3.zero;
-                animator.SetBool("Run", false);
-                animator.SetBool("Backwards", false);
-            }
         }
         else
         {
             rb.velocity = Vector3.zero;
             animator.SetBool("Run", false);
             animator.SetBool("Backwards", false);
+            animator.SetBool("Right", false);
+            animator.SetBool("Left", false);
         }
     }
 
