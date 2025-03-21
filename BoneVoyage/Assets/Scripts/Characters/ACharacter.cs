@@ -16,8 +16,9 @@ public abstract class
     public abstract void Attack();
     public abstract void Support();
     public abstract void Special();
-    public void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage)
     {
+        animator.SetTrigger("hit");
         health -= damage;
         if (health <= 0)
         {
@@ -26,7 +27,7 @@ public abstract class
     }
     public void Die()
     {
-        animator.SetTrigger("Die");
+        animator.SetTrigger("die");
         StartCoroutine(Respawn());
     }
     public IEnumerator Respawn()

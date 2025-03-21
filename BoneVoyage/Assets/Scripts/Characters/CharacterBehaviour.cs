@@ -73,32 +73,40 @@ public class CharacterBehaviour : MonoBehaviour, IMovementActions, ISkillsAction
             Vector3 directionToTarget = (targetPosition - transform.position).normalized;
             Vector3 moveDirection = Vector3.zero;
 
-            if (distanceToTarget > minDistanceToTarget || movementInput.y < 0 || movementInput.x != 0)
+            if (distanceToTarget > minDistanceToTarget || movementInput.y != 0 || movementInput.x != 0)
             {
                 if (movementInput.y > 0)
                 {
                     moveDirection = directionToTarget;
                     animator.SetBool("Run", distanceToTarget > minDistanceToTarget);
                     animator.SetBool("Backwards", false);
+                    animator.SetBool("Right", false);
+                    animator.SetBool("Left", false);
                 }
                 else if (movementInput.y < 0)
                 {
                     moveDirection = -directionToTarget;
                     animator.SetBool("Run", false);
                     animator.SetBool("Backwards", true);
+                    animator.SetBool("Right", false);
+                    animator.SetBool("Left", false);
                 }
 
                 if (movementInput.x < 0)
                 {
                     moveDirection += Vector3.Cross(directionToTarget, Vector3.up).normalized;
-                    animator.SetBool("Run", true);
+                    animator.SetBool("Run", false);
                     animator.SetBool("Backwards", false);
+                    animator.SetBool("Right", false);
+                    animator.SetBool("Left", true);
                 }
                 else if (movementInput.x > 0)
                 {
                     moveDirection += Vector3.Cross(Vector3.up, directionToTarget).normalized;
-                    animator.SetBool("Run", true);
+                    animator.SetBool("Run", false);
                     animator.SetBool("Backwards", false);
+                    animator.SetBool("Right", true);
+                    animator.SetBool("Left", false);
                 }
             }
 
@@ -107,18 +115,14 @@ public class CharacterBehaviour : MonoBehaviour, IMovementActions, ISkillsAction
                 moveDirection = moveDirection.normalized;
                 rb.velocity = moveDirection * character.speed;
             }
-            else
-            {
-                rb.velocity = Vector3.zero;
-                animator.SetBool("Run", false);
-                animator.SetBool("Backwards", false);
-            }
         }
         else
         {
             rb.velocity = Vector3.zero;
             animator.SetBool("Run", false);
             animator.SetBool("Backwards", false);
+            animator.SetBool("Right", false);
+            animator.SetBool("Left", false);
         }
     }
 
@@ -149,6 +153,10 @@ public class CharacterBehaviour : MonoBehaviour, IMovementActions, ISkillsAction
     public void OnSupport(InputAction.CallbackContext context)
     {
         if (context.performed && isWaiting)
+        {
+            character.Support();
+        }
+        if (context.canceled && this.gameObject.name == "knight")
         {
             character.Support();
         }

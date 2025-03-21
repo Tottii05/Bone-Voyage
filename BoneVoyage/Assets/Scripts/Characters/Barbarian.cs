@@ -24,6 +24,10 @@ public class Barbarian : ACharacter
     }
     public IEnumerator PerformAttack()
     {
-        yield return null;
+        characterBehaviour.isWaiting = true;
+        animator.SetTrigger("attack");
+        yield return new WaitForSeconds(0.7f);
+
+        characterBehaviour.isWaiting = false;
     }
 }

@@ -4,36 +4,81 @@ using UnityEngine;
 
 public class Kight : ACharacter
 {
-    public BoxCollider attackCollider;
+    public List<GameObject> weapons;
+    public GameObject currentWeapon;
+
+    public List<GameObject> shields;
+    public GameObject currentShield;
+
     public bool reduceDamage = false;
-    public float damageReduction = 0.5f;
     public void Start()
     {
         characterBehaviour = GetComponent<CharacterBehaviour>();
         animator = GetComponent<Animator>();
         checkPoint = transform.position;
-    }
 
+        foreach (GameObject weapon in weapons)
+        {
+            weapon.SetActive(false);
+        }
+        foreach (GameObject shield in shields)
+        {
+            shield.SetActive(false);
+        }
+
+        currentWeapon = weapons[0];
+        currentWeapon.SetActive(true);
+        currentShield = shields[0];
+        currentShield.SetActive(true);
+    }
     public override void Attack()
     {
         StartCoroutine(PerformAttack());
     }
     public override void Support()
     {
+        reduceDamage = !reduceDamage;
+        if (reduceDamage)
+        {
+            characterBehaviour.isWaiting = false;
+            animator.SetTrigger("startBlocking");
+            animator.SetBool("blocking", true);
+        }
+        else
+        {
+            animator.SetBool("blocking", false);
+            characterBehaviour.isWaiting = true;
+        }
     }
     public override void Special()
     {
     }
     public IEnumerator PerformAttack()
     {
-        yield return null;
+        characterBehaviour.isWaiting = false;
+        animator.SetTrigger("attack");
+        yield return new WaitForSeconds(0.1f);
+        currentWeapon.GetComponent<BoxCollider>().enabled = true;
+        yield return new WaitForSeconds(0.1f);
+        currentWeapon.GetComponent<BoxCollider>().enabled = false;
+        yield return new WaitForSeconds(0.1f);
+        characterBehaviour.isWaiting = true;
     }
-    public new void TakeDamage(float damage)
+    public override void TakeDamage(float damage)
     {
         if (reduceDamage)
         {
-            damage *= damageReduction;
+            damage *= currentShield.GetComponent<Shield>().damageReduction;
+            animator.SetTrigger("blockHit");
         }
-        base.TakeDamage(damage);
+        else
+        {
+            animator.SetTrigger("hit");
+        }
+        health -= damage;
+        if (health <= 0)
+        {
+            Die();
+        }
     }
 }
