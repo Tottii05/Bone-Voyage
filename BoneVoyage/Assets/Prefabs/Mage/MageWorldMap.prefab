@@ -174,12 +174,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 8182645749644295889}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fb77a4061e88d64281cea756bc9c82d, type: 3}
+  m_Script: {fileID: 11500000, guid: 43d3f45ac127da74e883970758d86433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  speed: 2
-  mainCamera: {fileID: 0}
-  animator: {fileID: 0}
-  bulletPrefab: {fileID: 0}
-  spawnPoint: {fileID: 0}

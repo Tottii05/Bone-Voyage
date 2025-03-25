@@ -10,6 +10,7 @@ public class GameManagerScript : MonoBehaviour
     public GameObject player;
     public GameObject playerWorldMap;
     public static GameManagerScript instance;
+    private float loadSceneWaiter = 0.1f;
     public void Awake()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -29,15 +30,22 @@ public class GameManagerScript : MonoBehaviour
         spawn = GameObject.Find("SpawnPoint");
         if (SceneManager.GetActiveScene().name == "WorldMap")
         {
+            /*
+            StartCoroutine(Waiter(loadSceneWaiter));
             if (playerWorldMap != null)
             {
                 Destroy(playerWorldMap);
-            }
+            }*/
             Instantiate(playerWorldMap, spawn.transform.position, spawn.transform.rotation);
         }
         if (spawn != null && SceneManager.GetActiveScene().name != "WorldMap")
         {
             Instantiate(player, spawn.transform.position, spawn.transform.rotation);
         }
+    }
+
+    public IEnumerator Waiter(float time)
+    {
+        yield return new WaitForSeconds(time);
     }
 }

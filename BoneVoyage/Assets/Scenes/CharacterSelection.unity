@@ -5880,7 +5880,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89b78a6cad76a34c98b3f8ab8bd2ec5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterPrefab: {fileID: 2837113336950025747, guid: 69511a0fffdbd824ea826c9375280fca, type: 3}
+  characterPrefab: {fileID: 8142818020829366914, guid: 69511a0fffdbd824ea826c9375280fca, type: 3}
   characterWorldMapPrefab: {fileID: 8182645749644295889, guid: c3372a34ac5bc1844b85572d9b9e046a, type: 3}
   animator: {fileID: 919132149213765348}
   gameManager: {fileID: 0}
