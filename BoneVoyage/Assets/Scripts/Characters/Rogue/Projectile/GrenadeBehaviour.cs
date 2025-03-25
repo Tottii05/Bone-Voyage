@@ -19,7 +19,6 @@ public class GrenadeBehaviour : MonoBehaviour
         rb.velocity = Vector3.zero; 
         rb.angularVelocity = Vector3.zero;
         rb.AddForce(transform.forward * force, ForceMode.Impulse);
-        Debug.Log("Grenade initialized");
         StartCoroutine(ExplodeAfterTime());
     }
 
@@ -39,14 +38,10 @@ public class GrenadeBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //metodo de hacer daño al enemigo
-        /*
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.TryGetComponent(out IDamageable damageable))
         {
-            other.gameObject.GetComponent<Enemy>().TakeDamage(damage);
-        }
-        rogue.ReturnGrenadeToPool(gameObject);
-        */
+            damageable.TakeDamage(damage);
+        }    
     }
 }
 
