@@ -5,15 +5,24 @@ using UnityEngine;
 public class Barbarian : ACharacter
 {
     public BoxCollider attackCollider;
+    //objetos
     public GameObject mug;
     public List<GameObject> weaponsLeft ;
     public List<GameObject> weaponsRight;
     public GameObject currentWeaponLeft;
     public GameObject currentWeaponRight;
+    //variables
     public int damageAugment = 5;
     public int speedAugment = 2;
     public int heal=20;
-    public float mugbuffDuration = 5f;
+    public float mugBuffDuration = 5f;
+    public float damageBuffDuration = 5f;
+    //VFX
+    public GameObject slashVFX;
+    public GameObject healVFX;
+    public GameObject buffVFX;
+    public GameObject lfire;
+    public GameObject rfire;
     public void Start()
     {
         characterBehaviour = GetComponent<CharacterBehaviour>();
@@ -51,9 +60,11 @@ public class Barbarian : ACharacter
         mug.SetActive(true);
         currentWeaponLeft.SetActive(false);
         currentWeaponRight.SetActive(false);
-        
+        healVFX.SetActive(true);
+        buffVFX.SetActive(true);
         yield return new WaitForSeconds(2f);
-        
+        healVFX.SetActive(false);
+        buffVFX.SetActive(false);
         StartCoroutine(MugBuff());
         mug.SetActive(false);
         currentWeaponLeft.SetActive(true);
@@ -65,9 +76,11 @@ public class Barbarian : ACharacter
     {
         characterBehaviour.isWaiting = false;
         animator.SetTrigger("Special");
-
+        rfire.SetActive(true);
+        lfire.SetActive(true);
+        StartCoroutine(DamageBuff());
         yield return new WaitForSeconds(0.7f);
-
+        
         characterBehaviour.isWaiting = true;
     }
     public IEnumerator Hit()
@@ -86,12 +99,30 @@ public class Barbarian : ACharacter
         {
             case 0:
                 animator.SetInteger("AttackNum", 1);
+                yield return new WaitForSeconds(0.1f);
+                currentWeaponLeft.GetComponent<BoxCollider>().enabled = true;
+                currentWeaponRight.GetComponent<BoxCollider>().enabled = true;
+                yield return new WaitForSeconds(0.1f);
+                currentWeaponLeft.GetComponent<BoxCollider>().enabled = false;
+                currentWeaponRight.GetComponent<BoxCollider>().enabled = false;
                 break;
             case 1:
                 animator.SetInteger("AttackNum", 2);
+                yield return new WaitForSeconds(0.14f);
+                currentWeaponLeft.GetComponent<BoxCollider>().enabled = true;
+                currentWeaponRight.GetComponent<BoxCollider>().enabled = true;
+                yield return new WaitForSeconds(0.14f);
+                currentWeaponLeft.GetComponent<BoxCollider>().enabled = false;
+                currentWeaponRight.GetComponent<BoxCollider>().enabled = false;
                 break;
             case 2:
                 animator.SetInteger("AttackNum", 3);
+                yield return new WaitForSeconds(0.18f);
+                currentWeaponLeft.GetComponent<BoxCollider>().enabled = true;
+                currentWeaponRight.GetComponent<BoxCollider>().enabled = true;
+                yield return new WaitForSeconds(0.8f);
+                currentWeaponLeft.GetComponent<BoxCollider>().enabled = false;
+                currentWeaponRight.GetComponent<BoxCollider>().enabled = false;
                 break;
             case 3:
                 animator.SetInteger("AttackNum", 1);
@@ -109,8 +140,18 @@ public class Barbarian : ACharacter
     {
         health += heal;
         speed += speedAugment;
-        yield return new WaitForSeconds(mugbuffDuration);
+        yield return new WaitForSeconds(mugBuffDuration);
         speed -= speedAugment;
+    }
+    public IEnumerator DamageBuff()
+    {
+        currentWeaponLeft.GetComponent<DamageSource>().damage += damageAugment;
+        currentWeaponRight.GetComponent<DamageSource>().damage += damageAugment;
+        yield return new WaitForSeconds(damageBuffDuration);
+        currentWeaponLeft.GetComponent<DamageSource>().damage -= damageAugment;
+        currentWeaponRight.GetComponent<DamageSource>().damage -= damageAugment;
+        lfire.SetActive(false);
+        rfire.SetActive(false);
     }
     public new void TakeDamage(float damage)
     {
