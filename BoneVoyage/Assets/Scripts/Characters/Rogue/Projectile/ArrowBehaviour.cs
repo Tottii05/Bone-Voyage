@@ -10,7 +10,7 @@ public class ArrowBehaviour : MonoBehaviour
 
     void Update()
     {
-        gameObject.transform.rotation = Quaternion.LookRotation(rb.velocity);
+        gameObject.transform.GetChild(1).transform.Rotate(0, 5, 0);
     }
     public void Initialize(Rogue rogueRef)
     {

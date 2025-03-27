@@ -40,11 +40,6 @@ public class Rogue : ACharacter
         CreateGrenadePool();
     }
 
-    public void Update()
-    {
-        //if (Input.GetKeyDown(KeyCode.H)) TakeDamage(20f); //damage testing line
-    }
-
     public override void Attack()
     {
         StartCoroutine(PerformAttack()); 
@@ -140,7 +135,7 @@ public class Rogue : ACharacter
         rb.velocity = Vector3.zero;
 
         Vector3 startPos = transform.position;
-        Vector3 targetPos = startPos + transform.forward * 3f; // Ajusta el valor de +Xf para la distancia del roll.
+        Vector3 targetPos = startPos + transform.forward * 4f; // Ajusta el valor de +Xf para la distancia del roll.
 
         float duration = 0.5f;
         float elapsedTime = 0f;
