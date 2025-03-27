@@ -8,53 +8,34 @@ public class EnemyController : MonoBehaviour, IDamageable
 {
     public int HP;
     public GameObject target;
-    public bool OnVisionRange = false, OnAttackRange = false, escape = false;
+    public bool OnAttackRange = false, escape = false, chase = false;
     public EnemyPathFinding _chaseB;
     public StateSO currentState;
     public List<StateSO> States;
     public float AttackRange = 2f;
     public Vector3 lastPlayerPosition;
-    public EnemyFOV EnemyFOV;
     public EnemyPathFinding Pathfinding;
     public Animator animator;
 
     void Start()
     {
-        EnemyFOV = GetComponent<EnemyFOV>();
         Pathfinding = GetComponent<EnemyPathFinding>();
         _chaseB = GetComponent<EnemyPathFinding>();
         animator = GetComponent<Animator>();
     }
 
-    private void OnTriggerEnter(Collider collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            target = collision.gameObject;
-            _chaseB.target = target;
-            OnVisionRange = true;
-            lastPlayerPosition = EnemyFOV.GetLastPlayerPosition(target);
-            CheckEndingConditions();
-        }
-    }
-
-    public void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            if (EnemyFOV.CheckPlayerInVision(other.gameObject))
-            {
-                lastPlayerPosition = EnemyFOV.GetLastPlayerPosition(other.gameObject);
-                CheckEndingConditions();
-            }
+            OnAttackRange = true;
+            CheckEndingConditions();
         }
     }
-
     private void OnTriggerExit(Collider collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            OnVisionRange = false;
             OnAttackRange = false;
             CheckEndingConditions();
         }
@@ -104,10 +85,9 @@ public class EnemyController : MonoBehaviour, IDamageable
     public void TakeDamage(float damage)
     {
         HP -= (int)damage;
-        animator.SetTrigger("hit");
-        if (HP <= 0)
+        if (HP > 0)
         {
-            Die();
+            animator.SetTrigger("hit");
         }
         if (HP <= 25)
         {
@@ -119,12 +99,11 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     public IEnumerator DieCoroutine()
     {
-        animator.SetTrigger("die");
         yield return new WaitForSeconds(1.5f);
+        Destroy(gameObject);
     }
     public void Die()
     {
         StartCoroutine(DieCoroutine());
-        Destroy(gameObject);
     }
 }

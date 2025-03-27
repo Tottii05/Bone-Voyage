@@ -16,4 +16,3 @@ MonoBehaviour:
   EndConditions:
   - {fileID: 11400000, guid: a43e7bce2ec92fe46bb7e4c826ca9d3f, type: 2}
   - {fileID: 11400000, guid: 86b95e5205771bc4cb6ec296a27deb7b, type: 2}
-  - {fileID: 11400000, guid: 0c34ae2d1cf5ce54e8b19da2ee602378, type: 2}

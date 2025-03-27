@@ -6,7 +6,7 @@ public class Attack : StateSO
 {
     public override void OnStateEnter(EnemyController ec)
     {
-        Debug.Log("Dame el movil");
+        ec.animator.SetTrigger("attack");
     }
 
     public override void OnStateExit(EnemyController ec)

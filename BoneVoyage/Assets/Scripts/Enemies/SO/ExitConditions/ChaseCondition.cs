@@ -7,6 +7,6 @@ public class ChaseCondition : ConditionSO
 {
     public override bool CheckCondition(EnemyController ec)
     {
-        return ec.OnVisionRange;
+        return ec.chase && !ec.OnAttackRange;
     }
 }

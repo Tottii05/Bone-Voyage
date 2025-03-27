@@ -25,6 +25,7 @@ public class BulletBehaviour : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         mage.ReturnBulletToPool(gameObject);
+        Debug.Log("Bullet hit: " + other.gameObject.name);
         if (other.gameObject.TryGetComponent(out IDamageable damageable))
         {
             damageable.TakeDamage(damage);
