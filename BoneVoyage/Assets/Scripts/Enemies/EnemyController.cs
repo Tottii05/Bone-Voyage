@@ -16,12 +16,14 @@ public class EnemyController : MonoBehaviour, IDamageable
     public Vector3 lastPlayerPosition;
     public EnemyFOV EnemyFOV;
     public EnemyPathFinding Pathfinding;
+    public Animator animator;
 
     void Start()
     {
         EnemyFOV = GetComponent<EnemyFOV>();
         Pathfinding = GetComponent<EnemyPathFinding>();
         _chaseB = GetComponent<EnemyPathFinding>();
+        animator = GetComponent<Animator>();
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -55,10 +57,6 @@ public class EnemyController : MonoBehaviour, IDamageable
             OnVisionRange = false;
             OnAttackRange = false;
             CheckEndingConditions();
-            if (HP < 100)
-            {
-                Pathfinding.RadiusPatrol(lastPlayerPosition);
-            }
         }
     }
 
@@ -106,6 +104,7 @@ public class EnemyController : MonoBehaviour, IDamageable
     public void TakeDamage(float damage)
     {
         HP -= (int)damage;
+        animator.SetTrigger("hit");
         if (HP <= 0)
         {
             Die();
@@ -117,8 +116,15 @@ public class EnemyController : MonoBehaviour, IDamageable
         CheckEndingConditions();
     }
 
+
+    public IEnumerator DieCoroutine()
+    {
+        animator.SetTrigger("die");
+        yield return new WaitForSeconds(1.5f);
+    }
     public void Die()
     {
+        StartCoroutine(DieCoroutine());
         Destroy(gameObject);
     }
 }
