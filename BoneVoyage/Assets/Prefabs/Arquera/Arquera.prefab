@@ -863,6 +863,7 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   animator: {fileID: 0}
   isWaiting: 1
+  usingSpecial: 0
 --- !u!114 &7383963730999916362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -879,10 +880,9 @@ MonoBehaviour:
   animator: {fileID: 0}
   checkPoint: {x: 0, y: 0, z: 0}
   health: 100
-  baseDamage: 10
   speed: 5
-  bulletPrefab: {fileID: 7638279312221773172, guid: 22f7ee7ec98bcdc40bf7487f95b03467, type: 3}
-  grenadePrefab: {fileID: 147609226588263813, guid: fdbf8684bbc9cd748994432c4a679fe7, type: 3}
+  bulletPrefab: {fileID: 7638279312221773172, guid: 775c089c3d7f85646b7073b7e8ff5bfc, type: 3}
+  grenadePrefab: {fileID: 147609226588263813, guid: 440c3b28e07dcfb40b9aa19e09c34100, type: 3}
   specialAura: {fileID: 8776683650202069051}
   spawnPoint: {fileID: 6407712856007871700}
   specialDuration: 5

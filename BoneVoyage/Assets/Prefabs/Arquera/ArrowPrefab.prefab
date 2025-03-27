@@ -191,6 +191,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1416334942587227959}
     m_Modifications:
+    - target: {fileID: -8961359253771211100, guid: bd5a691270020f84985e8e49a1e75a29, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bd5a691270020f84985e8e49a1e75a29, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.495
@@ -243,9 +247,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7029948723529949830, guid: bd5a691270020f84985e8e49a1e75a29, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5568371526223589888, guid: bd5a691270020f84985e8e49a1e75a29, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: bd5a691270020f84985e8e49a1e75a29, type: 3}
       propertyPath: m_Name
-      value: Arrow
+      value: ArrowModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bd5a691270020f84985e8e49a1e75a29, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148817236446094103, guid: bd5a691270020f84985e8e49a1e75a29, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6507901977716847365, guid: bd5a691270020f84985e8e49a1e75a29, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8513859187771203891, guid: bd5a691270020f84985e8e49a1e75a29, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
