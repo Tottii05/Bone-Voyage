@@ -8,7 +8,8 @@ public abstract class
     public CharacterBehaviour characterBehaviour;
     public Animator animator;
     public Vector3 checkPoint;
-
+    [Header("Character variables")]
+    [Header("----------------------------------------")]
     public float health = 100;
     public float speed = 5f;
 

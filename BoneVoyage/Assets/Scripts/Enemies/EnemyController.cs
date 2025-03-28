@@ -1,8 +1,6 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SocialPlatforms;
 
 public class EnemyController : MonoBehaviour, IDamageable
 {
@@ -16,6 +14,9 @@ public class EnemyController : MonoBehaviour, IDamageable
     public Vector3 lastPlayerPosition;
     public EnemyPathFinding Pathfinding;
     public Animator animator;
+    public bool canMove = true;
+    public GameObject floatingText;
+    public float damageRecieved;
 
     void Start()
     {
@@ -32,6 +33,7 @@ public class EnemyController : MonoBehaviour, IDamageable
             CheckEndingConditions();
         }
     }
+
     private void OnTriggerExit(Collider collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -51,7 +53,11 @@ public class EnemyController : MonoBehaviour, IDamageable
         {
             OnAttackRange = false;
         }
-        currentState.OnStateUpdate(this);
+
+        if (canMove)
+        {
+            currentState.OnStateUpdate(this);
+        }
     }
 
     public void CheckEndingConditions()
@@ -85,6 +91,7 @@ public class EnemyController : MonoBehaviour, IDamageable
     public void TakeDamage(float damage)
     {
         HP -= (int)damage;
+        ShowFloatingText();
         if (HP > 0)
         {
             animator.SetTrigger("hit");
@@ -96,14 +103,33 @@ public class EnemyController : MonoBehaviour, IDamageable
         CheckEndingConditions();
     }
 
-
     public IEnumerator DieCoroutine()
     {
+        escape = false;
         yield return new WaitForSeconds(1.5f);
         Destroy(gameObject);
     }
+
     public void Die()
     {
         StartCoroutine(DieCoroutine());
+    }
+
+    public void DisableMovement()
+    {
+        canMove = false;
+    }
+
+    public void EnableMovement()
+    {
+        canMove = true;
+    }
+
+    public void ShowFloatingText()
+    {
+        var go = Instantiate(floatingText, transform.position + Vector3.up * 3.2f, Quaternion.identity, transform);
+        go.GetComponent<TextMesh>().text = damageRecieved.ToString();
+        TextMesh textMesh = go.GetComponent<TextMesh>();
+        textMesh.fontSize = 30; 
     }
 }

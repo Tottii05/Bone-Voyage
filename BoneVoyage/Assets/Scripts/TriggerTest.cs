@@ -1,23 +1,32 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class TriggerTest : MonoBehaviour
 {
     public GameObject Enemy;
+
     public void Start()
     {
-        Enemy = GameObject.Find("Skeleton_Warrior");
+        Enemy = GameObject.Find("Skeleton_Minion");
     }
     private void OnTriggerEnter(Collider collision)
     {
-        Enemy.GetComponent<Animator>().SetTrigger("entry");
         if (collision.gameObject.CompareTag("Player"))
         {
-            Enemy.GetComponent<EnemyController>().chase = true;
-            Enemy.GetComponent<EnemyController>()._chaseB.target = collision.gameObject;
-            Enemy.GetComponent<EnemyController>().CheckEndingConditions();
+            Enemy.GetComponent<Animator>().SetTrigger("active");
+            StartCoroutine(WaitForActive(collision.gameObject));
         }
     }
+
+    private IEnumerator WaitForActive(GameObject player)
+    {
+        yield return new WaitForSeconds(2);
+
+        Enemy.GetComponent<EnemyController>().chase = true;
+        Enemy.GetComponent<EnemyController>()._chaseB.target = player;
+        Enemy.GetComponent<EnemyController>().CheckEndingConditions();
+
+        Destroy(gameObject);
+    }
+
 }

@@ -29,6 +29,7 @@ public class BulletBehaviour : MonoBehaviour
         if (other.gameObject.TryGetComponent(out IDamageable damageable))
         {
             damageable.TakeDamage(damage);
+            other.gameObject.GetComponent<EnemyController>().damageRecieved = damage;
         }
     }
 }
