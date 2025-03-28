@@ -25,6 +25,7 @@ public class EnemyPathFinding : MonoBehaviour
     public void StopChase()
     {
         animator.SetBool("run", false);
+        agent.SetDestination(transform.position);
         return;
     }
 

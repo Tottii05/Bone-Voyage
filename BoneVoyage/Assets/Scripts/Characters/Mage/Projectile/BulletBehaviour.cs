@@ -7,6 +7,7 @@ public class BulletBehaviour : MonoBehaviour
     public float damage = 20f;
     private Rigidbody rb;
     private Mage mage;
+    private RangedAttack ranged;
 
     public void Initialize(Mage mageRef)
     {
@@ -16,20 +17,44 @@ public class BulletBehaviour : MonoBehaviour
         StartCoroutine(DeactivateAfterTime());
     }
 
+    public void Initialize(RangedAttack rangedAttack)
+    {
+        ranged = rangedAttack;
+        rb = GetComponent<Rigidbody>();
+        rb.velocity = transform.forward * speed;
+        StartCoroutine(DeactivateAfterTime());
+    }
+
     private IEnumerator DeactivateAfterTime()
     {
-        yield return new WaitForSeconds(mage.bulletLifeTime);
-        mage.ReturnBulletToPool(gameObject);
+        yield return new WaitForSeconds(2);
+        if (mage != null)
+            mage.ReturnBulletToPool(gameObject);
+        else
+            ranged.ReturnBulletToPool(gameObject);
     }
 
     public void OnTriggerEnter(Collider other)
     {
-        mage.ReturnBulletToPool(gameObject);
         Debug.Log("Bullet hit: " + other.gameObject.name);
-        if (other.gameObject.TryGetComponent(out IDamageable damageable))
+        if (mage != null)
         {
-            damageable.TakeDamage(damage);
-            other.gameObject.GetComponent<EnemyController>().damageRecieved = damage;
+            mage.ReturnBulletToPool(gameObject);
+            Debug.Log("Bullet hit: " + other.gameObject.name);
+            if (other.gameObject.TryGetComponent(out IDamageable damageable))
+            {
+                damageable.TakeDamage(damage);
+                other.gameObject.GetComponent<EnemyController>().damageRecieved = damage;
+            }
+        }
+        else
+        {
+            ranged.ReturnBulletToPool(gameObject);
+            Debug.Log("Bullet hit: " + other.gameObject.name);
+            if (other.gameObject.TryGetComponent(out IDamageable damageable))
+            {
+                damageable.TakeDamage(damage);
+            }
         }
     }
 }

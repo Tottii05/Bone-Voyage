@@ -7,7 +7,11 @@ public class TriggerTest : MonoBehaviour
 
     public void Start()
     {
-        Enemy = GameObject.Find("Skeleton_Minion");
+        Enemy = GameObject.Find("Skeleton_Rogue");
+        if (Enemy == null)
+        {
+            Enemy = GameObject.Find("Skeleton_Minion");
+        }
     }
     private void OnTriggerEnter(Collider collision)
     {

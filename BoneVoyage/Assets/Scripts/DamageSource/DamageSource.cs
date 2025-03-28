@@ -27,7 +27,8 @@ public class DamageSource : MonoBehaviour
                 if (other.gameObject.CompareTag("Enemy"))
                 {
                     Debug.Log("Enemy hit");
-                    other.gameObject.GetComponent<DamageTest>().TakeDamage(damage);
+                    other.gameObject.GetComponent<EnemyController>().damageRecieved = damage;
+                    other.gameObject.GetComponent<EnemyController>().TakeDamage(damage);
                 }
             }
         }

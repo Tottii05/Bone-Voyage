@@ -29,6 +29,17 @@ public class EnemyController : MonoBehaviour, IDamageable
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            target = other.gameObject;
+            OnAttackRange = true;
+            CheckEndingConditions();
+        }
+    }
+
+    private void OnTriggerStay(Collider collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            target = collision.gameObject;
             OnAttackRange = true;
             CheckEndingConditions();
         }
@@ -45,6 +56,7 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     private void Update()
     {
+        /*
         if (target != null)
         {
             OnAttackRange = Vector3.Distance(transform.position, target.transform.position) < AttackRange;
@@ -53,11 +65,8 @@ public class EnemyController : MonoBehaviour, IDamageable
         {
             OnAttackRange = false;
         }
-
-        if (canMove)
-        {
-            currentState.OnStateUpdate(this);
-        }
+        */
+        currentState.OnStateUpdate(this);
     }
 
     public void CheckEndingConditions()
@@ -78,7 +87,6 @@ public class EnemyController : MonoBehaviour, IDamageable
                 break;
             }
         }
-        currentState.OnStateEnter(this);
     }
 
     private void EnterNewState(StateSO state)

@@ -18,8 +18,8 @@ TagManager:
   - PlayerProjectile
   - EnemyProjectile
   - Wall
-  - 
-  - 
+  - Weapon
+  - Enemy
   - 
   - 
   - 
