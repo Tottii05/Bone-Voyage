@@ -4,28 +4,24 @@ using UnityEngine;
 
 public class Mage : ACharacter
 {
-    [Header("Prefabs references")]
-    [Header("----------------------------------------")]
     public GameObject bulletPrefab;
     public Transform spawnPoint;
     public GameObject UltVFXPrefab;
     public GameObject shieldVFXPrefab;
-    [Header("Pool variables")]
-    [Header("----------------------------------------")]
     public Stack<GameObject> bulletStack = new Stack<GameObject>();
     public int bulletPoolSize = 3;
     public float bulletLifeTime = 2f;
-    [Header("Combat variables")]
-    [Header("----------------------------------------")]
     public bool shielded = false;
     public List<GameObject> weapons = new List<GameObject>();
     public GameObject activeWeapon;
+    private CameraBehaviour cameraBehaviour;
 
     public void Start()
     {
         characterBehaviour = GetComponent<CharacterBehaviour>();
         animator = GetComponent<Animator>();
         checkPoint = transform.position;
+        cameraBehaviour = FindObjectOfType<CameraBehaviour>();
         CreateBulletPool();
         foreach (GameObject weapon in weapons)
         {
@@ -88,12 +84,10 @@ public class Mage : ACharacter
         characterBehaviour.isWaiting = false;
         animator.SetTrigger("Ult");
         yield return new WaitForSeconds(0.7f);
-
         Vector3 mouseWorldPos = GetMouseWorldPosition();
         UltVFXPrefab.SetActive(true);
         UltVFXPrefab.transform.SetParent(null);
         UltVFXPrefab.transform.position = mouseWorldPos;
-
         StartCoroutine(WaitUlt());
         characterBehaviour.isWaiting = true;
     }
@@ -120,6 +114,15 @@ public class Mage : ACharacter
         {
             GameObject bullet = Instantiate(bulletPrefab);
             bullet.SetActive(false);
+            ParticleSystem fireball = bullet.GetComponent<ParticleSystem>();
+            if (fireball != null)
+            {
+                ParticleSystemRenderer renderer = fireball.GetComponent<ParticleSystemRenderer>();
+                if (renderer != null)
+                {
+                    renderer.material = renderer.material;
+                }
+            }
             bulletStack.Push(bullet);
         }
     }
@@ -133,11 +136,31 @@ public class Mage : ACharacter
             bullet.transform.position = spawnPoint.position;
             bullet.transform.rotation = spawnPoint.rotation;
             bullet.GetComponent<BulletBehaviour>().Initialize(this);
+            ParticleSystem fireball = bullet.GetComponent<ParticleSystem>();
+            if (fireball != null)
+            {
+                ParticleSystemRenderer renderer = fireball.GetComponent<ParticleSystemRenderer>();
+                if (renderer != null)
+                {
+                    renderer.material = cameraBehaviour.originalFireballMaterials.ContainsKey(fireball) ? cameraBehaviour.originalFireballMaterials[fireball] : renderer.material;
+                }
+                cameraBehaviour.RegisterFireball(fireball);
+            }
         }
     }
 
     public void ReturnBulletToPool(GameObject bullet)
     {
+        ParticleSystem fireball = bullet.GetComponent<ParticleSystem>();
+        if (fireball != null)
+        {
+            ParticleSystemRenderer renderer = fireball.GetComponent<ParticleSystemRenderer>();
+            if (renderer != null && cameraBehaviour.originalFireballMaterials.ContainsKey(fireball))
+            {
+                renderer.material = cameraBehaviour.originalFireballMaterials[fireball];
+            }
+            cameraBehaviour.UnregisterFireball(fireball);
+        }
         bullet.SetActive(false);
         bulletStack.Push(bullet);
     }
