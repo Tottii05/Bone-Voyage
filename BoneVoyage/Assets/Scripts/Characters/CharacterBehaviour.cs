@@ -16,6 +16,7 @@ public class CharacterBehaviour : MonoBehaviour, IMovementActions, ISkillsAction
     private Vector2 movementInput;
     private bool isMoving = false;
     private float minDistanceToTarget = 0.75f;
+    public bool isFrozen = false;
 
     private ACharacter character;
 
@@ -29,8 +30,8 @@ public class CharacterBehaviour : MonoBehaviour, IMovementActions, ISkillsAction
         Cursor.visible = true;
         targetPosition = transform.position;
         playerActions = new Player();
-        playerActions.Movement.SetCallbacks(this);  // Callbacks para movimiento (WASD)
-        playerActions.Skills.SetCallbacks(this);   // Callbacks para ataques
+        playerActions.Movement.SetCallbacks(this);
+        playerActions.Skills.SetCallbacks(this);
     }
 
     private void OnEnable()
@@ -45,9 +46,16 @@ public class CharacterBehaviour : MonoBehaviour, IMovementActions, ISkillsAction
 
     private void FixedUpdate()
     {
-        UpdateTargetPosition();
-        Move();
-        ChangeRotation();
+        if (!isFrozen)
+        {
+            UpdateTargetPosition();
+            Move();
+            ChangeRotation();
+        }
+        else
+        {
+            rb.velocity = Vector3.zero;
+        }
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -68,7 +76,7 @@ public class CharacterBehaviour : MonoBehaviour, IMovementActions, ISkillsAction
 
     private void Move()
     {
-        if (isWaiting && isMoving)
+        if (isWaiting && isMoving && !isFrozen)
         {
             float distanceToTarget = Vector3.Distance(transform.position, targetPosition);
             Vector3 directionToTarget = (targetPosition - transform.position).normalized;
@@ -183,5 +191,20 @@ public class CharacterBehaviour : MonoBehaviour, IMovementActions, ISkillsAction
     }
     public void OnConsumable(InputAction.CallbackContext context)
     {
+    }
+
+    public void FreezeMovement(float duration)
+    {
+        StartCoroutine(FreezeCoroutine(duration));
+    }
+
+    private IEnumerator FreezeCoroutine(float duration)
+    {
+        isFrozen = true;
+        yield return new WaitForSeconds(duration);
+        if (!character.isDead)
+        {
+            isFrozen = false;
+        }
     }
 }

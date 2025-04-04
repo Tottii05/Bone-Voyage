@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 6690203121543592628}
   - component: {fileID: 4357118411543725721}
   - component: {fileID: 2568506919582118069}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: arrowPH
   m_TagString: Untagged
   m_Icon: {fileID: 0}
