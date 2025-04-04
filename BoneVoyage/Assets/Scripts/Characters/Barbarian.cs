@@ -11,18 +11,22 @@ public class Barbarian : ACharacter
     public List<GameObject> weaponsRight;
     public GameObject currentWeaponLeft;
     public GameObject currentWeaponRight;
+    public Transform slashPointLeft;
+    public Transform slashPointRight;
     //variables
     public int damageAugment = 5;
     public int speedAugment = 2;
     public int heal=20;
     public float mugBuffDuration = 5f;
     public float damageBuffDuration = 5f;
+    public bool specialActive=false;
     //VFX
-    public GameObject slashVFX;
+    public GameObject slashVFX;      
     public GameObject healVFX;
     public GameObject buffVFX;
     public GameObject lfire;
     public GameObject rfire;
+
     public void Start()
     {
         characterBehaviour = GetComponent<CharacterBehaviour>();
@@ -47,7 +51,10 @@ public class Barbarian : ACharacter
         characterBehaviour.isWaiting = false;
         animator.SetTrigger("Attack");
         StartCoroutine(Combo());
-
+        if(specialActive)
+        {
+           StartCoroutine(SpecialEffect());
+        }
         yield return new WaitForSeconds(0.7f);
 
         characterBehaviour.isWaiting = true;
@@ -145,13 +152,51 @@ public class Barbarian : ACharacter
     }
     public IEnumerator DamageBuff()
     {
+        specialActive = true;
         currentWeaponLeft.GetComponent<DamageSource>().damage += damageAugment;
         currentWeaponRight.GetComponent<DamageSource>().damage += damageAugment;
+        Vector3 origL = currentWeaponLeft.GetComponent<BoxCollider>().size;
+        Vector3 origR = currentWeaponRight.GetComponent<BoxCollider>().size;
+        currentWeaponLeft.GetComponent<BoxCollider>().size = origL * 3f;
+        currentWeaponRight.GetComponent<BoxCollider>().size = origR * 3f;
         yield return new WaitForSeconds(damageBuffDuration);
         currentWeaponLeft.GetComponent<DamageSource>().damage -= damageAugment;
         currentWeaponRight.GetComponent<DamageSource>().damage -= damageAugment;
+        currentWeaponLeft.GetComponent<BoxCollider>().size = origL;
+        currentWeaponRight.GetComponent<BoxCollider>().size = origR;
         lfire.SetActive(false);
         rfire.SetActive(false);
+        specialActive = false;
+    }
+    public IEnumerator SpecialEffect()
+    {
+        int num = animator.GetInteger("AttackNum");
+        
+        //GameObject slashLeft = Instantiate(slashVFX, slashPointLeft.position, slashPointLeft.rotation, slashPointLeft);
+        //GameObject slashRight = Instantiate(slashVFX, slashPointRight.position, slashPointRight.rotation, slashPointRight);
+        switch (num)
+        {
+            case 1:
+                yield return new WaitForSeconds(0.4f);
+                Destroy(Instantiate(slashVFX, slashPointRight.position, slashPointRight.rotation, slashPointRight),0.2f);
+                break;
+            case 2:
+                yield return new WaitForSeconds(0.5f);
+                Destroy(Instantiate(slashVFX, slashPointRight.position, slashPointRight.rotation, slashPointRight), 0.2f);
+                yield return new WaitForSeconds(0.4f);
+                Destroy(Instantiate(slashVFX, slashPointLeft.position, slashPointLeft.rotation, slashPointLeft),0.2f);
+                break;
+            case 3:
+                yield return new WaitForSeconds(0.6f);
+                GameObject slashRight = Instantiate(slashVFX, slashPointRight.position, slashPointRight.rotation, slashPointRight);
+                Destroy(slashRight, 0.2f);
+                GameObject slashLeft = Instantiate(slashVFX, slashPointLeft.position, slashPointLeft.rotation, slashPointLeft);
+                Destroy(slashLeft, 0.2f);
+                slashLeft.transform.localScale= slashLeft.transform.localScale* 1.5f;   
+                slashRight.transform.localScale = slashRight.transform.localScale * 1.5f;
+                break;
+        }
+        yield return new WaitForSeconds(0.1f);
     }
     public new void TakeDamage(float damage)
     {
