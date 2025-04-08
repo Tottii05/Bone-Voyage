@@ -31,7 +31,11 @@ public class Attack : StateSO
         {
             yield return RotateTowardsTarget(ec);
             ec.animator.SetTrigger("attack");
-            yield return new WaitForSeconds(1.6f); 
+            ec.damageSourceL.BoxCollider.enabled = true;
+            ec.damageSourceR.BoxCollider.enabled = true;
+            yield return new WaitForSeconds(1.6f);
+            ec.damageSourceL.BoxCollider.enabled = false;
+            ec.damageSourceR.BoxCollider.enabled = false;
         }
     }
 

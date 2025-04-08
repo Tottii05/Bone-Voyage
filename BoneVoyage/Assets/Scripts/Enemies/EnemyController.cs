@@ -17,6 +17,8 @@ public class EnemyController : MonoBehaviour, IDamageable
     public bool canMove = true;
     public GameObject floatingText;
     public float damageRecieved;
+    public DamageSource damageSourceL;
+    public DamageSource damageSourceR;
 
     void Start()
     {
@@ -56,7 +58,6 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     private void Update()
     {
-        /*
         if (target != null)
         {
             OnAttackRange = Vector3.Distance(transform.position, target.transform.position) < AttackRange;
@@ -65,7 +66,6 @@ public class EnemyController : MonoBehaviour, IDamageable
         {
             OnAttackRange = false;
         }
-        */
         currentState.OnStateUpdate(this);
     }
 
