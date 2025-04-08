@@ -102,7 +102,7 @@ Material:
     - _FaceColor: {r: 1, g: 1, b: 1, a: 1}
     - _GlowColor: {r: 0, g: 1, b: 0, a: 0.5}
     - _MaskCoord: {r: 0, g: 0, b: 32767, a: 32767}
-    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
+    - _OutlineColor: {r: 0.16981131, g: 0.071055986, b: 0, a: 1}
     - _ReflectFaceColor: {r: 0, g: 0, b: 0, a: 1}
     - _ReflectOutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
@@ -118,11 +118,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: Seagram tfb SDF
+  m_Name: Seagram tfb SDF 1
   m_EditorClassIdentifier: 
-  hashCode: 1084689423
+  hashCode: 110774174
   material: {fileID: -4070985703473138061}
-  materialHashCode: -1632729265
+  materialHashCode: -1504446338
   m_Version: 1.1.0
   m_SourceFontFileGUID: eddd556f830a6c04d895415cba3bb853
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: eddd556f830a6c04d895415cba3bb853, type: 3}
