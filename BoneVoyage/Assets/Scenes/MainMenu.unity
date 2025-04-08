@@ -1195,7 +1195,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 444020054}
-  - component: {fileID: 444020053}
+  - component: {fileID: 444020055}
   m_Layer: 0
   m_Name: SceneController
   m_TagString: Untagged
@@ -1203,18 +1203,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &444020053
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 444020052}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85c5f93c93b26e6488a22ce5865f78af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &444020054
 Transform:
   m_ObjectHideFlags: 0
@@ -1230,6 +1218,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &444020055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444020052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 498bb0203e3993b48ad7f5e5f2b6660b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panelOptions: {fileID: 154595315}
+  buttonEnter: {fileID: 1681760613}
+  textTitle: {fileID: 295353322}
 --- !u!1001 &534592645
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2465,7 +2468,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1681760617}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 444020052}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1681760617
 MonoBehaviour:
   m_ObjectHideFlags: 0
