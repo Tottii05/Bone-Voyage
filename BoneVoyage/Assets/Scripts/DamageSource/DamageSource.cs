@@ -21,6 +21,10 @@ public class DamageSource : MonoBehaviour
                     Debug.Log("Player hit");
                     other.gameObject.GetComponent<ACharacter>().TakeDamage(damage);
                 }
+                else if (other.gameObject.CompareTag("DestroyableTree"))
+                {
+                    other.gameObject.GetComponent<DestroyableTree>().GetHit(gameObject, damage);
+                }
             }
             else
             {
@@ -29,6 +33,10 @@ public class DamageSource : MonoBehaviour
                     Debug.Log("Enemy hit");
                     other.gameObject.GetComponent<EnemyController>().damageRecieved = damage;
                     other.gameObject.GetComponent<EnemyController>().TakeDamage(damage);
+                }
+                else if (other.gameObject.CompareTag("DestroyableTree"))
+                {
+                    other.gameObject.GetComponent<DestroyableTree>().GetHit(gameObject, damage);
                 }
             }
         }
