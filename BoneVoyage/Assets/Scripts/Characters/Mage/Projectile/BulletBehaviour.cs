@@ -36,11 +36,9 @@ public class BulletBehaviour : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Bullet hit: " + other.gameObject.name);
         if (mage != null)
         {
             mage.ReturnBulletToPool(gameObject);
-            Debug.Log("Bullet hit: " + other.gameObject.name);
             if (other.gameObject.TryGetComponent(out IDamageable damageable))
             {
                 damageable.TakeDamage(damage);
@@ -50,7 +48,6 @@ public class BulletBehaviour : MonoBehaviour
         else
         {
             ranged.ReturnBulletToPool(gameObject);
-            Debug.Log("Bullet hit: " + other.gameObject.name);
             if (other.gameObject.TryGetComponent(out IDamageable damageable))
             {
                 damageable.TakeDamage(damage);

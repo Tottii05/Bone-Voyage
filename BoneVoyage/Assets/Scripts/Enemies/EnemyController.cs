@@ -22,6 +22,12 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     void Start()
     {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player.name == "Mage")
+        {
+            float dmg = player.GetComponent<Mage>().bulletPrefab.GetComponent<BulletBehaviour>().damage;
+            damageRecieved = dmg;
+        }
         Pathfinding = GetComponent<EnemyPathFinding>();
         _chaseB = GetComponent<EnemyPathFinding>();
         animator = GetComponent<Animator>();
@@ -58,14 +64,14 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     private void Update()
     {
-        if (target != null)
+        /*if (target != null)
         {
             OnAttackRange = Vector3.Distance(transform.position, target.transform.position) < AttackRange;
         }
         else
         {
             OnAttackRange = false;
-        }
+        }*/
         currentState.OnStateUpdate(this);
     }
 
