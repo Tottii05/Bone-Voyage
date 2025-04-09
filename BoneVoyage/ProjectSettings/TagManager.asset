@@ -7,6 +7,7 @@ TagManager:
   - Character
   - Selectable
   - Enemy
+  - DestroyableTree
   layers:
   - Default
   - TransparentFX
