@@ -22,14 +22,15 @@ public class SceneController : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
-    public void SetPanel(string panelName)
+    public void SetPanel(GameObject panel)
     {
-        GameObject panel = GameObject.Find(panelName);
+        
         panel.SetActive(!panel.activeSelf);
     }
 
     public void QuitGame()
     {
+        PlayerPrefs.SetInt("FirstTime", 1);
         Application.Quit();
     }
 

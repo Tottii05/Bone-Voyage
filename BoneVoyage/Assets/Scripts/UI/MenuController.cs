@@ -9,33 +9,37 @@ using UnityEngine.EventSystems;
 public class MenuController : SceneController
 {
     public GameObject panelOptions;
+    public GameObject panelSettings;
     public GameObject buttonEnter;
     public TextMeshProUGUI textTitle;
+    public Transform titleTransform;
+    private static bool hasOpenedMenu = false;
+    public float timeLapse = 2f;
     void Start()
     {
-        if(PlayerPrefs.GetInt("FirstTime",0) == 0)
+        if (!hasOpenedMenu)
         {
-            panelOptions.SetActive(true);
+            
+            panelOptions.SetActive(false);
             buttonEnter.SetActive(true);
         }
         else
         {
-            panelOptions.SetActive(false);
+            textTitle.GetComponent<Animator>().SetTrigger("Start");
+            panelOptions.SetActive(true);
             buttonEnter.SetActive(false);
         }
+        panelSettings.SetActive(false);
     }
     public void ButtonPress()
     {
-        this.gameObject.SetActive(false);
-    }
-    public void MoveTitle()
-    {
+        textTitle.GetComponent<Animator>().SetTrigger("Start");
+        hasOpenedMenu = true;
+        buttonEnter.SetActive(false);
+        panelOptions.SetActive(true);
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+
 }
