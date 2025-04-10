@@ -6,8 +6,8 @@ public class BulletBehaviour : MonoBehaviour
     public float speed = 10f;
     public float damage = 20f;
     private Rigidbody rb;
-    private Mage mage;
-    private RangedAttack ranged;
+    public Mage mage;
+    public RangedAttack ranged;
 
     public void Initialize(Mage mageRef)
     {
@@ -36,11 +36,9 @@ public class BulletBehaviour : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Bullet hit: " + other.gameObject.name);
         if (mage != null)
         {
             mage.ReturnBulletToPool(gameObject);
-            Debug.Log("Bullet hit: " + other.gameObject.name);
             if (other.gameObject.TryGetComponent(out IDamageable damageable))
             {
                 damageable.TakeDamage(damage);
@@ -49,11 +47,13 @@ public class BulletBehaviour : MonoBehaviour
         }
         else
         {
-            ranged.ReturnBulletToPool(gameObject);
-            Debug.Log("Bullet hit: " + other.gameObject.name);
-            if (other.gameObject.TryGetComponent(out IDamageable damageable))
+            if (other.tag != "Enemy")
             {
-                damageable.TakeDamage(damage);
+                ranged.ReturnBulletToPool(gameObject);
+                if (other.gameObject.TryGetComponent(out IDamageable damageable) && other.tag == "Player")
+                {
+                    damageable.TakeDamage(damage);
+                }
             }
         }
     }

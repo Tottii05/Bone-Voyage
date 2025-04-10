@@ -17,3 +17,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ccc2871deaefac646873db0a4f1a62be, type: 2}
   - {fileID: 11400000, guid: 86b95e5205771bc4cb6ec296a27deb7b, type: 2}
   - {fileID: 11400000, guid: 37e9549a40e46c649b415c337b89860d, type: 2}
+  effectiveAttackRange: 10

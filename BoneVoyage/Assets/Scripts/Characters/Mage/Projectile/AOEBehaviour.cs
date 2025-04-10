@@ -1,15 +1,16 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AOEBehaviour : MonoBehaviour
 {
     public float damagePerTick = 14f;
     public float tickInterval = 1f;
-    private List<IDamageable> enemiesInRange = new List<IDamageable>();
+    private CapsuleCollider capsuleCollider;
 
     void Start()
     {
+        capsuleCollider = GetComponent<CapsuleCollider>();
+        if (capsuleCollider == null) Destroy(gameObject);
         StartCoroutine(ApplyDamageOverTime());
     }
 
@@ -19,43 +20,25 @@ public class AOEBehaviour : MonoBehaviour
 
         while (elapsedTime < 5f)
         {
-            foreach (IDamageable enemy in new List<IDamageable>(enemiesInRange))
+            Collider[] enemies = Physics.OverlapSphere(transform.position, capsuleCollider.radius);
+
+            foreach (Collider enemy in enemies)
             {
-                if (IsAlive(enemy))
+                if (enemy.CompareTag("Enemy"))
                 {
-                    enemy.TakeDamage(damagePerTick);
-                }
-                else
-                {
-                    enemiesInRange.Remove(enemy);
+                    EnemyController enemyController = enemy.GetComponent<EnemyController>();
+                    if (enemyController != null && enemyController.HP > 0)
+                    {
+                        enemyController.damageRecieved = damagePerTick;
+                        enemyController.TakeDamage(damagePerTick);
+                    }
                 }
             }
 
             yield return new WaitForSeconds(tickInterval);
             elapsedTime += tickInterval;
         }
-    }
 
-    private bool IsAlive(IDamageable enemy)
-    {
-        return (enemy as MonoBehaviour) != null && (enemy as DamageTesting)?.health > 0;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        IDamageable damageable = other.GetComponent<IDamageable>();
-        if (damageable != null && !enemiesInRange.Contains(damageable) && IsAlive(damageable))
-        {
-            enemiesInRange.Add(damageable);
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        IDamageable damageable = other.GetComponent<IDamageable>();
-        if (damageable != null)
-        {
-            enemiesInRange.Remove(damageable);
-        }
+        Destroy(gameObject);
     }
 }
