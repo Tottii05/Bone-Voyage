@@ -1,40 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 [CreateAssetMenu(fileName = "RangedAttack", menuName = "StatesSO/RangedAttack")]
 public class RangedAttack : StateSO
 {
     private Coroutine attackRoutine;
     public GameObject bulletPrefab;
-    public Transform spawnPoint;
     public Stack<GameObject> bulletStack = new Stack<GameObject>();
     public int bulletPoolSize = 3;
     public float bulletLifeTime = 2f;
+    private CameraBehaviour cameraBehaviour;
 
     public override void OnStateEnter(EnemyController ec)
     {
+        if (cameraBehaviour == null)
+        {
+            cameraBehaviour = FindObjectOfType<CameraBehaviour>();
+        }
+
         if (bulletStack.Count == 0)
         {
             CreateBulletPool();
-        }
-        GameObject skeletonRogue = GameObject.Find("Skeleton_Rogue");
-        if (skeletonRogue != null)
-        {
-            Transform foundSpawnPoint = skeletonRogue.transform.Find("SpawnPoint");
-            if (foundSpawnPoint != null)
-            {
-                spawnPoint = foundSpawnPoint;
-            }
-            else
-            {
-                Debug.LogError("SpawnPoint not found in Skeleton_Rogue!");
-            }
-        }
-        else
-        {
-            Debug.LogError("Skeleton_Rogue not found in the scene!");
         }
         ec.animator.SetTrigger("aim");
         ec.canMove = false;
@@ -66,13 +53,17 @@ public class RangedAttack : StateSO
                 ec.animator.SetTrigger("shoot");
                 if (bulletStack.Count > 0)
                 {
-                    Vector3 direction = ec.target.transform.position - spawnPoint.position;
+                    Vector3 direction = ec.target.transform.position - ec.spawnPoint.transform.position;
                     Quaternion rotation = Quaternion.LookRotation(direction);
                     GameObject bullet = bulletStack.Pop();
                     bullet.SetActive(true);
-                    bullet.transform.position = spawnPoint.position;
+                    bullet.transform.position = ec.spawnPoint.transform.position;
                     bullet.transform.rotation = rotation;
                     bullet.GetComponent<BulletBehaviour>().Initialize(this);
+                    if (cameraBehaviour != null)
+                    {
+                        cameraBehaviour.RegisterArrow(bullet);
+                    }
                 }
             }
             yield return new WaitForSeconds(0f);
@@ -91,6 +82,11 @@ public class RangedAttack : StateSO
 
     public void ReturnBulletToPool(GameObject bullet)
     {
+        if (cameraBehaviour != null)
+        {
+            cameraBehaviour.UnregisterArrow(bullet);
+        }
+
         bullet.SetActive(false);
         bulletStack.Push(bullet);
     }

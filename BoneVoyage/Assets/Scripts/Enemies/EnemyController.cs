@@ -19,6 +19,7 @@ public class EnemyController : MonoBehaviour, IDamageable
     public float damageRecieved;
     public DamageSource damageSourceL;
     public DamageSource damageSourceR;
+    public GameObject spawnPoint;
 
     void Start()
     {
@@ -64,14 +65,6 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     private void Update()
     {
-        /*if (target != null)
-        {
-            OnAttackRange = Vector3.Distance(transform.position, target.transform.position) < AttackRange;
-        }
-        else
-        {
-            OnAttackRange = false;
-        }*/
         currentState.OnStateUpdate(this);
     }
 

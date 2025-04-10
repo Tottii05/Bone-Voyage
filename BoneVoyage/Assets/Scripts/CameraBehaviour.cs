@@ -7,11 +7,12 @@ public class CameraBehaviour : MonoBehaviour
     public Vector3 offset = new Vector3(0f, 12.3f, -9.63f);
     private List<Material> originalPlayerMaterials = new List<Material>();
     private Dictionary<GameObject, List<Material>> originalEnemyMaterials = new Dictionary<GameObject, List<Material>>();
+    private Dictionary<GameObject, Material> originalArrowMaterials = new Dictionary<GameObject, Material>();
     private Material glowMaterial;
     private Renderer[] playerRenderers;
     private Dictionary<GameObject, Renderer[]> enemyRenderers = new Dictionary<GameObject, Renderer[]>();
-    private float fadeSpeed = 2f;
-    private List<ParticleSystem> fireballs = new List<ParticleSystem>();
+    public List<GameObject> arrows = new List<GameObject>();
+    public List<ParticleSystem> fireballs = new List<ParticleSystem>();
     public Dictionary<ParticleSystem, Material> originalFireballMaterials = new Dictionary<ParticleSystem, Material>();
     private List<GameObject> enemies = new List<GameObject>();
 
@@ -25,11 +26,12 @@ public class CameraBehaviour : MonoBehaviour
                 originalPlayerMaterials.Add(renderer.material);
             }
             Shader outlineShader = Shader.Find("Custom/GlowThroughWalls");
-            if (outlineShader != null)
+            if (outlineShader == null)
             {
-                glowMaterial = new Material(outlineShader);
-                glowMaterial.SetColor("_GlowColor", new Color(0.5f, 0.8f, 1f, 0.8f));
+                return;
             }
+            glowMaterial = new Material(outlineShader);
+            glowMaterial.SetColor("_GlowColor", new Color(0.5f, 0.8f, 1f, 0.8f));
         }
         FindEnemies();
     }
@@ -87,6 +89,33 @@ public class CameraBehaviour : MonoBehaviour
         }
     }
 
+    public void RegisterArrow(GameObject arrow)
+    {
+        if (!arrows.Contains(arrow))
+        {
+            arrows.Add(arrow);
+            MeshRenderer arrowRenderer = arrow.GetComponentInChildren<MeshRenderer>();
+            if (arrowRenderer != null && !originalArrowMaterials.ContainsKey(arrow))
+            {
+                originalArrowMaterials[arrow] = arrowRenderer.material;
+            }
+        }
+    }
+
+    public void UnregisterArrow(GameObject arrow)
+    {
+        if (arrows.Contains(arrow))
+        {
+            MeshRenderer arrowRenderer = arrow.GetComponentInChildren<MeshRenderer>();
+            if (arrowRenderer != null && originalArrowMaterials.ContainsKey(arrow))
+            {
+                arrowRenderer.material = originalArrowMaterials[arrow];
+            }
+            arrows.Remove(arrow);
+            originalArrowMaterials.Remove(arrow);
+        }
+    }
+
     private void FindEnemies()
     {
         GameObject[] allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -102,6 +131,7 @@ public class CameraBehaviour : MonoBehaviour
         HandlePlayerGlow();
         HandleFireballGlow();
         HandleEnemyGlow();
+        HandleArrowGlow();
     }
 
     private void HandlePlayerGlow()
@@ -226,6 +256,53 @@ public class CameraBehaviour : MonoBehaviour
                         }
                     }
                 }
+            }
+        }
+    }
+
+    private void HandleArrowGlow()
+    {
+        foreach (GameObject arrow in new List<GameObject>(arrows))
+        {
+            if (arrow != null && arrow.activeInHierarchy)
+            {
+                MeshRenderer arrowRenderer = arrow.GetComponentInChildren<MeshRenderer>();
+                if (arrowRenderer != null && arrowRenderer.isVisible)
+                {
+                    bool isArrowObscured = false;
+                    Vector3 rendererCenter = arrowRenderer.bounds.center;
+                    Vector3 direction = rendererCenter - transform.position;
+                    float distance = direction.magnitude;
+                    direction = direction.normalized;
+                    RaycastHit[] hits = Physics.RaycastAll(transform.position, direction, distance);
+                    foreach (RaycastHit hit in hits)
+                    {
+                        if (hit.collider.gameObject != arrow && hit.collider.gameObject != player &&
+                            !hit.collider.transform.IsChildOf(player.transform) && !enemies.Contains(hit.collider.gameObject))
+                        {
+                            isArrowObscured = true;
+                            break;
+                        }
+                    }
+                    if (isArrowObscured)
+                    {
+                        if (arrowRenderer.material != glowMaterial)
+                        {
+                            arrowRenderer.material = glowMaterial;
+                        }
+                    }
+                    else
+                    {
+                        if (arrowRenderer.material != originalArrowMaterials[arrow])
+                        {
+                            arrowRenderer.material = originalArrowMaterials[arrow];
+                        }
+                    }
+                }
+            }
+            else if (arrow != null && !arrow.activeInHierarchy)
+            {
+                UnregisterArrow(arrow);
             }
         }
     }

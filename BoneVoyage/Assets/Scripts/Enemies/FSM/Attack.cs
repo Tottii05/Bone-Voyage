@@ -5,6 +5,7 @@ using UnityEngine;
 public class Attack : StateSO
 {
     private Coroutine attackRoutine;
+    public float attackColliderActiveTime = 0.5f;
 
     public override void OnStateEnter(EnemyController ec)
     {
@@ -15,6 +16,8 @@ public class Attack : StateSO
     public override void OnStateExit(EnemyController ec)
     {
         ec.canMove = true;
+        ec.damageSourceL.BoxCollider.enabled = false;
+        ec.damageSourceR.BoxCollider.enabled = false;
         if (attackRoutine != null)
         {
             ec.StopCoroutine(attackRoutine);
@@ -31,11 +34,13 @@ public class Attack : StateSO
         {
             yield return RotateTowardsTarget(ec);
             ec.animator.SetTrigger("attack");
+            yield return new WaitForSeconds(0.5f);
             ec.damageSourceL.BoxCollider.enabled = true;
             ec.damageSourceR.BoxCollider.enabled = true;
-            yield return new WaitForSeconds(1.6f);
+            yield return new WaitForSeconds(attackColliderActiveTime);
             ec.damageSourceL.BoxCollider.enabled = false;
             ec.damageSourceR.BoxCollider.enabled = false;
+            yield return new WaitForSeconds(1.6f - 0.5f - attackColliderActiveTime);
         }
     }
 
