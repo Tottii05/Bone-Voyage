@@ -26,12 +26,27 @@ public class ArrowBehaviour : MonoBehaviour
         rogue.ReturnArrowToPool(gameObject);
     }
 
-    private void OnCollisionEnter(Collision other)
+    public void OnTriggerEnter(Collider other)
     {
-        rogue.ReturnArrowToPool(gameObject);
-        if (other.gameObject.TryGetComponent(out IDamageable damageable))
+        if (rogue != null)
         {
-            damageable.TakeDamage(damage);
+            rogue.ReturnArrowToPool(gameObject);
+            if (other.gameObject.TryGetComponent(out IDamageable damageable))
+            {
+                damageable.TakeDamage(damage);
+                other.gameObject.GetComponent<EnemyController>().damageRecieved = damage;
+            }
+        }
+        else
+        {
+            if (other.tag != "Enemy")
+            {
+                rogue.ReturnArrowToPool(gameObject);
+                if (other.gameObject.TryGetComponent(out IDamageable damageable) && other.tag == "Player")
+                {
+                    damageable.TakeDamage(damage);
+                }
+            }
         }
     }
 }
