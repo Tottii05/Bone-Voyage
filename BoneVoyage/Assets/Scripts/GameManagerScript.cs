@@ -29,10 +29,13 @@ public class GameManagerScript : MonoBehaviour
 
     public void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
     {
-        spawn = GameObject.Find("SpawnPoint");
-
+        if (SceneManager.GetActiveScene().name != "WorldMap")
+        {
+            spawn = GameObject.Find("PlayerSpawn");
+        }
         if (SceneManager.GetActiveScene().name == "WorldMap")
         {
+            spawn = GameObject.Find("PlayerSpawn");
             Instantiate(playerWorldMap, spawn.transform.position, spawn.transform.rotation);
         }
 

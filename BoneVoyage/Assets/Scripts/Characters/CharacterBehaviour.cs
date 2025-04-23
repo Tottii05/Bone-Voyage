@@ -177,7 +177,7 @@ public class CharacterBehaviour : MonoBehaviour, IMovementActions, ISkillsAction
         {
             character.Support();
         }
-        if (context.canceled && this.gameObject.name == "knight")
+        if (context.canceled && this.gameObject.name == "knight(Clone)")
         {
             character.Support();
         }

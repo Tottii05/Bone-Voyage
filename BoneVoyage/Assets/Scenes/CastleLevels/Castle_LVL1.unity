@@ -14,21 +14,21 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  m_FogMode: 3
-  m_FogDensity: 0.01
+  m_Fog: 1
+  m_FogColor: {r: 0.4056604, g: 0.4056604, b: 0.4056604, a: 1}
+  m_FogMode: 1
+  m_FogDensity: 0.02
   m_LinearFogStart: 0
-  m_LinearFogEnd: 300
+  m_LinearFogEnd: 74.3
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
-  m_HaloStrength: 0.5
-  m_FlareStrength: 1
+  m_SkyboxMaterial: {fileID: 2100000, guid: 089812cfbff025440ab189ab86f32fbc, type: 2}
+  m_HaloStrength: 0.885
+  m_FlareStrength: 0.591
   m_FlareFadeSpeed: 3
   m_HaloTexture: {fileID: 0}
   m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
@@ -4301,37 +4301,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 452715998}
   m_Mesh: {fileID: -6281424698479989189, guid: 87b20a2735aaee040982badc875dc7d0, type: 3}
---- !u!1 &462821840
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 462821841}
-  m_Layer: 0
-  m_Name: SpawnPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &462821841
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 462821840}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.86, y: -7.13, z: 2.9}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &464207620 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 356ecad63ac7cc24e9f091446dcf5ada, type: 3}
@@ -5015,6 +4984,10 @@ PrefabInstance:
     - target: {fileID: 7082303525898220909, guid: 64029671c5c200e4788de2a28f055973, type: 3}
       propertyPath: m_Name
       value: floor_tile_big_spikes
+      objectReference: {fileID: 0}
+    - target: {fileID: 7082303525898220909, guid: 64029671c5c200e4788de2a28f055973, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9216,6 +9189,20 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4cf9dd2185e5d92438482db77d00f02b, type: 3}
+--- !u!1 &1069031823 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3306779763317309635, guid: 1ba405754f92317478e1eca2d0145960, type: 3}
+  m_PrefabInstance: {fileID: 1270026993}
+  m_PrefabAsset: {fileID: 0}
+--- !u!45 &1069031824
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1069031823}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: -1580535799172915004, guid: 5a698de7656034c49bce1ffc4c496103, type: 3}
 --- !u!1001 &1072051239
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11458,7 +11445,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3306779763317309635, guid: 1ba405754f92317478e1eca2d0145960, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1069031824}
   m_SourcePrefab: {fileID: 100100000, guid: 1ba405754f92317478e1eca2d0145960, type: 3}
 --- !u!4 &1279938837 stripped
 Transform:
@@ -16834,7 +16824,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1906032463}
   m_Layer: 0
-  m_Name: SpawnPoint
+  m_Name: PlayerSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16849,7 +16839,7 @@ Transform:
   m_GameObject: {fileID: 1906032462}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.4, y: -7.203827, z: 4.74}
+  m_LocalPosition: {x: -41, y: -7.203827, z: 4.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -27238,7 +27228,6 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 462821841}
   - {fileID: 139126967}
   - {fileID: 316232917}
   - {fileID: 5650371869357444449}
