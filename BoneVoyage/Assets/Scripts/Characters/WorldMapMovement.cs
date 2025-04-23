@@ -15,7 +15,7 @@ public class WorldMapMovement : MonoBehaviour, IMovementActions
     private Vector2 movementInput;
     private bool isMoving = false;
     private float minDistanceToTarget = 0.75f;
-    public float moveSpeed = 5f;
+    public float moveSpeed = 1.75f;
 
     private void Awake()
     {

@@ -7,6 +7,9 @@ public class ButtonMethods : MonoBehaviour
 {
     public void LoadWorldMap()
     {
-        SceneManager.LoadScene("WorldMap");
+        if (GameObject.Find("GameManager").GetComponent<GameManagerScript>().playerWorldMap != null)
+        {
+            SceneManager.LoadScene("WorldMap");
+        }
     }
 }

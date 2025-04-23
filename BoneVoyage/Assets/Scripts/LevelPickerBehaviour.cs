@@ -52,7 +52,8 @@ public class LevelPickerBehaviour : MonoBehaviour, IInteractActions
     {
         if (context.performed && playerInTrigger)
         {
-            SceneManager.LoadScene("LoadCharacterTesting");
+            string sceneName = gameObject.name;
+            SceneManager.LoadScene(sceneName);
         }
     }
 }
