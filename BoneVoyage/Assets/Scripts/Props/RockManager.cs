@@ -10,11 +10,11 @@ public class RockManager : MonoBehaviour
 
     private void Start()
     {
-        rockMatrix[0, 0] = new RockBehaviour();
+        rockMatrix[0, 0] = rocks.Count > 12 ? rocks[12] : null;
         rockMatrix[1, 0] = null;
         rockMatrix[2, 0] = null;
         rockMatrix[3, 0] = null;
-        rockMatrix[4, 0] = new RockBehaviour();
+        rockMatrix[4, 0] = rocks.Count > 13 ? rocks[13] : null;
 
         rockMatrix[0, 1] = rocks.Count > 0 ? rocks[0] : null;
         rockMatrix[1, 1] = rocks.Count > 1 ? rocks[1] : null;
@@ -53,6 +53,7 @@ public class RockManager : MonoBehaviour
                 baseRockMatrix[x, y] = rockMatrix[x, y];
             }
         }
+        PrintMatrix();
     }
 
     public void ResetRockMatrix()
@@ -106,10 +107,24 @@ public class RockManager : MonoBehaviour
                 // Update rockMatrix
                 rockMatrix[x, y] = null;
                 rockMatrix[newX, newY] = rock;
+                PrintMatrix();
                 return true;
             }
         }
-
+        PrintMatrix();
         return false;
+    }
+
+    private void PrintMatrix()
+    {
+        for (int i = rockMatrix.GetLength(1) - 1; i >= 0; i--)
+        {
+            string row = "";
+            for (int j = 0; j < rockMatrix.GetLength(0); j++)
+            {
+                row += rockMatrix[j, i] != null ? "1 " : "0 ";
+            }
+            Debug.Log($"Row {i}: {row}");
+        }
     }
 }
