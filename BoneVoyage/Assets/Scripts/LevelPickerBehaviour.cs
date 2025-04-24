@@ -8,6 +8,7 @@ public class LevelPickerBehaviour : MonoBehaviour, IInteractActions
     public Canvas canvas;
     private Player playerActions;
     private bool playerInTrigger = false;
+    public string sceneName;
 
     private void Awake()
     {
@@ -52,7 +53,6 @@ public class LevelPickerBehaviour : MonoBehaviour, IInteractActions
     {
         if (context.performed && playerInTrigger)
         {
-            string sceneName = gameObject.name;
             SceneManager.LoadScene(sceneName);
         }
     }

@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: tree_large
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b231125f37b98ef419174d27db29ffbd, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -96,7 +100,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 5, z: 2}
+  m_Size: {x: 2, y: 3, z: 2}
   m_Center: {x: 0.000001013279, y: 2.290324, z: 0.000000059604613}
 --- !u!4 &5710843669449910150 stripped
 Transform:

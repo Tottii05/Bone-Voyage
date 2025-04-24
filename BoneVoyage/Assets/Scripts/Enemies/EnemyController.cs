@@ -2,8 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Declare the delegate for the event
+public delegate void EnemyDeathHandler();
+
 public class EnemyController : MonoBehaviour, IDamageable
 {
+    // Add the event
+    public static event EnemyDeathHandler OnEnemyDeath;
+
     public int HP;
     public GameObject target;
     public bool OnAttackRange = false, escape = false, chase = false;
@@ -114,6 +120,8 @@ public class EnemyController : MonoBehaviour, IDamageable
     {
         escape = false;
         yield return new WaitForSeconds(1.5f);
+        // Trigger the death event before destroying
+        OnEnemyDeath?.Invoke();
         Destroy(gameObject);
     }
 
@@ -137,6 +145,6 @@ public class EnemyController : MonoBehaviour, IDamageable
         var go = Instantiate(floatingText, transform.position + Vector3.up * 3.2f, Quaternion.identity, transform);
         go.GetComponent<TextMesh>().text = damageRecieved.ToString();
         TextMesh textMesh = go.GetComponent<TextMesh>();
-        textMesh.fontSize = 30; 
+        textMesh.fontSize = 30;
     }
 }
