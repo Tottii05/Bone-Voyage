@@ -11,9 +11,11 @@ public class GameManagerScript : MonoBehaviour
     public GameObject playerWorldMap;
     public static GameManagerScript instance;
     private float loadSceneWaiter = 0.1f;
+
     public void Awake()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
+
         if (instance == null)
         {
             instance = this;
@@ -27,19 +29,20 @@ public class GameManagerScript : MonoBehaviour
 
     public void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
     {
-        spawn = GameObject.Find("SpawnPoint");
+        if (SceneManager.GetActiveScene().name != "WorldMap")
+        {
+            spawn = GameObject.Find("PlayerSpawn");
+        }
         if (SceneManager.GetActiveScene().name == "WorldMap")
         {
-            /*
-            StartCoroutine(Waiter(loadSceneWaiter));
-            if (playerWorldMap != null)
-            {
-                Destroy(playerWorldMap);
-            }*/
+            spawn = GameObject.Find("PlayerSpawn");
             Instantiate(playerWorldMap, spawn.transform.position, spawn.transform.rotation);
         }
+
         if (spawn != null && SceneManager.GetActiveScene().name != "WorldMap")
         {
+            GameObject.Find("Main Camera").GetComponent<CameraBehaviour>().player = GameObject.FindGameObjectWithTag("Player");
+            GameObject.Find("Main Camera").GetComponent<CameraBehaviour>().playerRenderers = player.GetComponentsInChildren<Renderer>();
             Instantiate(player, spawn.transform.position, spawn.transform.rotation);
         }
     }

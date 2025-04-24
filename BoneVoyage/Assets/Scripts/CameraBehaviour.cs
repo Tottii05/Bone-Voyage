@@ -9,16 +9,19 @@ public class CameraBehaviour : MonoBehaviour
     private Dictionary<GameObject, List<Material>> originalEnemyMaterials = new Dictionary<GameObject, List<Material>>();
     private Dictionary<GameObject, Material> originalArrowMaterials = new Dictionary<GameObject, Material>();
     private Material glowMaterial;
-    private Renderer[] playerRenderers;
+    public Renderer[] playerRenderers;
     private Dictionary<GameObject, Renderer[]> enemyRenderers = new Dictionary<GameObject, Renderer[]>();
     public List<GameObject> arrows = new List<GameObject>();
     public List<ParticleSystem> fireballs = new List<ParticleSystem>();
     public Dictionary<ParticleSystem, Material> originalFireballMaterials = new Dictionary<ParticleSystem, Material>();
     private List<GameObject> enemies = new List<GameObject>();
-
     void Start()
     {
-        playerRenderers = player.GetComponentsInChildren<Renderer>();
+        if (player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+            playerRenderers = player.GetComponentsInChildren<Renderer>();
+        }
         if (playerRenderers.Length > 0)
         {
             foreach (Renderer renderer in playerRenderers)
