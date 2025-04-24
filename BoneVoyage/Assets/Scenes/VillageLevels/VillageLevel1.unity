@@ -2145,6 +2145,37 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 78192ef583c5f3e449926577cfe9b75e, type: 3}
   m_PrefabInstance: {fileID: 274169251}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &269569801
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 269569802}
+  m_Layer: 6
+  m_Name: PlayerSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &269569802
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 269569801}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -51.87, y: -7.069998, z: -45.504246}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &274169251
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6804,6 +6835,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 135907350}
   offset: {x: 0, y: 12.3, z: -9.63}
+  playerRenderers: []
   arrows: []
   fireballs: []
 --- !u!1001 &954118226
@@ -16095,6 +16127,7 @@ SceneRoots:
   - {fileID: 1128858764}
   - {fileID: 96829933}
   - {fileID: 1113982395}
+  - {fileID: 269569802}
   - {fileID: 277111785}
   - {fileID: 951371811}
   - {fileID: 135907349}
