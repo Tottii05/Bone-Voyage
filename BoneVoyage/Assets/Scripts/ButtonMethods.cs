@@ -12,4 +12,8 @@ public class ButtonMethods : MonoBehaviour
             SceneManager.LoadScene("WorldMap");
         }
     }
+    public void LoadScene(string name)
+    {
+        SceneManager.LoadScene(name);
+    }
 }
