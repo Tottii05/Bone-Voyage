@@ -46,7 +46,7 @@ public class Attack : StateSO
 
     private IEnumerator RotateTowardsTarget(EnemyController ec)
     {
-        if (ec.target == null) yield break;
+        if (ec.target == null || !ec.canMove) yield break;
 
         float rotationSpeed = 5f;
         Vector3 direction = (ec.target.transform.position - ec.transform.position).normalized;

@@ -39,6 +39,7 @@ public class RangedAttack : StateSO
 
     public override void OnStateUpdate(EnemyController ec)
     {
+        if (ec.target == null || !ec.canMove) return;
         ec.transform.rotation = Quaternion.LookRotation(ec.target.transform.position - ec.transform.position);
     }
 
@@ -54,6 +55,7 @@ public class RangedAttack : StateSO
                 if (bulletStack.Count > 0)
                 {
                     Vector3 direction = ec.target.transform.position - ec.spawnPoint.transform.position;
+
                     Quaternion rotation = Quaternion.LookRotation(direction);
                     GameObject bullet = bulletStack.Pop();
                     bullet.SetActive(true);
