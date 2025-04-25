@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +15,8 @@ public abstract class ACharacter : MonoBehaviour, IDamageable
     public float speed = 5f;
     public bool isDead = false;
     public Slider healthBar;
+    public TextMeshProUGUI supportText;
+    public TextMeshProUGUI specialText;
 
     public abstract void Attack();
     public abstract void Support();

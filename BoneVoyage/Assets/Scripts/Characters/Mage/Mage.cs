@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,9 +17,18 @@ public class Mage : ACharacter
     public List<GameObject> weapons = new List<GameObject>();
     public GameObject activeWeapon;
     private CameraBehaviour cameraBehaviour;
+    public float supportCooldown = 5f;
+    public float specialCooldown = 10f;
+    public bool supportReady = true;
+    public bool specialReady = true;
+    private float supportTimer;
+    private float specialTimer;
+
     public void Start()
     {
         healthBar = GameObject.Find("HealthBar").GetComponent<Slider>();
+        supportText = GameObject.Find("supportText").GetComponent<TextMeshProUGUI>();
+        specialText = GameObject.Find("specialText").GetComponent<TextMeshProUGUI>();
         characterBehaviour = GetComponent<CharacterBehaviour>();
         animator = GetComponent<Animator>();
         checkPoint = transform.position;
@@ -30,6 +40,24 @@ public class Mage : ACharacter
         }
         activeWeapon = weapons[0];
         activeWeapon.SetActive(true);
+        supportTimer = 0f;
+        specialTimer = 0f;
+        UpdateSupportUI();
+        UpdateSpecialUI();
+    }
+
+    public void Update()
+    {
+        if (!supportReady)
+        {
+            supportTimer -= Time.deltaTime;
+            UpdateSupportUI();
+        }
+        if (!specialReady)
+        {
+            specialTimer -= Time.deltaTime;
+            UpdateSpecialUI();
+        }
     }
 
     public override void Attack()
@@ -39,12 +67,18 @@ public class Mage : ACharacter
 
     public override void Support()
     {
-        StartCoroutine(PerfomSupport());
+        if (supportReady)
+        {
+            StartCoroutine(PerfomSupport());
+        }
     }
 
     public override void Special()
     {
-        StartCoroutine(PerformSpecial());
+        if (specialReady)
+        {
+            StartCoroutine(PerformSpecial());
+        }
     }
 
     public override void TakeDamage(float damage)
@@ -69,9 +103,14 @@ public class Mage : ACharacter
     {
         characterBehaviour.isWaiting = false;
         animator.SetTrigger("Support");
+        supportReady = false;
+        supportTimer = supportCooldown;
+        UpdateSupportUI();
         yield return new WaitForSeconds(0.4f);
         shieldVFXPrefab.SetActive(true);
+        shielded = true;
         StartCoroutine(WaitSupport());
+        StartCoroutine(SupportCooldown());
         characterBehaviour.isWaiting = true;
     }
 
@@ -79,18 +118,31 @@ public class Mage : ACharacter
     {
         yield return new WaitForSeconds(4f);
         shieldVFXPrefab.SetActive(false);
+        shielded = false;
+    }
+
+    public IEnumerator SupportCooldown()
+    {
+        yield return new WaitForSeconds(supportCooldown);
+        supportReady = true;
+        supportTimer = 0f;
+        UpdateSupportUI();
     }
 
     public IEnumerator PerformSpecial()
     {
         characterBehaviour.isWaiting = false;
         animator.SetTrigger("Ult");
+        specialReady = false;
+        specialTimer = specialCooldown;
+        UpdateSpecialUI();
         yield return new WaitForSeconds(0.7f);
         Vector3 mouseWorldPos = GetMouseWorldPosition();
         UltVFXPrefab.SetActive(true);
         UltVFXPrefab.transform.SetParent(null);
         UltVFXPrefab.transform.position = mouseWorldPos;
         StartCoroutine(WaitUlt());
+        StartCoroutine(SpecialCooldown());
         characterBehaviour.isWaiting = true;
     }
 
@@ -98,6 +150,24 @@ public class Mage : ACharacter
     {
         yield return new WaitForSeconds(4.5f);
         UltVFXPrefab.SetActive(false);
+    }
+
+    public IEnumerator SpecialCooldown()
+    {
+        yield return new WaitForSeconds(specialCooldown);
+        specialReady = true;
+        specialTimer = 0f;
+        UpdateSpecialUI();
+    }
+
+    private void UpdateSupportUI()
+    {
+        supportText.text = Mathf.Ceil(supportTimer).ToString();
+    }
+
+    private void UpdateSpecialUI()
+    {
+        specialText.text = Mathf.Ceil(specialTimer).ToString();
     }
 
     private Vector3 GetMouseWorldPosition()
