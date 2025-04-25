@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Mage : ACharacter
 {
@@ -15,9 +16,9 @@ public class Mage : ACharacter
     public List<GameObject> weapons = new List<GameObject>();
     public GameObject activeWeapon;
     private CameraBehaviour cameraBehaviour;
-
     public void Start()
     {
+        healthBar = GameObject.Find("HealthBar").GetComponent<Slider>();
         characterBehaviour = GetComponent<CharacterBehaviour>();
         animator = GetComponent<Animator>();
         checkPoint = transform.position;
@@ -51,6 +52,7 @@ public class Mage : ACharacter
         if (!shielded)
         {
             base.TakeDamage(damage);
+            healthBar.value = health / 100;
         }
     }
 

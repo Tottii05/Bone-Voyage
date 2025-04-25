@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Barbarian : ACharacter
 {
@@ -29,6 +30,7 @@ public class Barbarian : ACharacter
 
     public void Start()
     {
+        healthBar = GameObject.Find("HealthBar").GetComponent<Slider>();
         characterBehaviour = GetComponent<CharacterBehaviour>();
         animator = GetComponent<Animator>();
         checkPoint = transform.position;
@@ -198,10 +200,11 @@ public class Barbarian : ACharacter
         }
         yield return new WaitForSeconds(0.1f);
     }
-    public new void TakeDamage(float damage)
+    public override void TakeDamage(float damage)
     {
         
         base.TakeDamage(damage);
         StartCoroutine(Hit());
+         healthBar.value = health / 100;
     }
 }

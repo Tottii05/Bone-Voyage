@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Kight : ACharacter
 {
@@ -13,6 +14,7 @@ public class Kight : ACharacter
     public bool reduceDamage = false;
     public void Start()
     {
+        healthBar = GameObject.Find("HealthBar").GetComponent<Slider>();
         characterBehaviour = GetComponent<CharacterBehaviour>();
         animator = GetComponent<Animator>();
         checkPoint = transform.position;
@@ -88,6 +90,7 @@ public class Kight : ACharacter
             animator.SetTrigger("hit");
         }
         health -= damage;
+        healthBar.value = health / 100;
         if (health <= 0)
         {
             Die();

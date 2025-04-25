@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class ACharacter : MonoBehaviour, IDamageable
 {
@@ -12,6 +13,7 @@ public abstract class ACharacter : MonoBehaviour, IDamageable
     public float health = 100;
     public float speed = 5f;
     public bool isDead = false;
+    public Slider healthBar;
 
     public abstract void Attack();
     public abstract void Support();
@@ -23,6 +25,7 @@ public abstract class ACharacter : MonoBehaviour, IDamageable
         {
             animator.SetTrigger("hit");
             health -= damage;
+            healthBar.value = health / 100;
             if (health <= 0)
             {
                 Die();
@@ -46,5 +49,6 @@ public abstract class ACharacter : MonoBehaviour, IDamageable
         animator.SetTrigger("respawn");
         isDead = false;
         characterBehaviour.isFrozen = false;
+        healthBar.value = 1;
     }
 }

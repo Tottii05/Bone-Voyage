@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class CameraBehaviour : MonoBehaviour
 {
@@ -15,12 +16,32 @@ public class CameraBehaviour : MonoBehaviour
     public List<ParticleSystem> fireballs = new List<ParticleSystem>();
     public Dictionary<ParticleSystem, Material> originalFireballMaterials = new Dictionary<ParticleSystem, Material>();
     private List<GameObject> enemies = new List<GameObject>();
+    public Image playerImageUI;
+    public Sprite mageImage;
+    public Sprite archerImage;
+    public Sprite knightImage;
+    public Sprite barbarianImage;
     void Start()
     {
         if (player == null)
         {
             player = GameObject.FindGameObjectWithTag("Player");
             playerRenderers = player.GetComponentsInChildren<Renderer>();
+            switch (player.name)
+            {
+                case "Mage(Clone)":
+                    playerImageUI.sprite = mageImage;
+                    break;
+                case "Arquera(Clone)":
+                    playerImageUI.sprite = archerImage;
+                    break;
+                case "knight(Clone)":
+                    playerImageUI.sprite = knightImage;
+                    break;
+                case "Barbarian(Clone)":
+                    playerImageUI.sprite = barbarianImage;
+                    break;
+            }
         }
         if (playerRenderers.Length > 0)
         {

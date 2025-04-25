@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Rogue : ACharacter
 {
@@ -32,6 +33,7 @@ public class Rogue : ACharacter
     
     public void Start()
     {
+        healthBar = GameObject.Find("HealthBar").GetComponent<Slider>();
         specialAura.SetActive(false);
         characterBehaviour = GetComponent<CharacterBehaviour>();
         animator = GetComponent<Animator>();
