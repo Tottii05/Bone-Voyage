@@ -172,4 +172,20 @@ public class Rogue : ACharacter
         specialCD = false;
     }
 
+    public override void TakeDamage(float damage)
+    {
+
+        base.TakeDamage(damage);
+        StartCoroutine(Hit());
+        healthBar.value = health / 100;
+    }
+    public IEnumerator Hit()
+    {
+        characterBehaviour.isWaiting = false;
+        animator.SetTrigger("hit");
+
+        yield return new WaitForSeconds(0.3f);
+
+        characterBehaviour.isWaiting = true;
+    }
 }
