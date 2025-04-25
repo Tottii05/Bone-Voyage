@@ -19,6 +19,19 @@ public class WorldMapMovement : MonoBehaviour, IMovementActions
 
     private void Awake()
     {
+        // Find all objects with WorldMapMovement (i.e., all players in the world map)
+        WorldMapMovement[] existingPlayers = FindObjectsOfType<WorldMapMovement>();
+
+        // If there are other players (excluding this one), destroy them
+        foreach (WorldMapMovement player in existingPlayers)
+        {
+            if (player != this) // Don't destroy the current instance
+            {
+                Destroy(player.gameObject);
+            }
+        }
+
+        // Now proceed with setup for this player
         playerActions = new Player();
         playerActions.Movement.SetCallbacks(this);
         rb = GetComponent<Rigidbody>();
