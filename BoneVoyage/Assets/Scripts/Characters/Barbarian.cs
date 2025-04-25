@@ -149,6 +149,7 @@ public class Barbarian : ACharacter
     {
         health += heal;
         speed += speedAugment;
+        healthBar.value = health / 100;
         yield return new WaitForSeconds(mugBuffDuration);
         speed -= speedAugment;
     }

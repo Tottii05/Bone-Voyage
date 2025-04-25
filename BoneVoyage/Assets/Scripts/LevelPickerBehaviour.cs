@@ -9,6 +9,7 @@ public class LevelPickerBehaviour : MonoBehaviour, IInteractActions
     private Player playerActions;
     private bool playerInTrigger = false;
     public string sceneName;
+    public bool canBeShown;
 
     private void Awake()
     {
@@ -33,7 +34,7 @@ public class LevelPickerBehaviour : MonoBehaviour, IInteractActions
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && canBeShown)
         {
             canvas.gameObject.SetActive(true);
             playerInTrigger = true;

@@ -7,7 +7,7 @@ public class EnemyCounter : MonoBehaviour
     public float enemyCount = 0f;
     public float enemyKilled = 0f;
     public GameObject itemToDestroy;
-    public Canvas textCanvas;
+    public int currentLevelIndex;
 
     void Start()
     {
@@ -26,10 +26,13 @@ public class EnemyCounter : MonoBehaviour
         enemyKilled++;
         if (enemyKilled >= enemyCount)
         {
+            GameManagerScript.instance.MarkLevelCompleted(currentLevelIndex);
             DestroyItem();
-            textCanvas.gameObject.SetActive(true);
+            LevelPickerBehaviour levelPicker = FindObjectOfType<LevelPickerBehaviour>();
+            levelPicker.canBeShown = true;
         }
     }
+
     public void DestroyItem()
     {
         if (itemToDestroy != null)

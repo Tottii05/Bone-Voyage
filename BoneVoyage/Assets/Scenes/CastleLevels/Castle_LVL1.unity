@@ -21164,13 +21164,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 463461601559800777, guid: 42f263fbb36d5ac4aa24bbbc21492815, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3166511880356156684, guid: 42f263fbb36d5ac4aa24bbbc21492815, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3762413852748370048, guid: 42f263fbb36d5ac4aa24bbbc21492815, type: 3}
       propertyPath: itemToDestroy
       value: 
       objectReference: {fileID: 1130795156}
+    - target: {fileID: 3762413852748370048, guid: 42f263fbb36d5ac4aa24bbbc21492815, type: 3}
+      propertyPath: currentLevelIndex
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4910476374119406857, guid: 42f263fbb36d5ac4aa24bbbc21492815, type: 3}
       propertyPath: m_Name
       value: FinalWall
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910476374119406857, guid: 42f263fbb36d5ac4aa24bbbc21492815, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5387708949546631157, guid: 42f263fbb36d5ac4aa24bbbc21492815, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

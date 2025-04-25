@@ -2105,19 +2105,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: b6ae4cb36602dbd488164c3295908b2c, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.76135
+      value: 0.5729235
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b6ae4cb36602dbd488164c3295908b2c, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.76135
+      value: 0.5729235
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b6ae4cb36602dbd488164c3295908b2c, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.76135
+      value: 0.5729235
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b6ae4cb36602dbd488164c3295908b2c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.6
+      value: 0.791
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b6ae4cb36602dbd488164c3295908b2c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2125,23 +2125,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b6ae4cb36602dbd488164c3295908b2c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -23.5
+      value: -23.547
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b6ae4cb36602dbd488164c3295908b2c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.8748994
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b6ae4cb36602dbd488164c3295908b2c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.00000008146034
+      value: 0.0000000712696
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b6ae4cb36602dbd488164c3295908b2c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.48430482
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b6ae4cb36602dbd488164c3295908b2c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.000000039451635
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b6ae4cb36602dbd488164c3295908b2c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2149,15 +2149,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b6ae4cb36602dbd488164c3295908b2c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 57.934
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b6ae4cb36602dbd488164c3295908b2c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5754084199372789682, guid: b6ae4cb36602dbd488164c3295908b2c, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 6928015683339083857, guid: f5236826e19312a458a97cfc550d0946, type: 3}
     - target: {fileID: 919132149155446097, guid: b6ae4cb36602dbd488164c3295908b2c, type: 3}
       propertyPath: m_Name
-      value: Castle_LVL1
+      value: CastleLvl1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b6ae4cb36602dbd488164c3295908b2c, type: 3}
       propertyPath: m_Layer
@@ -2204,6 +2208,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 686352746}
   sceneName: Castle_LVL1
+  canBeShown: 1
 --- !u!64 &878608296
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2225,7 +2230,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 49296848564199152, guid: b6ae4cb36602dbd488164c3295908b2c, type: 3}
+  m_Mesh: {fileID: 6928015683339083857, guid: f5236826e19312a458a97cfc550d0946, type: 3}
 --- !u!135 &878608297
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2400,7 +2405,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1030299263}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2408,7 +2413,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 308.9, y: 9}
+  m_AnchoredPosition: {x: 341, y: 90.8}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1030299265
@@ -4139,6 +4144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 70138930}
   sceneName: ForestLvl3
+  canBeShown: 1
 --- !u!4 &1678136034 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b6ae4cb36602dbd488164c3295908b2c, type: 3}
