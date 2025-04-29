@@ -17,6 +17,12 @@ public abstract class ACharacter : MonoBehaviour, IDamageable
     public Slider healthBar;
     public TextMeshProUGUI supportText;
     public TextMeshProUGUI specialText;
+    public float supportCooldown = 5f;
+    public float specialCooldown = 10f;
+    public bool supportReady = true;
+    public bool specialReady = true;
+    public float supportTimer;
+    public float specialTimer;
 
     public abstract void Attack();
     public abstract void Support();

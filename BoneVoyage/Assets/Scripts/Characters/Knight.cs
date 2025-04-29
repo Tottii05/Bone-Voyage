@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +16,8 @@ public class Kight : ACharacter
     public void Start()
     {
         healthBar = GameObject.Find("HealthBar").GetComponent<Slider>();
+        supportText = GameObject.Find("supportText").GetComponent<TextMeshProUGUI>();
+        specialText = GameObject.Find("specialText").GetComponent<TextMeshProUGUI>();
         characterBehaviour = GetComponent<CharacterBehaviour>();
         animator = GetComponent<Animator>();
         checkPoint = transform.position;
@@ -32,6 +35,23 @@ public class Kight : ACharacter
         currentWeapon.SetActive(true);
         currentShield = shields[0];
         currentShield.SetActive(true);
+        supportTimer = 0f;
+        specialTimer = 0f;
+        UpdateSupportUI();
+        UpdateSpecialUI();
+    }
+    public void Update()
+    {
+        if (!supportReady)
+        {
+            supportTimer -= Time.deltaTime;
+            UpdateSupportUI();
+        }
+        if (!specialReady)
+        {
+            specialTimer -= Time.deltaTime;
+            UpdateSpecialUI();
+        }
     }
     public override void Attack()
     {
@@ -42,9 +62,16 @@ public class Kight : ACharacter
         reduceDamage = !reduceDamage;
         if (reduceDamage)
         {
-            characterBehaviour.isWaiting = false;
-            animator.SetTrigger("startBlocking");
-            animator.SetBool("blocking", true);
+            if (supportReady)
+            {
+                characterBehaviour.isWaiting = false;
+                animator.SetTrigger("startBlocking");
+                animator.SetBool("blocking", true);
+                supportReady = false;
+                supportTimer = supportCooldown;
+                UpdateSupportUI();
+                StartCoroutine(SupportCooldown());
+            }
         }
         else
         {
@@ -52,13 +79,26 @@ public class Kight : ACharacter
             characterBehaviour.isWaiting = true;
         }
     }
+    public IEnumerator SupportCooldown()
+    {
+        yield return new WaitForSeconds(supportCooldown);
+        supportReady = true;
+        supportTimer = 0f;
+        UpdateSupportUI();
+    }
     public override void Special()
     {
-        characterBehaviour.usingSpecial = true;
-        animator.SetBool("special", characterBehaviour.usingSpecial);
-        animator.SetTrigger("useSpecial");
-        currentWeapon.GetComponent<BoxCollider>().enabled = true;
-        StartCoroutine(PerformSpecial());
+        if (specialReady)
+        {
+            characterBehaviour.usingSpecial = true;
+            animator.SetBool("special", characterBehaviour.usingSpecial);
+            animator.SetTrigger("useSpecial");
+            specialReady = false;
+            specialTimer = specialCooldown;
+            UpdateSpecialUI();
+            currentWeapon.GetComponent<BoxCollider>().enabled = true;
+            StartCoroutine(PerformSpecial());
+        }
     }
     public IEnumerator PerformAttack()
     {
@@ -73,10 +113,33 @@ public class Kight : ACharacter
     }
     public IEnumerator PerformSpecial()
     {
+        StartCoroutine(SpecialCooldown());
         yield return new WaitForSeconds(5f);
         characterBehaviour.usingSpecial = false;
         animator.SetBool("special", characterBehaviour.usingSpecial);
         currentWeapon.GetComponent<BoxCollider>().enabled = false;
+    }
+    public IEnumerator SpecialCooldown()
+    {
+        yield return new WaitForSeconds(specialCooldown);
+        specialReady = true;
+        specialTimer = 0f;
+        UpdateSpecialUI();
+    }
+    private void UpdateSupportUI()
+    {
+        if (supportTimer >= 0)
+        {
+            supportText.text = Mathf.Ceil(supportTimer).ToString();
+        }
+    }
+
+    private void UpdateSpecialUI()
+    {
+        if (specialTimer >= 0)
+        {
+            specialText.text = Mathf.Ceil(specialTimer).ToString();
+        }
     }
     public override void TakeDamage(float damage)
     {

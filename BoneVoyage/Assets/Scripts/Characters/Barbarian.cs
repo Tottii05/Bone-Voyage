@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -31,9 +32,29 @@ public class Barbarian : ACharacter
     public void Start()
     {
         healthBar = GameObject.Find("HealthBar").GetComponent<Slider>();
+        supportText = GameObject.Find("supportText").GetComponent<TextMeshProUGUI>();
+        specialText = GameObject.Find("specialText").GetComponent<TextMeshProUGUI>();
         characterBehaviour = GetComponent<CharacterBehaviour>();
         animator = GetComponent<Animator>();
         checkPoint = transform.position;
+        supportTimer = 0f;
+        specialTimer = 0f;
+        UpdateSupportUI();
+        UpdateSpecialUI();
+    }
+
+    public void Update()
+    {
+        if (!supportReady)
+        {
+            supportTimer -= Time.deltaTime;
+            UpdateSupportUI();
+        }
+        if (!specialReady)
+        {
+            specialTimer -= Time.deltaTime;
+            UpdateSpecialUI();
+        }
     }
 
     public override void Attack()
@@ -42,11 +63,17 @@ public class Barbarian : ACharacter
     }
     public override void Support()
     {
-        StartCoroutine(PerformSupport());
+        if (supportReady)
+        {
+            StartCoroutine(PerformSupport());
+        }
     }
     public override void Special()
     {
-        StartCoroutine(PerformSpecial());
+        if (specialReady)
+        {
+            StartCoroutine(PerformSpecial());
+        }
     }
     public IEnumerator PerformAttack()
     {
@@ -66,6 +93,9 @@ public class Barbarian : ACharacter
     {
         characterBehaviour.isWaiting = false;
         animator.SetTrigger("Support");
+        supportReady = false;
+        supportTimer = supportCooldown;
+        UpdateSupportUI();
         mug.SetActive(true);
         currentWeaponLeft.SetActive(false);
         currentWeaponRight.SetActive(false);
@@ -78,18 +108,29 @@ public class Barbarian : ACharacter
         mug.SetActive(false);
         currentWeaponLeft.SetActive(true);
         currentWeaponRight.SetActive(true);
+        StartCoroutine(SupportCooldown());
         characterBehaviour.isWaiting = true;
     }
 
+    public IEnumerator SupportCooldown()
+    {
+        yield return new WaitForSeconds(supportCooldown);
+        supportReady = true;
+        supportTimer = 0f;
+        UpdateSupportUI();
+    }
     public IEnumerator PerformSpecial()
     {
         characterBehaviour.isWaiting = false;
         animator.SetTrigger("Special");
+        specialReady = false;
+        specialTimer = specialCooldown;
+        UpdateSpecialUI();
         rfire.SetActive(true);
         lfire.SetActive(true);
         StartCoroutine(DamageBuff());
         yield return new WaitForSeconds(0.7f);
-        
+        StartCoroutine(SpecialCooldown());
         characterBehaviour.isWaiting = true;
     }
     public IEnumerator Hit()
@@ -100,6 +141,30 @@ public class Barbarian : ACharacter
         yield return new WaitForSeconds(0.3f);
 
         characterBehaviour.isWaiting = true;
+    }
+
+    public IEnumerator SpecialCooldown()
+    {
+        yield return new WaitForSeconds(specialCooldown);
+        specialReady = true;
+        specialTimer = 0f;
+        UpdateSpecialUI();
+    }
+
+    private void UpdateSupportUI()
+    {
+        if (supportTimer >= 0)
+        {
+            supportText.text = Mathf.Ceil(supportTimer).ToString();
+        }
+    }
+
+    private void UpdateSpecialUI()
+    {
+        if (specialTimer >= 0)
+        {
+            specialText.text = Mathf.Ceil(specialTimer).ToString();
+        }
     }
     public IEnumerator Combo()
     {

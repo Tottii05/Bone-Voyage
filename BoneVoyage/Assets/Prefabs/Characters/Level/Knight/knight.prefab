@@ -479,6 +479,15 @@ MonoBehaviour:
   health: 100
   speed: 5
   isDead: 0
+  healthBar: {fileID: 0}
+  supportText: {fileID: 0}
+  specialText: {fileID: 0}
+  supportCooldown: 1
+  specialCooldown: 10
+  supportReady: 1
+  specialReady: 1
+  supportTimer: 0
+  specialTimer: 0
   weapons:
   - {fileID: 5869371653346289068}
   - {fileID: 3719439787476099749}

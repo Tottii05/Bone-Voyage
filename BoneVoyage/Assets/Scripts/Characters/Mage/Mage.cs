@@ -17,12 +17,6 @@ public class Mage : ACharacter
     public List<GameObject> weapons = new List<GameObject>();
     public GameObject activeWeapon;
     private CameraBehaviour cameraBehaviour;
-    public float supportCooldown = 5f;
-    public float specialCooldown = 10f;
-    public bool supportReady = true;
-    public bool specialReady = true;
-    private float supportTimer;
-    private float specialTimer;
 
     public void Start()
     {
@@ -162,12 +156,18 @@ public class Mage : ACharacter
 
     private void UpdateSupportUI()
     {
-        supportText.text = Mathf.Ceil(supportTimer).ToString();
+        if (supportTimer >= 0)
+        {
+            supportText.text = Mathf.Ceil(supportTimer).ToString();
+        }
     }
 
     private void UpdateSpecialUI()
     {
-        specialText.text = Mathf.Ceil(specialTimer).ToString();
+        if (specialTimer >= 0)
+        {
+            specialText.text = Mathf.Ceil(specialTimer).ToString();
+        }
     }
 
     private Vector3 GetMouseWorldPosition()

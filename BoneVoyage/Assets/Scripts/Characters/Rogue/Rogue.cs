@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,13 +16,9 @@ public class Rogue : ACharacter
     [Header("Combat variables and CDs")]
     [Header("----------------------------------------")]
     private bool usingSpecial = false;
-    private bool specialCD = false;
-    private bool dashCD = false;
     public float specialDuration;
-    public float specialCDTime;
     public float arrowCD;
     public float grenadeCD;
-    public float rollCD;
     [Header("Pool variables")]
     [Header("----------------------------------------")]
     public Stack<GameObject> arrowStack = new Stack<GameObject>();
@@ -34,12 +31,32 @@ public class Rogue : ACharacter
     public void Start()
     {
         healthBar = GameObject.Find("HealthBar").GetComponent<Slider>();
+        supportText = GameObject.Find("supportText").GetComponent<TextMeshProUGUI>();
+        specialText = GameObject.Find("specialText").GetComponent<TextMeshProUGUI>();
         specialAura.SetActive(false);
         characterBehaviour = GetComponent<CharacterBehaviour>();
         animator = GetComponent<Animator>();
         checkPoint = transform.position;
         CreateArrowPool();
         CreateGrenadePool();
+        supportTimer = 0f;
+        specialTimer = 0f;
+        UpdateSupportUI();
+        UpdateSpecialUI();
+    }
+
+    public void Update()
+    {
+        if (!supportReady)
+        {
+            supportTimer -= Time.deltaTime;
+            UpdateSupportUI();
+        }
+        if (!specialReady)
+        {
+            specialTimer -= Time.deltaTime;
+            UpdateSpecialUI();
+        }
     }
 
     public override void Attack()
@@ -48,11 +65,11 @@ public class Rogue : ACharacter
     }
     public override void Support()
     {   
-        if (!dashCD) StartCoroutine(PerformRoll());
+        if (supportReady) StartCoroutine(PerformRoll());
     }
     public override void Special()
     {
-        if (!specialCD)
+        if (specialReady)
         {
             StartCoroutine(useEspecial());
         }
@@ -129,7 +146,9 @@ public class Rogue : ACharacter
     public IEnumerator PerformRoll()
     {
         characterBehaviour.isWaiting = false;
-        dashCD = true;
+        supportReady = false;
+        supportTimer = supportCooldown;
+        UpdateSupportUI();
         animator.SetTrigger("Dash");
         gameObject.GetComponent<CapsuleCollider>().enabled = false;
         Rigidbody rb = gameObject.GetComponent<Rigidbody>();
@@ -155,26 +174,40 @@ public class Rogue : ACharacter
         rb.detectCollisions = true;
         gameObject.GetComponent<CapsuleCollider>().enabled = true;
         characterBehaviour.isWaiting = true;
-        yield return new WaitForSeconds(rollCD);
-        dashCD = false; 
+        StartCoroutine(SupportCooldown());
+        characterBehaviour.isWaiting = true;
 
+    }
+
+    public IEnumerator SupportCooldown()
+    {
+        yield return new WaitForSeconds(supportCooldown);
+        supportReady = true;
+        supportTimer = 0f;
+        UpdateSupportUI();
     }
 
     public IEnumerator useEspecial()
     {
+        specialReady = false;
+        specialTimer = specialCooldown;
+        UpdateSpecialUI();
         specialAura.SetActive(true);
         usingSpecial = true;
-        specialCD = true;
         yield return new WaitForSeconds(specialDuration);
         specialAura.SetActive(false);
         usingSpecial = false;
-        yield return new WaitForSeconds(specialCDTime);
-        specialCD = false;
+        StartCoroutine(SpecialCooldown());
     }
-
+    public IEnumerator SpecialCooldown()
+    {
+        yield return new WaitForSeconds(specialCooldown);
+        specialReady = true;
+        specialTimer = 0f;
+        UpdateSpecialUI();
+    }
     public override void TakeDamage(float damage)
     {
-
         base.TakeDamage(damage);
         StartCoroutine(Hit());
         healthBar.value = health / 100;
@@ -187,5 +220,20 @@ public class Rogue : ACharacter
         yield return new WaitForSeconds(0.3f);
 
         characterBehaviour.isWaiting = true;
+    }
+    private void UpdateSupportUI()
+    {
+        if (supportTimer >= 0)
+        {
+            supportText.text = Mathf.Ceil(supportTimer).ToString();
+        }
+    }
+
+    private void UpdateSpecialUI()
+    {
+        if (specialTimer >= 0)
+        {
+            specialText.text = Mathf.Ceil(specialTimer).ToString();
+        }
     }
 }
