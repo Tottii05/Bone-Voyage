@@ -294,6 +294,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: banner_shield_blue
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 17882a8638fb2764a8910481f064d292, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -572,6 +576,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: trees_A_medium (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 51e256d08ba5bc04ea315a5d10fa4a06, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -724,6 +732,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: trees_A_medium (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 51e256d08ba5bc04ea315a5d10fa4a06, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -785,6 +797,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 7c98cee10c741f1489061a7443f0721c, type: 3}
       propertyPath: m_Name
       value: box_stacked (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7c98cee10c741f1489061a7443f0721c, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1385,6 +1401,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: trees_A_medium (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 51e256d08ba5bc04ea315a5d10fa4a06, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1782,6 +1802,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: banner_shield_blue
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 17882a8638fb2764a8910481f064d292, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1855,6 +1879,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 51e256d08ba5bc04ea315a5d10fa4a06, type: 3}
       propertyPath: m_Name
       value: trees_A_medium (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 51e256d08ba5bc04ea315a5d10fa4a06, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2725,7 +2753,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 564767639}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: VillageLevel3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2927,6 +2955,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: trees_A_medium (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 51e256d08ba5bc04ea315a5d10fa4a06, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3107,6 +3139,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b6ae4cb36602dbd488164c3295908b2c, type: 3}
       propertyPath: m_Name
       value: trees_A_large (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b6ae4cb36602dbd488164c3295908b2c, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3546,6 +3582,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: trees_A_medium (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 51e256d08ba5bc04ea315a5d10fa4a06, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3766,6 +3806,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: trees_A_large (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b6ae4cb36602dbd488164c3295908b2c, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3828,6 +3872,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: trees_A_medium (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 51e256d08ba5bc04ea315a5d10fa4a06, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3847,7 +3895,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1002243678}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Enemies
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4140,6 +4188,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: trees_A_medium
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 51e256d08ba5bc04ea315a5d10fa4a06, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4344,7 +4396,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1179757385}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Decorations
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4554,6 +4606,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b6ae4cb36602dbd488164c3295908b2c, type: 3}
       propertyPath: m_Name
       value: trees_A_large (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b6ae4cb36602dbd488164c3295908b2c, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5100,7 +5156,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1159490816529984565, guid: 0a12ca2b8c2fd8e4cbf4421846f30837, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.46
+      value: 0.66
       objectReference: {fileID: 0}
     - target: {fileID: 1159490816529984565, guid: 0a12ca2b8c2fd8e4cbf4421846f30837, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5185,6 +5241,10 @@ PrefabInstance:
     - target: {fileID: 1971598541825029775, guid: 0a12ca2b8c2fd8e4cbf4421846f30837, type: 3}
       propertyPath: m_Name
       value: Arquera
+      objectReference: {fileID: 0}
+    - target: {fileID: 1971598541825029775, guid: 0a12ca2b8c2fd8e4cbf4421846f30837, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1971598541825029775, guid: 0a12ca2b8c2fd8e4cbf4421846f30837, type: 3}
       propertyPath: m_TagString
@@ -5796,6 +5856,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: trees_A_medium (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 51e256d08ba5bc04ea315a5d10fa4a06, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5831,7 +5895,7 @@ Transform:
   m_GameObject: {fileID: 1409971204}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 34.52031, y: 0.74546504, z: -17.1877}
+  m_LocalPosition: {x: 34.52031, y: 0.21, z: -17.1877}
   m_LocalScale: {x: 0.8, y: 1, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5930,6 +5994,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: trees_A_large
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b6ae4cb36602dbd488164c3295908b2c, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5991,6 +6059,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 51e256d08ba5bc04ea315a5d10fa4a06, type: 3}
       propertyPath: m_Name
       value: trees_A_medium (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 51e256d08ba5bc04ea315a5d10fa4a06, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6054,6 +6126,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: box_stacked (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7c98cee10c741f1489061a7443f0721c, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6115,6 +6191,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 7c98cee10c741f1489061a7443f0721c, type: 3}
       propertyPath: m_Name
       value: box_stacked (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7c98cee10c741f1489061a7443f0721c, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6404,7 +6484,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1641388033}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Houses
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6482,6 +6562,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 51e256d08ba5bc04ea315a5d10fa4a06, type: 3}
       propertyPath: m_Name
       value: trees_A_medium (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 51e256d08ba5bc04ea315a5d10fa4a06, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6809,6 +6893,11 @@ MonoBehaviour:
   playerRenderers: []
   arrows: []
   fireballs: []
+  playerImageUI: {fileID: 0}
+  mageImage: {fileID: 0}
+  archerImage: {fileID: 0}
+  knightImage: {fileID: 0}
+  barbarianImage: {fileID: 0}
 --- !u!81 &1762922168
 AudioListener:
   m_ObjectHideFlags: 0
@@ -6947,6 +7036,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: trees_A_medium (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 51e256d08ba5bc04ea315a5d10fa4a06, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7008,6 +7101,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 51e256d08ba5bc04ea315a5d10fa4a06, type: 3}
       propertyPath: m_Name
       value: trees_A_medium (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 51e256d08ba5bc04ea315a5d10fa4a06, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7404,6 +7501,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b6ae4cb36602dbd488164c3295908b2c, type: 3}
       propertyPath: m_Name
       value: trees_A_large (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b6ae4cb36602dbd488164c3295908b2c, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8632,6 +8733,75 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2643173543783292932, guid: e1f9f0c010f5f004a8a36224a70f3972, type: 3}
+--- !u!1001 &3127541914361873287
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 330889751145926798, guid: 82158917b48579149bee7e72dfc6c2ad, type: 3}
+      propertyPath: m_Constraints
+      value: 94
+      objectReference: {fileID: 0}
+    - target: {fileID: 1223522370620663120, guid: 82158917b48579149bee7e72dfc6c2ad, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.435
+      objectReference: {fileID: 0}
+    - target: {fileID: 6767897052821628634, guid: 82158917b48579149bee7e72dfc6c2ad, type: 3}
+      propertyPath: floatingText
+      value: 
+      objectReference: {fileID: 4755817466513559693, guid: 3cc3309377a8e4c4e82917e653896f0b, type: 3}
+    - target: {fileID: 8354272433051875044, guid: 82158917b48579149bee7e72dfc6c2ad, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8354272433051875044, guid: 82158917b48579149bee7e72dfc6c2ad, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5000038
+      objectReference: {fileID: 0}
+    - target: {fileID: 8354272433051875044, guid: 82158917b48579149bee7e72dfc6c2ad, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -33.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8354272433051875044, guid: 82158917b48579149bee7e72dfc6c2ad, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.0796615
+      objectReference: {fileID: 0}
+    - target: {fileID: 8354272433051875044, guid: 82158917b48579149bee7e72dfc6c2ad, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8354272433051875044, guid: 82158917b48579149bee7e72dfc6c2ad, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.996822
+      objectReference: {fileID: 0}
+    - target: {fileID: 8354272433051875044, guid: 82158917b48579149bee7e72dfc6c2ad, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8354272433051875044, guid: 82158917b48579149bee7e72dfc6c2ad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8354272433051875044, guid: 82158917b48579149bee7e72dfc6c2ad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -170.862
+      objectReference: {fileID: 0}
+    - target: {fileID: 8354272433051875044, guid: 82158917b48579149bee7e72dfc6c2ad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8699694642730724446, guid: 82158917b48579149bee7e72dfc6c2ad, type: 3}
+      propertyPath: m_Name
+      value: Skeleton_Mage
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 82158917b48579149bee7e72dfc6c2ad, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -8640,3 +8810,4 @@ SceneRoots:
   - {fileID: 1762922170}
   - {fileID: 1373079568}
   - {fileID: 564767639}
+  - {fileID: 3127541914361873287}

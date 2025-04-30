@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,7 +11,7 @@ public class GameManagerScript : MonoBehaviour
     public GameObject player;
     public GameObject playerWorldMap;
     public static GameManagerScript instance;
-
+    public GameObject forestWall;
     public List<bool> levelCompletionStatus = new List<bool>();
     public int totalLevels = 9;
 
@@ -101,6 +102,14 @@ public class GameManagerScript : MonoBehaviour
             {
                 Instantiate(playerWorldMap, spawn.transform.position, spawn.transform.rotation);
             }
+            if (forestWall == null)
+            {
+                forestWall = GameObject.Find("forestWall");
+            }
+            if (levelCompletionStatus.Take(3).All(completed => completed))
+            {
+                StartCoroutine(MoveWallUnderground(forestWall, 2f));
+            }
         }
 
         if (spawn != null && SceneManager.GetActiveScene().name != "WorldMap")
@@ -109,6 +118,22 @@ public class GameManagerScript : MonoBehaviour
             GameObject.Find("Main Camera").GetComponent<CameraBehaviour>().playerRenderers = player.GetComponentsInChildren<Renderer>();
             Instantiate(player, spawn.transform.position, spawn.transform.rotation);
         }
+    }
+
+    private IEnumerator MoveWallUnderground(GameObject wall, float duration)
+    {
+        Vector3 startPosition = wall.transform.position;
+        Vector3 targetPosition = startPosition + Vector3.down * 10f;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            wall.transform.position = Vector3.Lerp(startPosition, targetPosition, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        wall.transform.position = targetPosition;
     }
 
     public IEnumerator Waiter(float time)
