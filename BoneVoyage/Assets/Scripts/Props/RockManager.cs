@@ -53,7 +53,7 @@ public class RockManager : MonoBehaviour
                 baseRockMatrix[x, y] = rockMatrix[x, y];
             }
         }
-        PrintMatrix();
+        //PrintMatrix();
     }
 
     public void ResetRockMatrix()
@@ -107,11 +107,11 @@ public class RockManager : MonoBehaviour
                 // Update rockMatrix
                 rockMatrix[x, y] = null;
                 rockMatrix[newX, newY] = rock;
-                PrintMatrix();
+                //PrintMatrix();
                 return true;
             }
         }
-        PrintMatrix();
+        //PrintMatrix();
         return false;
     }
 

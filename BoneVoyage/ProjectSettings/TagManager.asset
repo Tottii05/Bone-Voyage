@@ -8,6 +8,7 @@ TagManager:
   - Selectable
   - Enemy
   - DestroyableTree
+  - Key
   layers:
   - Default
   - TransparentFX

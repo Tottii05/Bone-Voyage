@@ -5,7 +5,7 @@ using static Player;
 
 public class LevelPickerBehaviour : MonoBehaviour, IInteractActions
 {
-    public Canvas canvas;
+    public GameObject canvas;
     private Player playerActions;
     private bool playerInTrigger = false;
     public string sceneName;
