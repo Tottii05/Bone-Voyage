@@ -12,12 +12,15 @@ public class RockBehaviour : MonoBehaviour, IInteractActions
     public RockManager RockManager;
     public Vector3 basePosition;
 
+    public GameObject useLabel;
+
     //public Canvas canvas;
     private bool playerInTrigger = false;
     private Vector3 playerPosition;
 
     private void Awake()
     {
+        useLabel.SetActive(false);
         playerActions = new Player();
         playerActions.Interact.SetCallbacks(this);
     }
@@ -36,16 +39,15 @@ public class RockBehaviour : MonoBehaviour, IInteractActions
     {
         RockManager = FindObjectOfType<RockManager>();
         basePosition = transform.position;
-        //canvas.gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            //canvas.gameObject.SetActive(true);
             playerInTrigger = true;
             playerPosition = other.transform.position;
+            useLabel.SetActive(true);
         }
     }
 
@@ -61,9 +63,9 @@ public class RockBehaviour : MonoBehaviour, IInteractActions
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            //canvas.gameObject.SetActive(false);
             playerInTrigger = false;
             playerPosition = Vector3.zero;
+            useLabel.SetActive(false);
         }
     }
 

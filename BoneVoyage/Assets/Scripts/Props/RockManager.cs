@@ -58,19 +58,26 @@ public class RockManager : MonoBehaviour
 
     public void ResetRockMatrix()
     {
-        foreach (RockBehaviour rock in rocks)
+        if (rockMatrix == null || baseRockMatrix == null)
         {
-            if (rock != null)
-            {
-                rock.transform.position = rock.basePosition;
-            }
+            return;
         }
-
-        for (int x = 0; x < rockMatrix.GetLength(0); x++)
+        if (rockMatrix != baseRockMatrix)
         {
-            for (int y = 0; y < rockMatrix.GetLength(1); y++)
+            foreach (RockBehaviour rock in rocks)
             {
-                rockMatrix[x, y] = baseRockMatrix[x, y];
+                if (rock != null)
+                {
+                    rock.transform.position = rock.basePosition;
+                }
+            }
+
+            for (int x = 0; x < rockMatrix.GetLength(0); x++)
+            {
+                for (int y = 0; y < rockMatrix.GetLength(1); y++)
+                {
+                    rockMatrix[x, y] = baseRockMatrix[x, y];
+                }
             }
         }
     }
