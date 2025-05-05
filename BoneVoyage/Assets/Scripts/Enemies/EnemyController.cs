@@ -26,6 +26,8 @@ public class EnemyController : MonoBehaviour, IDamageable
     public DamageSource damageSourceL;
     public DamageSource damageSourceR;
     public GameObject spawnPoint;
+    public GameObject coinPrefab;
+    public GameObject potionPrefab;
 
     void Start()
     {

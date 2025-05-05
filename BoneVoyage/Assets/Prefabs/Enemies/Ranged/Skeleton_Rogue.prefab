@@ -2374,6 +2374,8 @@ MonoBehaviour:
   damageSourceL: {fileID: 0}
   damageSourceR: {fileID: 0}
   spawnPoint: {fileID: 248798262385312112}
+  coinPrefab: {fileID: 255370912129971121, guid: 26c5927d4a6d3db48bc546a6e03acf56, type: 3}
+  potionPrefab: {fileID: 7175172071826392510, guid: 5881d8994fd2385489fee264c7f63105, type: 3}
 --- !u!114 &4880162659324259689
 MonoBehaviour:
   m_ObjectHideFlags: 0
