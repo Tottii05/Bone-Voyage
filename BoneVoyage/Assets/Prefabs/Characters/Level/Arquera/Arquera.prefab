@@ -881,17 +881,24 @@ MonoBehaviour:
   animator: {fileID: 0}
   checkPoint: {x: 0, y: 0, z: 0}
   health: 100
-  speed: 5
+  speed: 6
   isDead: 0
+  healthBar: {fileID: 0}
+  supportText: {fileID: 0}
+  specialText: {fileID: 0}
+  supportCooldown: 3
+  specialCooldown: 10
+  supportReady: 1
+  specialReady: 1
+  supportTimer: 0
+  specialTimer: 0
   bulletPrefab: {fileID: 7638279312221773172, guid: 775c089c3d7f85646b7073b7e8ff5bfc, type: 3}
   grenadePrefab: {fileID: 147609226588263813, guid: 440c3b28e07dcfb40b9aa19e09c34100, type: 3}
   specialAura: {fileID: 8776683650202069051}
   spawnPoint: {fileID: 6407712856007871700}
   specialDuration: 5
-  specialCDTime: 10
   arrowCD: 0.2
   grenadeCD: 0.3
-  rollCD: 2
   arrowPoolSize: 3
   arrowLifeTime: 2
   grenadePoolSize: 5
