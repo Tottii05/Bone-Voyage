@@ -153,15 +153,6 @@ public partial class @Player: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Consumable"",
-                    ""type"": ""Button"",
-                    ""id"": ""c057000b-d554-477b-8a8b-9917d1d2a4eb"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -197,15 +188,32 @@ public partial class @Player: IInputActionCollection2, IDisposable
                     ""action"": ""Special"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
+                }
+            ]
+        },
+        {
+            ""name"": ""Pause"",
+            ""id"": ""379455a1-05e2-49a5-bd16-5b9b7107bdef"",
+            ""actions"": [
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""68d5dfd9-4b55-47d7-9562-d311f918c679"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""f0069a02-8fec-470e-80ad-68de77b9e6c8"",
-                    ""path"": ""<Keyboard>/f"",
+                    ""id"": ""3c66dc92-024e-4de7-a63f-9b5cd56b5fa8"",
+                    ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Consumable"",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -225,7 +233,9 @@ public partial class @Player: IInputActionCollection2, IDisposable
         m_Skills_Attack = m_Skills.FindAction("Attack", throwIfNotFound: true);
         m_Skills_Support = m_Skills.FindAction("Support", throwIfNotFound: true);
         m_Skills_Special = m_Skills.FindAction("Special", throwIfNotFound: true);
-        m_Skills_Consumable = m_Skills.FindAction("Consumable", throwIfNotFound: true);
+        // Pause
+        m_Pause = asset.FindActionMap("Pause", throwIfNotFound: true);
+        m_Pause_Pause = m_Pause.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -382,7 +392,6 @@ public partial class @Player: IInputActionCollection2, IDisposable
     private readonly InputAction m_Skills_Attack;
     private readonly InputAction m_Skills_Support;
     private readonly InputAction m_Skills_Special;
-    private readonly InputAction m_Skills_Consumable;
     public struct SkillsActions
     {
         private @Player m_Wrapper;
@@ -390,7 +399,6 @@ public partial class @Player: IInputActionCollection2, IDisposable
         public InputAction @Attack => m_Wrapper.m_Skills_Attack;
         public InputAction @Support => m_Wrapper.m_Skills_Support;
         public InputAction @Special => m_Wrapper.m_Skills_Special;
-        public InputAction @Consumable => m_Wrapper.m_Skills_Consumable;
         public InputActionMap Get() { return m_Wrapper.m_Skills; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -409,9 +417,6 @@ public partial class @Player: IInputActionCollection2, IDisposable
             @Special.started += instance.OnSpecial;
             @Special.performed += instance.OnSpecial;
             @Special.canceled += instance.OnSpecial;
-            @Consumable.started += instance.OnConsumable;
-            @Consumable.performed += instance.OnConsumable;
-            @Consumable.canceled += instance.OnConsumable;
         }
 
         private void UnregisterCallbacks(ISkillsActions instance)
@@ -425,9 +430,6 @@ public partial class @Player: IInputActionCollection2, IDisposable
             @Special.started -= instance.OnSpecial;
             @Special.performed -= instance.OnSpecial;
             @Special.canceled -= instance.OnSpecial;
-            @Consumable.started -= instance.OnConsumable;
-            @Consumable.performed -= instance.OnConsumable;
-            @Consumable.canceled -= instance.OnConsumable;
         }
 
         public void RemoveCallbacks(ISkillsActions instance)
@@ -445,6 +447,52 @@ public partial class @Player: IInputActionCollection2, IDisposable
         }
     }
     public SkillsActions @Skills => new SkillsActions(this);
+
+    // Pause
+    private readonly InputActionMap m_Pause;
+    private List<IPauseActions> m_PauseActionsCallbackInterfaces = new List<IPauseActions>();
+    private readonly InputAction m_Pause_Pause;
+    public struct PauseActions
+    {
+        private @Player m_Wrapper;
+        public PauseActions(@Player wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Pause => m_Wrapper.m_Pause_Pause;
+        public InputActionMap Get() { return m_Wrapper.m_Pause; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PauseActions set) { return set.Get(); }
+        public void AddCallbacks(IPauseActions instance)
+        {
+            if (instance == null || m_Wrapper.m_PauseActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PauseActionsCallbackInterfaces.Add(instance);
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
+        }
+
+        private void UnregisterCallbacks(IPauseActions instance)
+        {
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
+        }
+
+        public void RemoveCallbacks(IPauseActions instance)
+        {
+            if (m_Wrapper.m_PauseActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IPauseActions instance)
+        {
+            foreach (var item in m_Wrapper.m_PauseActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_PauseActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public PauseActions @Pause => new PauseActions(this);
     public interface IMovementActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -458,6 +506,9 @@ public partial class @Player: IInputActionCollection2, IDisposable
         void OnAttack(InputAction.CallbackContext context);
         void OnSupport(InputAction.CallbackContext context);
         void OnSpecial(InputAction.CallbackContext context);
-        void OnConsumable(InputAction.CallbackContext context);
+    }
+    public interface IPauseActions
+    {
+        void OnPause(InputAction.CallbackContext context);
     }
 }
