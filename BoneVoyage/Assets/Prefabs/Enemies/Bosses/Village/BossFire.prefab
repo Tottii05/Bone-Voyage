@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8990525806876563400}
   - component: {fileID: 8735167513591748774}
   - component: {fileID: 4808760265451595352}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: BossFire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4896,7 +4896,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   damage: 20
-  boss: {fileID: 0}
+  mage: {fileID: 0}
   ranged: {fileID: 0}
 --- !u!1 &8369311174471060513
 GameObject:
@@ -4909,7 +4909,7 @@ GameObject:
   - component: {fileID: 4263400824352731122}
   - component: {fileID: 5546312209108703019}
   - component: {fileID: 7183553543516303640}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: VFX_Fire 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

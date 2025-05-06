@@ -676,6 +676,7 @@ GameObject:
   - component: {fileID: 2234698815390100584}
   - component: {fileID: 1419780658613235690}
   - component: {fileID: 1255568906371850349}
+  - component: {fileID: 1295656862465298774}
   m_Layer: 0
   m_Name: Skeleton_Minion
   m_TagString: Enemy
@@ -809,6 +810,8 @@ MonoBehaviour:
   damageSourceL: {fileID: 3942455355528243655}
   damageSourceR: {fileID: 7098789351080353123}
   spawnPoint: {fileID: 0}
+  coinPrefab: {fileID: 255370912129971121, guid: 26c5927d4a6d3db48bc546a6e03acf56, type: 3}
+  potionPrefab: {fileID: 7175172071826392510, guid: 5881d8994fd2385489fee264c7f63105, type: 3}
 --- !u!114 &1419780658613235690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -846,6 +849,19 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 2.0699415
   m_Center: {x: 0, y: 1.04, z: 0}
+--- !u!114 &1295656862465298774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2382596616631409279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89c33f2bf2a5c934a8cfa76472f02258, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: {x: 0, y: 1, z: 0}
 --- !u!1 &2410851964941140745
 GameObject:
   m_ObjectHideFlags: 0

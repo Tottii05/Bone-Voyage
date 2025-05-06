@@ -37,7 +37,6 @@ public class VillageBoss : MonoBehaviour, IDamageable
 
     void Awake()
     {
-        Debug.Log("Animator assigned");
         animator = GetComponent<Animator>();
         animator.SetBool("Idle", true);
         CreateAttackPool();
@@ -129,7 +128,6 @@ public class VillageBoss : MonoBehaviour, IDamageable
         {
             if (attackStack.Count > 0)
             {
-                Debug.Log("Setting Attack trigger");
                 animator.SetTrigger("Attack");
                 yield return new WaitForSeconds(0.5f);
 

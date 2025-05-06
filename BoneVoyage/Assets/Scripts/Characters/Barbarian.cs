@@ -128,18 +128,9 @@ public class Barbarian : ACharacter
         UpdateSpecialUI();
         rfire.SetActive(true);
         lfire.SetActive(true);
-        StartCoroutine(DamageBuff());
+        //StartCoroutine(DamageBuff());
         yield return new WaitForSeconds(0.7f);
         StartCoroutine(SpecialCooldown());
-        characterBehaviour.isWaiting = true;
-    }
-    public IEnumerator Hit()
-    {
-        characterBehaviour.isWaiting = false;
-        animator.SetTrigger("Hit");
-
-        yield return new WaitForSeconds(0.3f);
-
         characterBehaviour.isWaiting = true;
     }
 
@@ -265,12 +256,5 @@ public class Barbarian : ACharacter
                 break;
         }
         yield return new WaitForSeconds(0.1f);
-    }
-    public override void TakeDamage(float damage)
-    {
-        
-        base.TakeDamage(damage);
-        StartCoroutine(Hit());
-         healthBar.value = health / 100;
     }
 }

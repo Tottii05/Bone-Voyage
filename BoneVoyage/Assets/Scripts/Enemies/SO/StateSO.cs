@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class StateSO : MonoBehaviour
+public abstract class StateSO : ScriptableObject
 {
     public ConditionSO StartCondition;
     public List<ConditionSO> EndConditions;

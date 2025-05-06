@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5827086702052087291}
   - component: {fileID: 2404428575549272441}
   - component: {fileID: -6002987173816793004}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GrenadePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 10
-  damage: 50
+  damage: 60
 --- !u!1 &3181481341705613967
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,7 +160,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6084663102341334933}
   - component: {fileID: 355138863655257610}
-  m_Layer: 2
+  m_Layer: 7
   m_Name: ExplosionRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 544816706605168920}
   - component: {fileID: 1622060646081536544}
   - component: {fileID: 4521448693124610455}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RangeDebug
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -301,7 +301,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 358637981425055526, guid: 8eb503696b886e04faff8fc0f480d473, type: 3}
       propertyPath: m_Layer
-      value: 2
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1198941193974080643, guid: 8eb503696b886e04faff8fc0f480d473, type: 3}
       propertyPath: looping
@@ -385,11 +385,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5084589283769131857, guid: 8eb503696b886e04faff8fc0f480d473, type: 3}
       propertyPath: m_Layer
-      value: 2
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5669424765666512365, guid: 8eb503696b886e04faff8fc0f480d473, type: 3}
       propertyPath: m_Layer
-      value: 2
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8523712032460173260, guid: 8eb503696b886e04faff8fc0f480d473, type: 3}
       propertyPath: looping
@@ -397,7 +397,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8787504683230881304, guid: 8eb503696b886e04faff8fc0f480d473, type: 3}
       propertyPath: m_Layer
-      value: 2
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
