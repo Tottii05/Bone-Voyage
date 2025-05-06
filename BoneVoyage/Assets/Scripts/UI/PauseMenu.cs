@@ -7,13 +7,28 @@ using static Player;
 
 public class PauseMenu : MonoBehaviour, IPauseActions
 {
-    public Canvas pauseMenuUI;
+    public GameObject pauseMenuUI;
     private Player playerActions;
-    private bool isPaused = false;
+    public bool isPaused = false;
 
+    private void Awake()
+    {
+        playerActions = new Player();
+        playerActions.Pause.SetCallbacks(this);
+    }
     private void Start()
     {
-        pauseMenuUI.enabled = false;
+        pauseMenuUI.SetActive(false);
+    }
+
+    private void OnEnable()
+    {
+        playerActions.Enable();
+    }
+
+    private void OnDisable()
+    {
+        playerActions.Disable();
     }
 
     public void OnPause(InputAction.CallbackContext context)
@@ -40,7 +55,7 @@ public class PauseMenu : MonoBehaviour, IPauseActions
     {
         if (isPaused)
         {
-            pauseMenuUI.enabled = false;
+            pauseMenuUI.SetActive(false);
             Time.timeScale = 1f;
             isPaused = false;
         }
@@ -50,7 +65,7 @@ public class PauseMenu : MonoBehaviour, IPauseActions
     {
         if (!isPaused)
         {
-            pauseMenuUI.enabled = true;
+            pauseMenuUI.SetActive(true);
             Time.timeScale = 0f;
             isPaused = true;
         }
@@ -59,7 +74,7 @@ public class PauseMenu : MonoBehaviour, IPauseActions
     {
         Time.timeScale = 1f;
         isPaused = false;
-        pauseMenuUI.enabled = false;
+        pauseMenuUI.SetActive(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
@@ -67,7 +82,7 @@ public class PauseMenu : MonoBehaviour, IPauseActions
     {
         Time.timeScale = 1f;
         isPaused = false;
-        pauseMenuUI.enabled = false;
+        pauseMenuUI.SetActive(false);
         SceneManager.LoadScene("WorldMap");
     }
 }
