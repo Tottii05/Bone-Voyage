@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TriggerTest : MonoBehaviour
+public class EnemyTrigger : MonoBehaviour
 {
     public List<GameObject> enemies;
 

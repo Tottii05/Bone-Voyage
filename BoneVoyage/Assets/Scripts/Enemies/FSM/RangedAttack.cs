@@ -39,7 +39,7 @@ public class RangedAttack : StateSO
 
     public override void OnStateUpdate(EnemyController ec)
     {
-        if (ec.target == null || !ec.canMove) return;
+        if (ec.target == null || ec.animator.GetCurrentAnimatorStateInfo(0).IsName("Skeletons_Inactive_Floor_Pose")) return;
         ec.transform.rotation = Quaternion.LookRotation(ec.target.transform.position - ec.transform.position);
     }
 
