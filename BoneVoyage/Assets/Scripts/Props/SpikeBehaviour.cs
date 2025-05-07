@@ -75,6 +75,11 @@ public class SpikeBehaviour : MonoBehaviour
             {
                 Vector3 playerVelocity = playerRb.velocity.normalized;
                 Vector3 pushDirection = -playerVelocity;
+                if (playerVelocity == Vector3.zero)
+                {
+                    pushDirection = new Vector3(0, 0, 1); // Default direction if player is stationary
+                }
+                pushDirection.y = 0; // Ignore vertical component
                 playerRb.AddForce(pushDirection.normalized * pushForce, ForceMode.Impulse);
             }
             if (player != null)
