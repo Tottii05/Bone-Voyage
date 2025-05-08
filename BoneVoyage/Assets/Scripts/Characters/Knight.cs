@@ -31,9 +31,9 @@ public class Kight : ACharacter
             shield.SetActive(false);
         }
 
-        currentWeapon = weapons[0];
+        currentWeapon = weapons[PlayerPrefs.GetInt("KnightCurrentWeapon")];
         currentWeapon.SetActive(true);
-        currentShield = shields[0];
+        currentShield = shields[PlayerPrefs.GetInt("KnightCurrentShield")];
         currentShield.SetActive(true);
         supportTimer = 0f;
         specialTimer = 0f;
