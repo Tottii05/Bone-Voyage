@@ -12,6 +12,7 @@ public class Kight : ACharacter
     public List<GameObject> shields;
     public GameObject currentShield;
 
+    public bool invulnerable = false;
     public bool reduceDamage = false;
     public void Start()
     {
@@ -90,6 +91,7 @@ public class Kight : ACharacter
     {
         if (specialReady)
         {
+            invulnerable = true;
             characterBehaviour.usingSpecial = true;
             animator.SetBool("special", characterBehaviour.usingSpecial);
             animator.SetTrigger("useSpecial");
@@ -118,6 +120,7 @@ public class Kight : ACharacter
         characterBehaviour.usingSpecial = false;
         animator.SetBool("special", characterBehaviour.usingSpecial);
         currentWeapon.GetComponent<BoxCollider>().enabled = false;
+        invulnerable = false;
     }
     public IEnumerator SpecialCooldown()
     {
@@ -143,6 +146,10 @@ public class Kight : ACharacter
     }
     public override void TakeDamage(float damage)
     {
+        if (invulnerable)
+        {
+            return;
+        }
         if (reduceDamage)
         {
             damage *= currentShield.GetComponent<Shield>().damageReduction;
