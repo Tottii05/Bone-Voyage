@@ -329,10 +329,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ac2da86f13058648a3cd90fc800d2b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyCount: 0
-  enemyKilled: 0
-  itemToDestroy: {fileID: 0}
-  textCanvas: {fileID: 1759504872924740539}
+  keys: 0
+  keysObtained: 0
+  currentLevelIndex: 0
 --- !u!136 &7822818621577098249
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -370,6 +369,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 1759504872924740539}
   sceneName: WorldMap
+  canBeShown: 0
 --- !u!1 &5387708949546631157
 GameObject:
   m_ObjectHideFlags: 0
