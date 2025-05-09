@@ -9,6 +9,9 @@ public class GrenadeBehaviour : MonoBehaviour
     private Rogue rogue;
     private GameObject explosionRange;
 
+    public AudioSource explosionSound;
+    public AudioClip explosionClip;
+
     public void Initialize(Rogue rogueRef)
     {
         explosionRange = transform.GetChild(0).gameObject;
@@ -19,6 +22,7 @@ public class GrenadeBehaviour : MonoBehaviour
         rb.velocity = Vector3.zero; 
         rb.angularVelocity = Vector3.zero;
         rb.AddForce(transform.forward * force, ForceMode.Impulse);
+        explosionSound.clip = explosionClip;
         StartCoroutine(ExplodeAfterTime());
     }
 
@@ -28,6 +32,8 @@ public class GrenadeBehaviour : MonoBehaviour
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
 
+        
+        explosionSound.Play();
         gameObject.GetComponent<MeshFilter>().GetComponent<Renderer>().enabled = false;
         explosionRange.SetActive(true);
         yield return new WaitForSeconds(1f);
