@@ -32,7 +32,7 @@ public class Mage : ACharacter
         {
             weapon.SetActive(false);
         }
-        activeWeapon = weapons[0];
+        activeWeapon = weapons[PlayerPrefs.GetInt("MageCurrentWeapon")];
         activeWeapon.SetActive(true);
         supportTimer = 0f;
         specialTimer = 0f;

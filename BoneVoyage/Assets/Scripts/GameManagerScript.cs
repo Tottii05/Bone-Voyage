@@ -29,6 +29,11 @@ public class GameManagerScript : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        PlayerPrefs.SetInt("KnightCurrentWeapon", 0);
+        PlayerPrefs.SetInt("KnightCurrentShield", 0);
+        PlayerPrefs.SetInt("MageCurrentWeapon", 0);
+        PlayerPrefs.SetInt("ArcherCurrentWeapon", 0);
+        PlayerPrefs.SetInt("BarbarianCurrentWeapon", 0);
     }
 
     private void InitializeLevelCompletion(bool resetOnStart)

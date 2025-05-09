@@ -23,7 +23,7 @@ public class CoinUI : MonoBehaviour
         Coin.CoinCollected -= UpdateCoinText;
     }
 
-    private void UpdateCoinText()
+    public void UpdateCoinText()
     {
         int coins = PlayerPrefs.GetInt("Coins", 0);
         coinText.text = coins.ToString();
@@ -33,7 +33,16 @@ public class CoinUI : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.K))
         {
-            PlayerPrefs.DeleteKey("Coins");
+            PlayerPrefs.SetInt("Coins", 0);
+            PlayerPrefs.Save();
+            UpdateCoinText();
+        }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            PlayerPrefs.SetInt("Coins", 999);
+            PlayerPrefs.Save();
+            UpdateCoinText();
         }
     }
 }
