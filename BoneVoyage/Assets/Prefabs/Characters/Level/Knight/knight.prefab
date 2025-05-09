@@ -498,6 +498,7 @@ MonoBehaviour:
   - {fileID: 5630943717027079187}
   - {fileID: 6168267785070927301}
   currentShield: {fileID: 0}
+  invulnerable: 0
   reduceDamage: 0
 --- !u!1 &808761229773822659
 GameObject:
@@ -1297,6 +1298,7 @@ GameObject:
   - component: {fileID: 136044555075078729}
   - component: {fileID: 7336964439958622947}
   - component: {fileID: 59265967372198803}
+  - component: {fileID: 8795267375986721936}
   m_Layer: 10
   m_Name: 2H_Sword
   m_TagString: Untagged
@@ -1390,6 +1392,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5872102, y: 1.7286197, z: 0.24802133}
   m_Center: {x: 0, y: 1.1001381, z: -0.0000000018235681}
+--- !u!114 &8795267375986721936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3719439787476099749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcebc73cbc760a64db2d97ab2752b346, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isEnemy: 0
+  BoxCollider: {fileID: 0}
+  damage: 30
 --- !u!1 &3762571201626877297
 GameObject:
   m_ObjectHideFlags: 0
