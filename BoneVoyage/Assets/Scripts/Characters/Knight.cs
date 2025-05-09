@@ -116,7 +116,7 @@ public class Kight : ACharacter
     public IEnumerator PerformSpecial()
     {
         StartCoroutine(SpecialCooldown());
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3.5f);
         characterBehaviour.usingSpecial = false;
         animator.SetBool("special", characterBehaviour.usingSpecial);
         currentWeapon.GetComponent<BoxCollider>().enabled = false;
