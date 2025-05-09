@@ -2286,6 +2286,7 @@ GameObject:
   - component: {fileID: 8933357294202671392}
   - component: {fileID: 4736691543917127719}
   - component: {fileID: 4846136080264574735}
+  - component: {fileID: 3614669080515585253}
   m_Layer: 2
   m_Name: Skeleton_Rogue
   m_TagString: Enemy
@@ -2458,6 +2459,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &3614669080515585253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7880822191752573632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89c33f2bf2a5c934a8cfa76472f02258, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: {x: 0, y: 1, z: 0}
 --- !u!1 &7919841484707238104
 GameObject:
   m_ObjectHideFlags: 0

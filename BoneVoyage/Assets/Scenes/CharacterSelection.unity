@@ -2508,6 +2508,9 @@ MonoBehaviour:
   spawn: {fileID: 0}
   player: {fileID: 0}
   playerWorldMap: {fileID: 0}
+  forestWall: {fileID: 0}
+  levelCompletionStatus: 
+  totalLevels: 9
 --- !u!4 &1260291196
 Transform:
   m_ObjectHideFlags: 0
@@ -5657,7 +5660,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89b78a6cad76a34c98b3f8ab8bd2ec5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterPrefab: {fileID: 6312408588259383233, guid: 2462297d198959641bc3160293df5884, type: 3}
+  characterPrefab: {fileID: 7533705241210451110, guid: 2698dfc838f16f54b863d99535fbe1e5, type: 3}
   characterWorldMapPrefab: {fileID: 3098086662186213653, guid: 669ab21839ad3354baa56960c999c46f, type: 3}
   animator: {fileID: 649466785450806218}
   gameManager: {fileID: 0}
