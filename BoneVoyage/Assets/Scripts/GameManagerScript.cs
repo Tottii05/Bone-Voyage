@@ -12,6 +12,8 @@ public class GameManagerScript : MonoBehaviour
     public GameObject playerWorldMap;
     public static GameManagerScript instance;
     public GameObject forestWall;
+    public GameObject castleGate1;
+    public GameObject castleGate2;
     public List<bool> levelCompletionStatus = new List<bool>();
     public int totalLevels = 9;
 
@@ -111,9 +113,21 @@ public class GameManagerScript : MonoBehaviour
             {
                 forestWall = GameObject.Find("forestWall");
             }
+            if (castleGate1 == null)
+            {
+                castleGate1 = GameObject.Find("CastleGate1");
+            }
+            if (castleGate2 == null)
+            {
+                castleGate2 = GameObject.Find("CastleGate2");
+            }
             if (levelCompletionStatus.Take(3).All(completed => completed))
             {
                 StartCoroutine(MoveWallUnderground(forestWall, 2f));
+            }
+            if (levelCompletionStatus.Take(6).All(completed => completed))
+            {
+                StartCoroutine(OpenCastleGates(castleGate1, castleGate2, 2f));
             }
         }
 
@@ -140,7 +154,25 @@ public class GameManagerScript : MonoBehaviour
 
         wall.transform.position = targetPosition;
     }
+    private IEnumerator OpenCastleGates(GameObject gate1, GameObject gate2, float duration)
+    {
+        Quaternion startRotationGate1 = gate1.transform.rotation;
+        Quaternion startRotationGate2 = gate2.transform.rotation;
+        Quaternion targetRotationGate1 = startRotationGate1 * Quaternion.Euler(0, -90, 0);
+        Quaternion targetRotationGate2 = startRotationGate2 * Quaternion.Euler(0, 90, 0);
+        float elapsedTime = 0f;
 
+        while (elapsedTime < duration)
+        {
+            gate1.transform.rotation = Quaternion.Slerp(startRotationGate1, targetRotationGate1, elapsedTime / duration);
+            gate2.transform.rotation = Quaternion.Slerp(startRotationGate2, targetRotationGate2, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        gate1.transform.rotation = targetRotationGate1;
+        gate2.transform.rotation = targetRotationGate2;
+    }
     public IEnumerator Waiter(float time)
     {
         yield return new WaitForSeconds(time);

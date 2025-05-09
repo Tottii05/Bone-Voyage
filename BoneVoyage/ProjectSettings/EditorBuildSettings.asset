@@ -9,29 +9,17 @@ EditorBuildSettings:
     path: Assets/Scenes/WorldMap.unity
     guid: f78c45fa759a126478a3647bd9d53336
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
-    path: Assets/Scenes/TomasTesting/TomasTesting.unity
-    guid: 0e3a81c38dedf5746af81e656745fb3c
-  - enabled: 1
-    path: Assets/Scenes/TomasTesting/LoadCharacterTesting.unity
-    guid: 3114f08593975154cba9ce317067b841
-  - enabled: 1
     path: Assets/Scenes/CharacterSelection.unity
     guid: af7d752054aef62439fcb9b8bf9f0198
   - enabled: 1
     path: Assets/Scenes/ForestLevels/ForestLvl1.unity
     guid: 6fb8db8b19128c9418c9389b0401ef25
   - enabled: 1
-    path: Assets/Scenes/CastleLevels/Castle_LVL1.unity
-    guid: 750d6f04f1ed9e7459a9edb01462ba67
+    path: Assets/Scenes/ForestLevels/ForestLvl2.unity
+    guid: 1b414e053c6c884418bf71cebdcce314
   - enabled: 1
     path: Assets/Scenes/ForestLevels/ForestLvl3.unity
     guid: 14ac1ba3e5e0ff74c88aab795254fece
-  - enabled: 1
-    path: Assets/Scenes/ForestLevels/ForestLvl2.unity
-    guid: 1b414e053c6c884418bf71cebdcce314
   - enabled: 1
     path: Assets/Scenes/VillageLevels/VillageLvl1.unity
     guid: c7ea18d098253be4dab13ecc4faff604
@@ -41,6 +29,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/VillageLevels/VillageLvl3.unity
     guid: ac48ee06f67351947bc7795bc6c3eac7
+  - enabled: 1
+    path: Assets/Scenes/CastleLevels/Castle_LVL1.unity
+    guid: 750d6f04f1ed9e7459a9edb01462ba67
+  - enabled: 1
+    path: Assets/Scenes/CastleLevels/Castle_LVL2.unity
+    guid: 6c96f9b06cc8fb14280b22b94a337da0
   - enabled: 1
     path: Assets/Scenes/CastleLevels/Castle_LVL3.unity
     guid: e51b20116a5d52a49ac2f0630a054bdf
