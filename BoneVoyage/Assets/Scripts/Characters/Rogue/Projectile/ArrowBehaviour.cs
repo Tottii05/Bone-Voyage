@@ -4,7 +4,7 @@ using UnityEngine;
 public class ArrowBehaviour : MonoBehaviour
 {
     public float speed = 20f;
-    public float damage = 20f;
+    public float damage;
     private Rigidbody rb;
     private Rogue rogue;
 
@@ -16,6 +16,7 @@ public class ArrowBehaviour : MonoBehaviour
     {
         rogue = rogueRef;
         rb = GetComponent<Rigidbody>();
+        damage = rogueRef.activeWeapon.GetComponent<WeaponDmg>().damage;
         rb.velocity = transform.forward * speed;
         StartCoroutine(DeactivateAfterTime());
     }

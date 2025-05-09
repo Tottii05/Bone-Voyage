@@ -21401,7 +21401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3ac64a031a19b740afc527f17f463bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesToKill: 0
+  enemiesToKill: 18
   enemyKilled: 0
   itemToDestroy: {fileID: 1130795156}
   currentLevelIndex: 6

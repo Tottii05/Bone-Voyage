@@ -13,6 +13,8 @@ public class Rogue : ACharacter
     public GameObject grenadePrefab;
     public GameObject specialAura;
     public Transform spawnPoint;
+    public List<GameObject> weapons = new List<GameObject>();
+    public GameObject activeWeapon;
     [Header("Combat variables and CDs")]
     [Header("----------------------------------------")]
     private bool usingSpecial = false;
@@ -39,6 +41,13 @@ public class Rogue : ACharacter
         checkPoint = transform.position;
         CreateArrowPool();
         CreateGrenadePool();
+
+        foreach (GameObject weapon in weapons)
+        {
+            weapon.SetActive(false);
+        }
+        activeWeapon = weapons[PlayerPrefs.GetInt("MageCurrentWeapon")];
+        activeWeapon.SetActive(true);
         supportTimer = 0f;
         specialTimer = 0f;
         UpdateSupportUI();
