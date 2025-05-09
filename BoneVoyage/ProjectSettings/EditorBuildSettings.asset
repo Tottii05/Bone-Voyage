@@ -41,4 +41,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CastleLevels/Castle_LVL3.unity
     guid: e51b20116a5d52a49ac2f0630a054bdf
+  - enabled: 1
+    path: Assets/Scenes/Shops/CastleShop.unity
+    guid: a014cf75cb2028c48b6e2a5cdd638950
+  - enabled: 1
+    path: Assets/Scenes/Shops/ForestShop.unity
+    guid: 31242788cf473de4daab5cd86a74d51c
+  - enabled: 1
+    path: Assets/Scenes/Shops/VillageShop.unity
+    guid: beb6b8a26e69c3a49b3f6e4bb55c9169
   m_configObjects: {}

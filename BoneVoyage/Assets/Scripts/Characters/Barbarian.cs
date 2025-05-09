@@ -6,9 +6,6 @@ using UnityEngine.UI;
 
 public class Barbarian : ACharacter
 {
-    public List<GameObject> weapons;
-    public GameObject currentWeapon;
-
     public BoxCollider attackCollider;
     //objetos
     public GameObject mug;
@@ -34,13 +31,20 @@ public class Barbarian : ACharacter
 
     public void Start()
     {
-        foreach (GameObject weapon in weapons)
+        foreach (GameObject weapon in weaponsLeft)
         {
             weapon.SetActive(false);
         }
 
-        currentWeapon = weapons[PlayerPrefs.GetInt("KnightCurrentWeapon")];
-        currentWeapon.SetActive(true);
+        foreach (GameObject weapon in weaponsRight)
+        {
+            weapon.SetActive(false);
+        }
+
+        currentWeaponLeft = weaponsLeft[PlayerPrefs.GetInt("KnightCurrentWeapon")];
+        currentWeaponRight = weaponsRight[PlayerPrefs.GetInt("KnightCurrentWeapon")];
+        currentWeaponLeft.SetActive(true);
+        currentWeaponRight.SetActive(true);
 
         healthBar = GameObject.Find("HealthBar").GetComponent<Slider>();
         supportText = GameObject.Find("supportText").GetComponent<TextMeshProUGUI>();

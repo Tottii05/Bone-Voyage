@@ -12,7 +12,6 @@ public class EnemyCounter : MonoBehaviour
     void Start()
     {
         EnemyController.OnEnemyDeath += IncrementKillCount;
-        SetEnemiesToKill();
     }
 
     void OnDestroy()
@@ -44,11 +43,5 @@ public class EnemyCounter : MonoBehaviour
         {
             Destroy(itemToDestroy);
         }
-    }
-
-    public void SetEnemiesToKill()
-    {
-        List<EnemyController> enemies = new List<EnemyController>(FindObjectsOfType<EnemyController>());
-        enemiesToKill = enemies.Count;
     }
 }

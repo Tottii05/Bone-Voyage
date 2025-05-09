@@ -1274,7 +1274,7 @@ GameObject:
   - component: {fileID: 65793049}
   - component: {fileID: 65793051}
   - component: {fileID: 65793050}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: E UI (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1612,6 +1612,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: VillageShop
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7d3f28c5886712f4584832d7d0f442f4, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -1653,7 +1657,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 1216993260}
   sceneName: VillageShop
-  canBeShown: 0
+  canBeShown: 1
 --- !u!135 &82845943
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2406,7 +2410,7 @@ GameObject:
   - component: {fileID: 130577087}
   - component: {fileID: 130577086}
   - component: {fileID: 130577085}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: E UI (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2703,6 +2707,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: VillageLvl2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ef2067b18b91b31498f0a7f86521ceed, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6129398807401691421, guid: ef2067b18b91b31498f0a7f86521ceed, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -2744,7 +2756,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 2087489247}
   sceneName: VillageLvl2
-  canBeShown: 0
+  canBeShown: 1
 --- !u!135 &135022845
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3002,6 +3014,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: VillageLvl1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c36e96f8706fc7946956ec535d0962d4, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -3043,7 +3059,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 382552619}
   sceneName: VillageLvl1
-  canBeShown: 0
+  canBeShown: 1
 --- !u!135 &139640479
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4044,6 +4060,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CastleShop
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7d3f28c5886712f4584832d7d0f442f4, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -4085,7 +4105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 1430730659}
   sceneName: CastleShop
-  canBeShown: 0
+  canBeShown: 1
 --- !u!135 &192327993
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -7896,7 +7916,7 @@ GameObject:
   - component: {fileID: 354846104}
   - component: {fileID: 354846106}
   - component: {fileID: 354846105}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: E UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8372,7 +8392,7 @@ GameObject:
   - component: {fileID: 368682459}
   - component: {fileID: 368682458}
   - component: {fileID: 368682457}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: E UI (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8841,7 +8861,7 @@ GameObject:
   - component: {fileID: 382552620}
   - component: {fileID: 382552622}
   - component: {fileID: 382552621}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: E UI (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9676,6 +9696,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ForestShop
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7d3f28c5886712f4584832d7d0f442f4, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -9717,7 +9741,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 130577084}
   sceneName: ForestShop
-  canBeShown: 0
+  canBeShown: 1
 --- !u!135 &411496244
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -23735,9 +23759,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 788855523704253984, guid: 8fa39bb1b0aa0d6418e107b5971a1dc4, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8fa39bb1b0aa0d6418e107b5971a1dc4, type: 3}
       propertyPath: m_Name
       value: CastleLvl1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8fa39bb1b0aa0d6418e107b5971a1dc4, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -23780,7 +23812,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 368682456}
   sceneName: Castle_LVL1
-  canBeShown: 0
+  canBeShown: 1
 --- !u!135 &1046575755
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -28055,7 +28087,7 @@ GameObject:
   - component: {fileID: 1216993263}
   - component: {fileID: 1216993262}
   - component: {fileID: 1216993261}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: E UI (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31339,6 +31371,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CastleLvl2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c1d24277fcf3f5c4796d94d6710485ee, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -31380,7 +31416,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 65793048}
   sceneName: Castle_LVL2
-  canBeShown: 0
+  canBeShown: 1
 --- !u!135 &1377635840
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -32146,6 +32182,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: VillageLvl3
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 953ad1718f8798f44aaa047d34dbcbc7, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -32187,7 +32227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 2027923431}
   sceneName: VillageLvl3
-  canBeShown: 0
+  canBeShown: 1
 --- !u!135 &1421476278
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -32242,7 +32282,7 @@ GameObject:
   - component: {fileID: 1430730662}
   - component: {fileID: 1430730661}
   - component: {fileID: 1430730660}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: E UI (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44951,7 +44991,7 @@ GameObject:
   - component: {fileID: 2027923432}
   - component: {fileID: 2027923434}
   - component: {fileID: 2027923433}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: E UI (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47041,7 +47081,7 @@ GameObject:
   - component: {fileID: 2087489248}
   - component: {fileID: 2087489250}
   - component: {fileID: 2087489249}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: E UI (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -40,7 +40,7 @@ public class CoinUI : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.L))
         {
-            PlayerPrefs.SetInt("Coins", 999);
+            PlayerPrefs.SetInt("Coins", 5);
             PlayerPrefs.Save();
             UpdateCoinText();
         }
