@@ -42,8 +42,8 @@ public class BulletBehaviour : MonoBehaviour
             mage.ReturnBulletToPool(gameObject);
             if (other.gameObject.TryGetComponent(out IDamageable damageable))
             {
-                damageable.TakeDamage(damage);
                 other.gameObject.GetComponent<EnemyController>().damageRecieved = damage;
+                damageable.TakeDamage(damage);
             }
         }
         else

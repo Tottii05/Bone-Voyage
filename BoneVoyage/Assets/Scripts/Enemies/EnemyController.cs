@@ -32,11 +32,6 @@ public class EnemyController : MonoBehaviour, IDamageable
     void Start()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player.name == "Mage")
-        {
-            float dmg = player.GetComponent<Mage>().bulletPrefab.GetComponent<BulletBehaviour>().damage;
-            damageRecieved = dmg;
-        }
         Pathfinding = GetComponent<EnemyPathFinding>();
         _chaseB = GetComponent<EnemyPathFinding>();
         animator = GetComponent<Animator>();
