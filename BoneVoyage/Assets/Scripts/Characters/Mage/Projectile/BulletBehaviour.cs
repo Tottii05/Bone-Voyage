@@ -4,7 +4,7 @@ using UnityEngine;
 public class BulletBehaviour : MonoBehaviour
 {
     public float speed = 10f;
-    public float damage = 20f;
+    public float damage;
     private Rigidbody rb;
     public Mage mage;
     public RangedAttack ranged;
@@ -14,6 +14,7 @@ public class BulletBehaviour : MonoBehaviour
         mage = mageRef;
         rb = GetComponent<Rigidbody>();
         rb.velocity = transform.forward * speed;
+        damage = mageRef.activeWeapon.GetComponent<WeaponDmg>().damage;
         StartCoroutine(DeactivateAfterTime());
     }
 
@@ -41,8 +42,8 @@ public class BulletBehaviour : MonoBehaviour
             mage.ReturnBulletToPool(gameObject);
             if (other.gameObject.TryGetComponent(out IDamageable damageable))
             {
-                damageable.TakeDamage(damage);
                 other.gameObject.GetComponent<EnemyController>().damageRecieved = damage;
+                damageable.TakeDamage(damage);
             }
         }
         else

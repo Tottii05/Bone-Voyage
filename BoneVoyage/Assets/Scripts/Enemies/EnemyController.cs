@@ -29,14 +29,18 @@ public class EnemyController : MonoBehaviour, IDamageable
     public GameObject coinPrefab;
     public GameObject potionPrefab;
 
+    [Header("Sound Effects")]
+    [Header("----------------------------------------")]
+    public AudioSource audioSource;
+    public AudioClip hitSound;
+    public AudioClip wakeUpSound;
+    public AudioClip dieSound;
+    public AudioClip attackSoundMeele;
+
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player.name == "Mage")
-        {
-            float dmg = player.GetComponent<Mage>().bulletPrefab.GetComponent<BulletBehaviour>().damage;
-            damageRecieved = dmg;
-        }
         Pathfinding = GetComponent<EnemyPathFinding>();
         _chaseB = GetComponent<EnemyPathFinding>();
         animator = GetComponent<Animator>();
