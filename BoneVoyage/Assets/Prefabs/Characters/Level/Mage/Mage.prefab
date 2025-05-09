@@ -35274,6 +35274,7 @@ GameObject:
   - component: {fileID: 2399913627300347798}
   - component: {fileID: 1648861927106162739}
   - component: {fileID: 3532256309691073785}
+  - component: {fileID: 3356465645968179670}
   m_Layer: 0
   m_Name: staff_uncommon
   m_TagString: Untagged
@@ -35347,6 +35348,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &3356465645968179670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3028077107959522604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f23f6f04cbfd84f41816174278653adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 25
 --- !u!1 &3040870016011417469
 GameObject:
   m_ObjectHideFlags: 0
@@ -35860,6 +35874,7 @@ GameObject:
   - component: {fileID: 3616198305072455542}
   - component: {fileID: 396469220113223891}
   - component: {fileID: 2478244157712851993}
+  - component: {fileID: 6426366812979462837}
   m_Layer: 0
   m_Name: staff_common
   m_TagString: Untagged
@@ -35933,6 +35948,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6426366812979462837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4135572875208213964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f23f6f04cbfd84f41816174278653adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 21
 --- !u!1 &4182279462745349538
 GameObject:
   m_ObjectHideFlags: 0
@@ -56698,6 +56726,7 @@ GameObject:
   - component: {fileID: 4506937436344611776}
   - component: {fileID: 8606093982840318079}
   - component: {fileID: 4495909670411693817}
+  - component: {fileID: 5089224653179422129}
   m_Layer: 6
   m_Name: 1H_Wand
   m_TagString: Untagged
@@ -56770,6 +56799,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &5089224653179422129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8355950249175318380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f23f6f04cbfd84f41816174278653adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 17
 --- !u!1 &8367495116254730503
 GameObject:
   m_ObjectHideFlags: 0
@@ -66532,6 +66574,7 @@ GameObject:
   - component: {fileID: 8560253739123394461}
   - component: {fileID: 4711885606901762104}
   - component: {fileID: 7387888794557955314}
+  - component: {fileID: 7054502692502045681}
   m_Layer: 0
   m_Name: staff_rare
   m_TagString: Untagged
@@ -66606,3 +66649,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7054502692502045681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9045464215495154983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f23f6f04cbfd84f41816174278653adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 35
