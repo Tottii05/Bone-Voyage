@@ -22,6 +22,7 @@ public class GrenadeBehaviour : MonoBehaviour
         rb.velocity = Vector3.zero; 
         rb.angularVelocity = Vector3.zero;
         rb.AddForce(transform.forward * force, ForceMode.Impulse);
+        explosionSound.volume = PlayerPrefs.GetFloat("SFXVolume", 1f);
         explosionSound.clip = explosionClip;
         StartCoroutine(ExplodeAfterTime());
     }
