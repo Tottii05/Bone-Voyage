@@ -109,6 +109,7 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage)
     {
+        Debug.Log("Enemy took damage: " + damage);
         StartCoroutine(hitSoundPlay());
 
         HP -= (int)damage;
