@@ -744,6 +744,7 @@ GameObject:
   - component: {fileID: 7880031203558827364}
   - component: {fileID: 3010281249137875247}
   - component: {fileID: 7383963730999916362}
+  - component: {fileID: 4032294080501733853}
   m_Layer: 6
   m_Name: Arquera
   m_TagString: Player
@@ -891,14 +892,18 @@ MonoBehaviour:
   specialReady: 1
   supportTimer: 0
   specialTimer: 0
+  audioSource: {fileID: 0}
+  supportSound: {fileID: 0}
+  specialSound: {fileID: 8300000, guid: 791593e104cfe684f9e3084789c3ecdd, type: 3}
+  attackSound: {fileID: 0}
   bulletPrefab: {fileID: 7638279312221773172, guid: 775c089c3d7f85646b7073b7e8ff5bfc, type: 3}
   grenadePrefab: {fileID: 147609226588263813, guid: 440c3b28e07dcfb40b9aa19e09c34100, type: 3}
   specialAura: {fileID: 8776683650202069051}
   spawnPoint: {fileID: 6407712856007871700}
   weapons:
   - {fileID: 4478202866722958450}
-  - {fileID: 4862640704977068726}
   - {fileID: 2705645427680076948}
+  - {fileID: 4862640704977068726}
   activeWeapon: {fileID: 0}
   specialDuration: 5
   arrowCD: 0.2
@@ -907,6 +912,102 @@ MonoBehaviour:
   arrowLifeTime: 2
   grenadePoolSize: 5
   grenadeLifeTime: 3
+--- !u!82 &4032294080501733853
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1971598541825029775}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2201769688790837994
 GameObject:
   m_ObjectHideFlags: 0
@@ -2488,7 +2589,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3328954509953287679, guid: 8dff07c4aeac89141b3ee75434862230, type: 3}
       propertyPath: m_Name
-      value: Crossbow_final
+      value: Crossbow_dos
+      objectReference: {fileID: 0}
+    - target: {fileID: 3328954509953287679, guid: 8dff07c4aeac89141b3ee75434862230, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3753285306973607697, guid: 8dff07c4aeac89141b3ee75434862230, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2530,7 +2635,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8780963907911341921, guid: 8dff07c4aeac89141b3ee75434862230, type: 3}
+    - {fileID: 587212297034335518, guid: 8dff07c4aeac89141b3ee75434862230, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2662,9 +2769,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2007057188626664328, guid: 055ca62992bd66d47a979068970b1e9c, type: 3}
       propertyPath: m_Name
-      value: Crossbow_2
+      value: Crossbow_final
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 2007057188626664328, guid: 055ca62992bd66d47a979068970b1e9c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4914457170249295221, guid: 055ca62992bd66d47a979068970b1e9c, type: 3}
+    - {fileID: 3843182600794488317, guid: 055ca62992bd66d47a979068970b1e9c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

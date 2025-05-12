@@ -814,9 +814,15 @@ MonoBehaviour:
   coinPrefab: {fileID: 255370912129971121, guid: 26c5927d4a6d3db48bc546a6e03acf56, type: 3}
   potionPrefab: {fileID: 7175172071826392510, guid: 5881d8994fd2385489fee264c7f63105, type: 3}
   audioSource: {fileID: 0}
+<<<<<<< HEAD
   hitSound: {fileID: 0}
   wakeUpSound: {fileID: 0}
   dieSound: {fileID: 0}
+=======
+  hitSound: {fileID: 8300000, guid: f7909ebd7472f8d4a81b907c64ead078, type: 3}
+  wakeUpSound: {fileID: 8300000, guid: 067fb6ad68a802249b041b80b3538d76, type: 3}
+  dieSound: {fileID: 8300000, guid: 686edc2a2b5f9a748b3ac651962a84f3, type: 3}
+>>>>>>> c082ae4ebc2e1a1d6fce866ba9904655a6a424d0
 --- !u!114 &1419780658613235690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -867,7 +873,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 1, z: 0}
+<<<<<<< HEAD
 --- !u!82 &2386104524844724799
+=======
+--- !u!82 &5483745296019986934
+>>>>>>> c082ae4ebc2e1a1d6fce866ba9904655a6a424d0
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
