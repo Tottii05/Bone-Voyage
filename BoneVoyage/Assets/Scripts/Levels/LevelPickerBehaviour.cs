@@ -29,7 +29,7 @@ public class LevelPickerBehaviour : MonoBehaviour, IInteractActions
 
     public void Start()
     {
-        canvas.gameObject.SetActive(false);
+        canvas.gameObject.SetActive(false);             
     }
 
     public void OnTriggerEnter(Collider other)
