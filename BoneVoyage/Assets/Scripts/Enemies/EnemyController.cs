@@ -39,6 +39,7 @@ public class EnemyController : MonoBehaviour, IDamageable
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        audioSource.volume = PlayerPrefs.GetFloat("SFXVolume", 1f);
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         Pathfinding = GetComponent<EnemyPathFinding>();
         _chaseB = GetComponent<EnemyPathFinding>();
@@ -108,6 +109,8 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage)
     {
+        StartCoroutine(hitSoundPlay());
+
         HP -= (int)damage;
         ShowFloatingText();
         if (HP > 0)
@@ -124,6 +127,7 @@ public class EnemyController : MonoBehaviour, IDamageable
     public IEnumerator DieCoroutine()
     {
         escape = false;
+        StartCoroutine(dieSoundPlay());
         yield return new WaitForSeconds(1.5f);
         // Trigger the death event before destroying
         OnEnemyDeath?.Invoke();
@@ -151,5 +155,17 @@ public class EnemyController : MonoBehaviour, IDamageable
         go.GetComponent<TextMesh>().text = damageRecieved.ToString();
         TextMesh textMesh = go.GetComponent<TextMesh>();
         textMesh.fontSize = 30;
+    }
+
+    public IEnumerator dieSoundPlay()
+    {
+        audioSource.PlayOneShot(dieSound);
+        yield return new WaitForSeconds(0.5f);
+    }
+
+    public IEnumerator hitSoundPlay()
+    {
+        audioSource.PlayOneShot(hitSound);
+        yield return new WaitForSeconds(0.5f);
     }
 }
