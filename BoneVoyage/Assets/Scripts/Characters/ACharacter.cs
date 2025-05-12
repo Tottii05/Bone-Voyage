@@ -24,6 +24,13 @@ public abstract class ACharacter : MonoBehaviour, IDamageable
     public float supportTimer;
     public float specialTimer;
 
+    [Header("Sound effects")]
+    [Header("----------------------------------------")]
+    public AudioSource audioSource;
+    public AudioClip supportSound;
+    public AudioClip specialSound;
+    public AudioClip attackSound;
+
     public abstract void Attack();
     public abstract void Support();
     public abstract void Special();

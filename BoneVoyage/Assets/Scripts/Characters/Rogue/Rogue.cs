@@ -29,9 +29,12 @@ public class Rogue : ACharacter
     public Stack<GameObject> grenadeStack = new Stack<GameObject>();
     public int grenadePoolSize = 5;
     public float grenadeLifeTime = 3f;
-    
+
+
     public void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.volume = PlayerPrefs.GetFloat("SFXVolume", 1f);
         healthBar = GameObject.Find("HealthBar").GetComponent<Slider>();
         supportText = GameObject.Find("supportText").GetComponent<TextMeshProUGUI>();
         specialText = GameObject.Find("specialText").GetComponent<TextMeshProUGUI>();
@@ -244,5 +247,11 @@ public class Rogue : ACharacter
         {
             specialText.text = Mathf.Ceil(specialTimer).ToString();
         }
+    }
+
+    public IEnumerator playDashSound()
+    {
+        audioSource.PlayOneShot(supportSound);
+        yield return new WaitForSeconds(0.5f);
     }
 }
