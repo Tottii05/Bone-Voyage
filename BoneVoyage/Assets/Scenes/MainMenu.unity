@@ -6458,6 +6458,8 @@ MonoBehaviour:
   panelSettings: {fileID: 785712677}
   buttonEnter: {fileID: 1681760613}
   textTitle: {fileID: 295353322}
+  musicSlider: {fileID: 1671962465}
+  sfxSlider: {fileID: 1625322664}
   titleTransform: {fileID: 1886541744}
   timeLapse: 2
 --- !u!1001 &534592645
@@ -7956,7 +7958,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8313726, g: 0.6156863, b: 0.24313727, a: 1}
+  m_Color: {r: 0.78823537, g: 0.54509807, b: 0.19607845, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -8484,10 +8486,22 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.427
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 444020055}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: onSliderSFXChange
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1671962463
 GameObject:
   m_ObjectHideFlags: 0
@@ -8574,10 +8588,22 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.456
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 444020055}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: onSliderMusicChange
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1681760613
 GameObject:
   m_ObjectHideFlags: 0
