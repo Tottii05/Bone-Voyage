@@ -137,19 +137,17 @@ public class Mage : ACharacter
         specialTimer = specialCooldown;
         UpdateSpecialUI();
         yield return new WaitForSeconds(0.7f);
-        Vector3 mouseWorldPos = GetMouseWorldPosition();
-        UltVFXPrefab.SetActive(true);
-        UltVFXPrefab.transform.SetParent(null);
-        UltVFXPrefab.transform.position = mouseWorldPos;
-        StartCoroutine(WaitUlt());
+        GameObject ultInstance = Instantiate(UltVFXPrefab, GetMouseWorldPosition(), Quaternion.identity);
+        ultInstance.SetActive(true);
+        StartCoroutine(WaitUlt(ultInstance));
         StartCoroutine(SpecialCooldown());
         characterBehaviour.isWaiting = true;
     }
 
-    public IEnumerator WaitUlt()
+    public IEnumerator WaitUlt(GameObject ultInstance)
     {
         yield return new WaitForSeconds(4.5f);
-        UltVFXPrefab.SetActive(false);
+        Destroy(ultInstance);
     }
 
     public IEnumerator SpecialCooldown()
