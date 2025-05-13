@@ -18,7 +18,6 @@ public class VillageBoss : MonoBehaviour, IDamageable
     public GameObject attackPrefab;
 
     public bool playerInRange = false;
-
     public void CreateAttackPool()
     {
         for (int i = 0; i < attackPoolSize; i++)

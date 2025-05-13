@@ -6630,6 +6630,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b6ae4cb36602dbd488164c3295908b2c, type: 3}
   m_PrefabInstance: {fileID: 1419391103}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &1440431751 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8225804514342727301, guid: 82158917b48579149bee7e72dfc6c2ad, type: 3}
+  m_PrefabInstance: {fileID: 3127541914361873287}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1458630922
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7715,6 +7720,67 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 78192ef583c5f3e449926577cfe9b75e, type: 3}
   m_PrefabInstance: {fileID: 1710753530}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1741491998
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1159490816529984565, guid: 0a12ca2b8c2fd8e4cbf4421846f30837, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -15.372488
+      objectReference: {fileID: 0}
+    - target: {fileID: 1159490816529984565, guid: 0a12ca2b8c2fd8e4cbf4421846f30837, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.50000095
+      objectReference: {fileID: 0}
+    - target: {fileID: 1159490816529984565, guid: 0a12ca2b8c2fd8e4cbf4421846f30837, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -40.970264
+      objectReference: {fileID: 0}
+    - target: {fileID: 1159490816529984565, guid: 0a12ca2b8c2fd8e4cbf4421846f30837, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1159490816529984565, guid: 0a12ca2b8c2fd8e4cbf4421846f30837, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1159490816529984565, guid: 0a12ca2b8c2fd8e4cbf4421846f30837, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1159490816529984565, guid: 0a12ca2b8c2fd8e4cbf4421846f30837, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1159490816529984565, guid: 0a12ca2b8c2fd8e4cbf4421846f30837, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1159490816529984565, guid: 0a12ca2b8c2fd8e4cbf4421846f30837, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1159490816529984565, guid: 0a12ca2b8c2fd8e4cbf4421846f30837, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1971598541825029775, guid: 0a12ca2b8c2fd8e4cbf4421846f30837, type: 3}
+      propertyPath: m_Name
+      value: Arquera
+      objectReference: {fileID: 0}
+    - target: {fileID: 1971598541825029775, guid: 0a12ca2b8c2fd8e4cbf4421846f30837, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0a12ca2b8c2fd8e4cbf4421846f30837, type: 3}
 --- !u!1001 &1751335764
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9965,6 +10031,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.676
       objectReference: {fileID: 0}
+    - target: {fileID: 4937840949051723560, guid: 82158917b48579149bee7e72dfc6c2ad, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: dcddff5b2f7166d45b18fb8b02c74db9, type: 3}
+    - target: {fileID: 5184374273187560031, guid: 82158917b48579149bee7e72dfc6c2ad, type: 3}
+      propertyPath: growlAudio
+      value: 
+      objectReference: {fileID: 1440431751}
     - target: {fileID: 6767897052821628634, guid: 82158917b48579149bee7e72dfc6c2ad, type: 3}
       propertyPath: floatingText
       value: 
@@ -10031,3 +10105,4 @@ SceneRoots:
   - {fileID: 1345282848}
   - {fileID: 2101199869610867306}
   - {fileID: 1412259325}
+  - {fileID: 1741491998}
