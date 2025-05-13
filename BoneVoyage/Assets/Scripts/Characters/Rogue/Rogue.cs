@@ -49,7 +49,7 @@ public class Rogue : ACharacter
         {
             weapon.SetActive(false);
         }
-        activeWeapon = weapons[PlayerPrefs.GetInt("MageCurrentWeapon")];
+        activeWeapon = weapons[PlayerPrefs.GetInt("RogueCurrentWeapon")];
         activeWeapon.SetActive(true);
         supportTimer = 0f;
         specialTimer = 0f;
