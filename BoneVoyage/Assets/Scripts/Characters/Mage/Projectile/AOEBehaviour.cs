@@ -1,11 +1,13 @@
 using System.Collections;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class AOEBehaviour : MonoBehaviour
 {
     public float damagePerTick = 14f;
     public float tickInterval = 1f;
     private CapsuleCollider capsuleCollider;
+    private HashSet<EnemyController> damagedEnemies = new HashSet<EnemyController>();
 
     void Start()
     {
@@ -20,6 +22,7 @@ public class AOEBehaviour : MonoBehaviour
 
         while (elapsedTime < 5f)
         {
+            damagedEnemies.Clear();
             Collider[] enemies = Physics.OverlapSphere(transform.position, capsuleCollider.radius);
 
             foreach (Collider enemy in enemies)
@@ -27,10 +30,11 @@ public class AOEBehaviour : MonoBehaviour
                 if (enemy.CompareTag("Enemy"))
                 {
                     EnemyController enemyController = enemy.GetComponent<EnemyController>();
-                    if (enemyController != null && enemyController.HP > 0)
+                    if (enemyController != null && enemyController.HP > 0 && !damagedEnemies.Contains(enemyController))
                     {
                         enemyController.damageRecieved = damagePerTick;
                         enemyController.TakeDamage(damagePerTick);
+                        damagedEnemies.Add(enemyController);
                     }
                 }
             }

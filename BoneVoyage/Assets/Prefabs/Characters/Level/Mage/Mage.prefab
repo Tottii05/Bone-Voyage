@@ -254,7 +254,7 @@ GameObject:
   - component: {fileID: 5242765421735564345}
   - component: {fileID: 7742876438017472322}
   - component: {fileID: 1406677339094255043}
-  m_Layer: 2
+  m_Layer: 12
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10330,7 +10330,7 @@ GameObject:
   - component: {fileID: 7963858359890166602}
   - component: {fileID: 1447285799313241660}
   - component: {fileID: 8123953593439995022}
-  m_Layer: 2
+  m_Layer: 12
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15260,7 +15260,7 @@ GameObject:
   - component: {fileID: 662779934444137291}
   - component: {fileID: 248212871427566404}
   - component: {fileID: 209072461829481391}
-  m_Layer: 2
+  m_Layer: 12
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20378,7 +20378,7 @@ GameObject:
   - component: {fileID: 6994307513153353400}
   - component: {fileID: 1655960393119361731}
   - component: {fileID: 6243137633668875459}
-  m_Layer: 2
+  m_Layer: 12
   m_Name: Flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25329,7 +25329,7 @@ GameObject:
   - component: {fileID: 2073819134847041006}
   - component: {fileID: 5706462460381692827}
   - component: {fileID: 197344520719851071}
-  m_Layer: 2
+  m_Layer: 12
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41295,7 +41295,7 @@ GameObject:
   - component: {fileID: 664394656965593400}
   - component: {fileID: 8537939239194091080}
   - component: {fileID: 4666137532467896756}
-  m_Layer: 2
+  m_Layer: 12
   m_Name: Snowflakes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46667,7 +46667,7 @@ GameObject:
   - component: {fileID: 6134195846977113636}
   - component: {fileID: 8074524849580664690}
   - component: {fileID: 3492961202665212912}
-  m_Layer: 2
+  m_Layer: 12
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51598,7 +51598,7 @@ GameObject:
   - component: {fileID: 372786464476597928}
   - component: {fileID: 3088961549688760116}
   - component: {fileID: 3528865264191636027}
-  m_Layer: 2
+  m_Layer: 12
   m_Name: Snow AOE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56684,6 +56684,10 @@ MonoBehaviour:
   specialReady: 1
   supportTimer: 0
   specialTimer: 0
+  audioSource: {fileID: 0}
+  supportSound: {fileID: 0}
+  specialSound: {fileID: 0}
+  attackSound: {fileID: 0}
   bulletPrefab: {fileID: 2602353075669281152, guid: ac61f028d98ed414ab2fcfd940883e89, type: 3}
   spawnPoint: {fileID: 1153741805117575219}
   UltVFXPrefab: {fileID: 7714498027868745610}
