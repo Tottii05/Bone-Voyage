@@ -40,10 +40,15 @@ public class BulletBehaviour : MonoBehaviour
         if (mage != null)
         {
             mage.ReturnBulletToPool(gameObject);
-            if (other.gameObject.TryGetComponent(out IDamageable damageable))
+            if (other.gameObject.CompareTag("Enemy"))
             {
+                IDamageable damageable = other.gameObject.GetComponent<IDamageable>();
                 other.gameObject.GetComponent<EnemyController>().damageRecieved = damage;
                 damageable.TakeDamage(damage);
+            }
+            else if (other.gameObject.CompareTag("DestroyableTree"))
+            {
+                other.gameObject.GetComponent<DestroyableTree>().GetHit(gameObject, damage);
             }
         }
         else

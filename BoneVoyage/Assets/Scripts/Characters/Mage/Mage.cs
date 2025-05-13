@@ -20,6 +20,8 @@ public class Mage : ACharacter
 
     public void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.volume = PlayerPrefs.GetFloat("SFXVolume", 1f);
         healthBar = GameObject.Find("HealthBar").GetComponent<Slider>();
         supportText = GameObject.Find("supportText").GetComponent<TextMeshProUGUI>();
         specialText = GameObject.Find("specialText").GetComponent<TextMeshProUGUI>();
@@ -81,6 +83,10 @@ public class Mage : ACharacter
         {
             base.TakeDamage(damage);
             healthBar.value = health / 100;
+        }
+        else
+        {
+            StartCoroutine(shieldHitSound());
         }
     }
 
@@ -233,5 +239,11 @@ public class Mage : ACharacter
         }
         bullet.SetActive(false);
         bulletStack.Push(bullet);
+    }
+
+    public IEnumerator shieldHitSound()
+    {
+        audioSource.PlayOneShot(supportSound);
+        yield return new WaitForSeconds(0.1f);
     }
 }
