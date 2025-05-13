@@ -35,14 +35,16 @@ public class RangedAttack : StateSO
         {
             ec.StopCoroutine(attackRoutine);
         }
+        ec.animator.SetBool("inRange", true);
     }
 
     public override void OnStateUpdate(EnemyController ec)
     {
+        ec.animator.SetBool("inRange", true);
         if (ec.target == null || ec.animator.GetCurrentAnimatorStateInfo(0).IsName("Skeletons_Inactive_Floor_Pose")) return;
         ec.transform.rotation = Quaternion.LookRotation(ec.target.transform.position - ec.transform.position);
     }
-
+    
     private IEnumerator AttackLoop(EnemyController ec)
     {
         while (ec.OnAttackRange)
@@ -68,10 +70,9 @@ public class RangedAttack : StateSO
                     }
                 }
             }
-            yield return new WaitForSeconds(0f);
+            yield return new WaitForSeconds(1f);
         }
     }
-
     public void CreateBulletPool()
     {
         for (int i = 0; i < bulletPoolSize; i++)

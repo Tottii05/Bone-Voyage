@@ -32,10 +32,15 @@ public class ArrowBehaviour : MonoBehaviour
         if (rogue != null)
         {
             rogue.ReturnArrowToPool(gameObject);
-            if (other.gameObject.TryGetComponent(out IDamageable damageable))
+            if (other.gameObject.CompareTag("Enemy"))
             {
+                IDamageable damageable = other.gameObject.GetComponent<IDamageable>();
                 damageable.TakeDamage(damage);
                 other.gameObject.GetComponent<EnemyController>().damageRecieved = damage;
+            }
+            else if (other.gameObject.CompareTag("DestroyableTree"))
+            {
+                other.gameObject.GetComponent<DestroyableTree>().GetHit(gameObject, damage);
             }
         }
         else
