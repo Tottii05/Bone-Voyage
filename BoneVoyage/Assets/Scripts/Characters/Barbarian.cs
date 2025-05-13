@@ -1,4 +1,4 @@
-using System.Collections;
+    using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -141,9 +141,7 @@ public class Barbarian : ACharacter
         specialReady = false;
         specialTimer = specialCooldown;
         UpdateSpecialUI();
-        rfire.SetActive(true);
-        lfire.SetActive(true);
-        //StartCoroutine(DamageBuff());
+        StartCoroutine(DamageBuff());
         yield return new WaitForSeconds(0.7f);
         StartCoroutine(SpecialCooldown());
         characterBehaviour.isWaiting = true;
@@ -179,28 +177,31 @@ public class Barbarian : ACharacter
         {
             case 0:
                 animator.SetInteger("AttackNum", 1);
-                yield return new WaitForSeconds(0.1f);
-                currentWeaponLeft.GetComponent<BoxCollider>().enabled = true;
+                yield return new WaitForSeconds(0.3f);
+                //currentWeaponLeft.GetComponent<BoxCollider>().enabled = true;
                 currentWeaponRight.GetComponent<BoxCollider>().enabled = true;
-                yield return new WaitForSeconds(0.1f);
-                currentWeaponLeft.GetComponent<BoxCollider>().enabled = false;
+                yield return new WaitForSeconds(0.05f);
+                //currentWeaponLeft.GetComponent<BoxCollider>().enabled = false;
                 currentWeaponRight.GetComponent<BoxCollider>().enabled = false;
                 break;
             case 1:
                 animator.SetInteger("AttackNum", 2);
-                yield return new WaitForSeconds(0.14f);
-                currentWeaponLeft.GetComponent<BoxCollider>().enabled = true;
+                yield return new WaitForSeconds(0.3f);
                 currentWeaponRight.GetComponent<BoxCollider>().enabled = true;
-                yield return new WaitForSeconds(0.14f);
-                currentWeaponLeft.GetComponent<BoxCollider>().enabled = false;
+                yield return new WaitForSeconds(0.01f);
                 currentWeaponRight.GetComponent<BoxCollider>().enabled = false;
+                yield return new WaitForSeconds(0.1f);
+                currentWeaponLeft.GetComponent<BoxCollider>().enabled = true;
+                yield return new WaitForSeconds(0.01f);
+                currentWeaponLeft.GetComponent<BoxCollider>().enabled = false;
+                
                 break;
             case 2:
                 animator.SetInteger("AttackNum", 3);
-                yield return new WaitForSeconds(0.18f);
+                yield return new WaitForSeconds(0.4f);
                 currentWeaponLeft.GetComponent<BoxCollider>().enabled = true;
                 currentWeaponRight.GetComponent<BoxCollider>().enabled = true;
-                yield return new WaitForSeconds(0.8f);
+                yield return new WaitForSeconds(0.01f);
                 currentWeaponLeft.GetComponent<BoxCollider>().enabled = false;
                 currentWeaponRight.GetComponent<BoxCollider>().enabled = false;
                 break;
@@ -226,6 +227,8 @@ public class Barbarian : ACharacter
     }
     public IEnumerator DamageBuff()
     {
+        rfire.SetActive(true);
+        lfire.SetActive(true);
         specialActive = true;
         currentWeaponLeft.GetComponent<DamageSource>().damage += damageAugment;
         currentWeaponRight.GetComponent<DamageSource>().damage += damageAugment;
