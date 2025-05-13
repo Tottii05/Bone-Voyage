@@ -21,11 +21,11 @@ EditorBuildSettings:
     path: Assets/Scenes/ForestLevels/ForestLvl2.unity
     guid: 1b414e053c6c884418bf71cebdcce314
   - enabled: 1
-    path: Assets/Scenes/VillageLevels/VillageLvl1.unity
-    guid: c7ea18d098253be4dab13ecc4faff604
-  - enabled: 1
     path: Assets/Scenes/ForestLevels/ForestLvl3.unity
     guid: 14ac1ba3e5e0ff74c88aab795254fece
+  - enabled: 1
+    path: Assets/Scenes/VillageLevels/VillageLvl1.unity
+    guid: c7ea18d098253be4dab13ecc4faff604
   - enabled: 1
     path: Assets/Scenes/VillageLevels/VillageLvl1.unity
     guid: c7ea18d098253be4dab13ecc4faff604
@@ -53,6 +53,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Shops/VillageShop.unity
     guid: beb6b8a26e69c3a49b3f6e4bb55c9169
+  - enabled: 1
     path: Assets/Scenes/MaterialSaver.unity
     guid: 2b8aec8e69b48e642aafdad579c428aa
   m_configObjects: {}
