@@ -5,6 +5,7 @@ using UnityEngine;
 public class Coin : MonoBehaviour
 {
     public static event System.Action CoinCollected;
+    public GameObject audioSource;
 
     private void OnTriggerEnter(Collider other)
     {
