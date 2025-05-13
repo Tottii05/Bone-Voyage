@@ -14,8 +14,12 @@ public class Kight : ACharacter
 
     public bool invulnerable = false;
     public bool reduceDamage = false;
+
+    public AudioClip shieldHit;
     public void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.volume = PlayerPrefs.GetFloat("SFXVolume", 1f);
         healthBar = GameObject.Find("HealthBar").GetComponent<Slider>();
         supportText = GameObject.Find("supportText").GetComponent<TextMeshProUGUI>();
         specialText = GameObject.Find("specialText").GetComponent<TextMeshProUGUI>();
@@ -95,6 +99,7 @@ public class Kight : ACharacter
             characterBehaviour.usingSpecial = true;
             animator.SetBool("special", characterBehaviour.usingSpecial);
             animator.SetTrigger("useSpecial");
+            StartCoroutine(playSpecialSound());
             specialReady = false;
             specialTimer = specialCooldown;
             UpdateSpecialUI();
@@ -106,6 +111,7 @@ public class Kight : ACharacter
     {
         characterBehaviour.isWaiting = false;
         animator.SetTrigger("attack");
+        StartCoroutine(shieldUpSound());
         yield return new WaitForSeconds(0.2f);
         currentWeapon.GetComponent<BoxCollider>().enabled = true;
         yield return new WaitForSeconds(0.1f);
@@ -148,6 +154,7 @@ public class Kight : ACharacter
     {
         if (invulnerable)
         {
+            StartCoroutine(shieldHitSound());
             return;
         }
         if (reduceDamage)
@@ -165,5 +172,32 @@ public class Kight : ACharacter
         {
             Die();
         }
+    }
+
+    public IEnumerator swingSound()
+    {
+        audioSource.PlayOneShot(attackSound);
+        yield return new WaitForSeconds(0.1f);
+    }
+    public IEnumerator shieldUpSound()
+    {
+        audioSource.PlayOneShot(supportSound);
+        yield return new WaitForSeconds(0.1f);
+    }
+    public IEnumerator shieldHitSound()
+    {
+        audioSource.PlayOneShot(shieldHit);
+        yield return new WaitForSeconds(0.1f);
+    }   
+    public IEnumerator playSpecialSound()
+    {
+        audioSource.loop = true;
+        audioSource.clip = specialSound;
+        audioSource.pitch = 3f;
+        audioSource.Play();
+        yield return new WaitForSeconds(3.5f);
+        audioSource.pitch = 1f;
+        audioSource.loop = false;
+        audioSource.Stop();
     }
 }

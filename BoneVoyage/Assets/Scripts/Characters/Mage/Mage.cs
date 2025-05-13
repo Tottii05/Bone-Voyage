@@ -20,6 +20,8 @@ public class Mage : ACharacter
 
     public void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.volume = PlayerPrefs.GetFloat("SFXVolume", 1f);
         healthBar = GameObject.Find("HealthBar").GetComponent<Slider>();
         supportText = GameObject.Find("supportText").GetComponent<TextMeshProUGUI>();
         specialText = GameObject.Find("specialText").GetComponent<TextMeshProUGUI>();
@@ -82,6 +84,10 @@ public class Mage : ACharacter
             base.TakeDamage(damage);
             healthBar.value = health / 100;
         }
+        else
+        {
+            StartCoroutine(shieldHitSound());
+        }
     }
 
     public IEnumerator PerformAttack()
@@ -131,19 +137,17 @@ public class Mage : ACharacter
         specialTimer = specialCooldown;
         UpdateSpecialUI();
         yield return new WaitForSeconds(0.7f);
-        Vector3 mouseWorldPos = GetMouseWorldPosition();
-        UltVFXPrefab.SetActive(true);
-        UltVFXPrefab.transform.SetParent(null);
-        UltVFXPrefab.transform.position = mouseWorldPos;
-        StartCoroutine(WaitUlt());
+        GameObject ultInstance = Instantiate(UltVFXPrefab, GetMouseWorldPosition(), Quaternion.identity);
+        ultInstance.SetActive(true);
+        StartCoroutine(WaitUlt(ultInstance));
         StartCoroutine(SpecialCooldown());
         characterBehaviour.isWaiting = true;
     }
 
-    public IEnumerator WaitUlt()
+    public IEnumerator WaitUlt(GameObject ultInstance)
     {
         yield return new WaitForSeconds(4.5f);
-        UltVFXPrefab.SetActive(false);
+        Destroy(ultInstance);
     }
 
     public IEnumerator SpecialCooldown()
@@ -235,5 +239,11 @@ public class Mage : ACharacter
         }
         bullet.SetActive(false);
         bulletStack.Push(bullet);
+    }
+
+    public IEnumerator shieldHitSound()
+    {
+        audioSource.PlayOneShot(supportSound);
+        yield return new WaitForSeconds(0.1f);
     }
 }

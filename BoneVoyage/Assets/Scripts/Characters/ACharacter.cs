@@ -52,6 +52,9 @@ public abstract class ACharacter : MonoBehaviour, IDamageable
     public void Die()
     {
         isDead = true;
+        characterBehaviour.isFrozen = true;
+        GetComponent<Collider>().enabled = false;
+        characterBehaviour.rb.useGravity = false;
         characterBehaviour.rb.velocity = Vector3.zero;
         animator.SetTrigger("die");
         StartCoroutine(Respawn());
@@ -59,12 +62,14 @@ public abstract class ACharacter : MonoBehaviour, IDamageable
 
     public IEnumerator Respawn()
     {
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(3.4f);
         transform.position = checkPoint;
         health = 100;
         animator.SetTrigger("respawn");
         isDead = false;
         characterBehaviour.isFrozen = false;
         healthBar.value = 1;
+        GetComponent<Collider>().enabled = true;
+        characterBehaviour.rb.useGravity = true;
     }
 }
