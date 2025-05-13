@@ -12,6 +12,8 @@ public class MenuController : SceneController
     public GameObject panelSettings;
     public GameObject buttonEnter;
     public TextMeshProUGUI textTitle;
+    public Slider musicSlider;
+    public Slider sfxSlider;
     public Transform titleTransform;
     private static bool hasOpenedMenu = false;
     public float timeLapse = 2f;
@@ -30,6 +32,8 @@ public class MenuController : SceneController
             buttonEnter.SetActive(false);
         }
         panelSettings.SetActive(false);
+        musicSlider.value = PlayerPrefs.GetFloat("MusicVolume", 1f);
+        sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume", 1f);
     }
     public void ButtonPress()
     {
@@ -39,7 +43,16 @@ public class MenuController : SceneController
         panelOptions.SetActive(true);
 
     }
+    
+    public void onSliderMusicChange(float volume)
+    {
+        PlayerPrefs.SetFloat("MusicVolume", volume);
+        Debug.Log("Music volume set to: " + volume);
+    }
 
-
-
+    public void onSliderSFXChange(float volume)
+    {
+        PlayerPrefs.SetFloat("SFXVolume", volume);
+        Debug.Log("SFX volume set to: " + volume);
+    }
 }
