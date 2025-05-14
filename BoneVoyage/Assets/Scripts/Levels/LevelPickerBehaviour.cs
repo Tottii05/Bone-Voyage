@@ -38,6 +38,7 @@ public class LevelPickerBehaviour : MonoBehaviour, IInteractActions
         {
             canvas.gameObject.SetActive(true);
             playerInTrigger = true;
+            GameManagerScript.instance.lastPlayerPosition = other.transform.position;
         }
     }
 

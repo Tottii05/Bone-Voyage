@@ -16,6 +16,8 @@ public class GameManagerScript : MonoBehaviour
     public GameObject castleGate2;
     public List<bool> levelCompletionStatus = new List<bool>();
     public int totalLevels = 9;
+    public Vector3 lastPlayerPosition;
+    public bool firstTime = true;
 
     public void Awake()
     {
@@ -107,7 +109,16 @@ public class GameManagerScript : MonoBehaviour
             spawn = GameObject.Find("PlayerSpawn");
             if (playerWorldMap != null)
             {
-                Instantiate(playerWorldMap, spawn.transform.position, spawn.transform.rotation);
+                if (firstTime)
+                {
+                    firstTime = false;
+                    Instantiate(playerWorldMap, spawn.transform.position, spawn.transform.rotation);
+                }
+                else
+                {
+                    spawn.transform.position = lastPlayerPosition;
+                    Instantiate(playerWorldMap, spawn.transform.position, spawn.transform.rotation);
+                }
             }
             if (forestWall == null)
             {
