@@ -15915,7 +15915,7 @@ MonoBehaviour:
   enemiesToKill: 16
   enemyKilled: 0
   itemToDestroy: {fileID: 983677944}
-  currentLevelIndex: 0
+  currentLevelIndex: 1
 --- !u!65 &983677947
 BoxCollider:
   m_ObjectHideFlags: 0
