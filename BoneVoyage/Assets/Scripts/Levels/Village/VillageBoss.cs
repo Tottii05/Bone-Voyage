@@ -10,6 +10,8 @@ public class VillageBoss : MonoBehaviour, IDamageable
     public GameObject floatingText;
     public int attackCD = 3;
 
+    public int currentLevelIndex;
+
     public Transform spawnPoint;
 
     public Stack<GameObject> attackStack = new Stack<GameObject>();
@@ -46,6 +48,14 @@ public class VillageBoss : MonoBehaviour, IDamageable
         HP -= (int)damage;
         ShowFloatingText();
         if (HP <= 0) {
+
+            GameManagerScript.instance.MarkLevelCompleted(currentLevelIndex);
+            if (gameObject.name == "FinalWall")
+            {
+                LevelPickerBehaviour levelPicker = FindObjectOfType<LevelPickerBehaviour>();
+                levelPicker.canBeShown = true;
+            }
+
             Die();
         }
     }
