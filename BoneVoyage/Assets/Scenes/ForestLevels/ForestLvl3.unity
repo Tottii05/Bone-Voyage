@@ -1775,7 +1775,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 773781d1a7e4e8043892028ee17249a8, type: 3}
       propertyPath: m_Name
-      value: Fence
+      value: FinalFence
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 773781d1a7e4e8043892028ee17249a8, type: 3}
       propertyPath: m_Layer
@@ -1828,7 +1828,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keys: 0
   keysObtained: 0
-  currentLevelIndex: 0
+  currentLevelIndex: 2
 --- !u!65 &87458194
 BoxCollider:
   m_ObjectHideFlags: 0
