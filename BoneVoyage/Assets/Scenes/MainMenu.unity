@@ -184,6 +184,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5712219488875869251, guid: 29f4c72f9a1d9d446945740c2819895b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 744334643}
+    - targetCorrespondingSourceObject: {fileID: 5712219488875869251, guid: 29f4c72f9a1d9d446945740c2819895b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 744334644}
   m_SourcePrefab: {fileID: 100100000, guid: 29f4c72f9a1d9d446945740c2819895b, type: 3}
 --- !u!1 &1701092 stripped
 GameObject:
@@ -7059,6 +7062,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &744334644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8458a41fe38406b4cb31862a309a720f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &785712677
 GameObject:
   m_ObjectHideFlags: 0
@@ -8277,6 +8292,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1552389105}
   - component: {fileID: 1552389104}
+  - component: {fileID: 1552389106}
   m_Layer: 0
   m_Name: OwlSound
   m_TagString: Untagged
@@ -8395,6 +8411,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1552389106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552389103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8458a41fe38406b4cb31862a309a720f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1556468366
 GameObject:
   m_ObjectHideFlags: 0

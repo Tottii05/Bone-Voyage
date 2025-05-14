@@ -18,8 +18,9 @@ public class KeyCounter : MonoBehaviour
         keysObtained++;
         if (keys <= keysObtained)
         {
+            levelPicker.canBeShown = true;
+            GameManagerScript.instance.MarkLevelCompleted(currentLevelIndex);
             Destroy(gameObject);
-            levelPicker.canBeShown = true; 
         }
     }
 }
