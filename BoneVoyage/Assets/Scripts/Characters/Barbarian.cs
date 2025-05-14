@@ -46,6 +46,8 @@ public class Barbarian : ACharacter
         currentWeaponLeft.SetActive(true);
         currentWeaponRight.SetActive(true);
 
+        audioSource = GetComponent<AudioSource>();
+        audioSource.volume = PlayerPrefs.GetFloat("SFXVolume", 1f);
         healthBar = GameObject.Find("HealthBar").GetComponent<Slider>();
         supportText = GameObject.Find("supportText").GetComponent<TextMeshProUGUI>();
         specialText = GameObject.Find("specialText").GetComponent<TextMeshProUGUI>();
@@ -97,8 +99,14 @@ public class Barbarian : ACharacter
         StartCoroutine(Combo());
         if(specialActive)
         {
-           StartCoroutine(SpecialEffect());
+            StartCoroutine(playAttackSoundAlt());
+            StartCoroutine(SpecialEffect());
         }
+        else
+        {
+            StartCoroutine(playAttackSound());
+        }
+
         yield return new WaitForSeconds(0.7f);
 
         characterBehaviour.isWaiting = true;
@@ -116,6 +124,7 @@ public class Barbarian : ACharacter
         currentWeaponRight.SetActive(false);
         healVFX.SetActive(true);
         buffVFX.SetActive(true);
+        StartCoroutine(playMugSound()); //play mug sound
         yield return new WaitForSeconds(2f);
         healVFX.SetActive(false);
         buffVFX.SetActive(false);
@@ -274,5 +283,28 @@ public class Barbarian : ACharacter
                 break;
         }
         yield return new WaitForSeconds(0.1f);
+    }
+
+    public IEnumerator playMugSound()
+    {
+        audioSource.clip = supportSound;
+        audioSource.loop = true;
+        audioSource.Play();
+        yield return new WaitForSeconds(2f);
+        audioSource.loop = false;
+        audioSource.Stop();
+        audioSource.clip = null;
+    }
+
+    public IEnumerator playAttackSound()
+    {
+        audioSource.PlayOneShot(attackSound);
+        yield return new WaitForSeconds(0.5f);
+    }
+
+    public IEnumerator playAttackSoundAlt()
+    {
+        audioSource.PlayOneShot(specialSound);
+        yield return new WaitForSeconds(0.5f);
     }
 }
