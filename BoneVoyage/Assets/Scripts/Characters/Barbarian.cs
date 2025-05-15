@@ -168,7 +168,14 @@ public class Barbarian : ACharacter
     {
         if (supportTimer >= 0)
         {
-            supportText.text = Mathf.Ceil(supportTimer).ToString();
+            if (supportTimer != 0)
+            {
+                supportText.text = Mathf.Ceil(supportTimer).ToString();
+            }
+            else
+            {
+                supportText.text = "";
+            }
         }
     }
 
@@ -176,7 +183,14 @@ public class Barbarian : ACharacter
     {
         if (specialTimer >= 0)
         {
-            specialText.text = Mathf.Ceil(specialTimer).ToString();
+            if (specialTimer != 0)
+            {
+                specialText.text = Mathf.Ceil(specialTimer).ToString();
+            }
+            else
+            {
+                specialText.text = "";
+            }
         }
     }
     public IEnumerator Combo()
@@ -210,7 +224,7 @@ public class Barbarian : ACharacter
                 yield return new WaitForSeconds(0.4f);
                 currentWeaponLeft.GetComponent<BoxCollider>().enabled = true;
                 currentWeaponRight.GetComponent<BoxCollider>().enabled = true;
-                yield return new WaitForSeconds(0.01f);
+                yield return new WaitForSeconds(0.05f);
                 currentWeaponLeft.GetComponent<BoxCollider>().enabled = false;
                 currentWeaponRight.GetComponent<BoxCollider>().enabled = false;
                 break;
