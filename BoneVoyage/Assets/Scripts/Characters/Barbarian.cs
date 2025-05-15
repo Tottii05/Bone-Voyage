@@ -210,7 +210,7 @@ public class Barbarian : ACharacter
                 yield return new WaitForSeconds(0.4f);
                 currentWeaponLeft.GetComponent<BoxCollider>().enabled = true;
                 currentWeaponRight.GetComponent<BoxCollider>().enabled = true;
-                yield return new WaitForSeconds(0.01f);
+                yield return new WaitForSeconds(0.05f);
                 currentWeaponLeft.GetComponent<BoxCollider>().enabled = false;
                 currentWeaponRight.GetComponent<BoxCollider>().enabled = false;
                 break;

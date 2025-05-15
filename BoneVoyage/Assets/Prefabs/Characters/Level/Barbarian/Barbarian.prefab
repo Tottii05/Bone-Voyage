@@ -85689,8 +85689,8 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   supportText: {fileID: 0}
   specialText: {fileID: 0}
-  supportCooldown: 5
-  specialCooldown: 10
+  supportCooldown: 10
+  specialCooldown: 20
   supportReady: 1
   specialReady: 1
   supportTimer: 0
@@ -85719,7 +85719,7 @@ MonoBehaviour:
   speedAugment: 2
   heal: 20
   mugBuffDuration: 5
-  damageBuffDuration: 20
+  damageBuffDuration: 10
   specialActive: 0
   slashVFX: {fileID: 501163471920969838, guid: 43fe7ced1971e834fabbf499f628fe4b, type: 3}
   healVFX: {fileID: 7023238254480012949}
