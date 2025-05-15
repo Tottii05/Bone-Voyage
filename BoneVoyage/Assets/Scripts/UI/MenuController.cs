@@ -35,6 +35,14 @@ public class MenuController : SceneController
         musicSlider.value = PlayerPrefs.GetFloat("MusicVolume", 1f);
         sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume", 1f);
     }
+
+    public void Update()
+    {
+        if (Input.anyKeyDown && !hasOpenedMenu)
+        {
+            ButtonPress();
+        }
+    }
     public void ButtonPress()
     {
         textTitle.GetComponent<Animator>().SetTrigger("Start");
