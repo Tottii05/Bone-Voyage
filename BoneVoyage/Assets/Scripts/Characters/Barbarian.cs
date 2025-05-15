@@ -200,39 +200,28 @@ public class Barbarian : ACharacter
         {
             case 0:
                 animator.SetInteger("AttackNum", 1);
-                yield return new WaitForSeconds(0.3f);
-                //currentWeaponLeft.GetComponent<BoxCollider>().enabled = true;
-                currentWeaponRight.GetComponent<BoxCollider>().enabled = true;
-                yield return new WaitForSeconds(0.05f);
-                //currentWeaponLeft.GetComponent<BoxCollider>().enabled = false;
-                currentWeaponRight.GetComponent<BoxCollider>().enabled = false;
+                
                 break;
             case 1:
                 animator.SetInteger("AttackNum", 2);
-                yield return new WaitForSeconds(0.3f);
-                currentWeaponRight.GetComponent<BoxCollider>().enabled = true;
-                yield return new WaitForSeconds(0.01f);
-                currentWeaponRight.GetComponent<BoxCollider>().enabled = false;
-                yield return new WaitForSeconds(0.1f);
-                currentWeaponLeft.GetComponent<BoxCollider>().enabled = true;
-                yield return new WaitForSeconds(0.01f);
-                currentWeaponLeft.GetComponent<BoxCollider>().enabled = false;
+                
                 
                 break;
             case 2:
                 animator.SetInteger("AttackNum", 3);
-                yield return new WaitForSeconds(0.4f);
-                currentWeaponLeft.GetComponent<BoxCollider>().enabled = true;
-                currentWeaponRight.GetComponent<BoxCollider>().enabled = true;
-                yield return new WaitForSeconds(0.05f);
-                currentWeaponLeft.GetComponent<BoxCollider>().enabled = false;
-                currentWeaponRight.GetComponent<BoxCollider>().enabled = false;
+               
                 break;
             case 3:
                 animator.SetInteger("AttackNum", 1);
                 break;
         }
-        
+        yield return new WaitForSeconds(0.35f);
+        currentWeaponLeft.GetComponent<BoxCollider>().enabled = true;
+        currentWeaponRight.GetComponent<BoxCollider>().enabled = true;
+        yield return new WaitForSeconds(0.4f);
+        currentWeaponLeft.GetComponent<BoxCollider>().enabled = false;
+        currentWeaponRight.GetComponent<BoxCollider>().enabled = false;
+
         yield return new WaitForSeconds(1.5f);
         if(num+1== animator.GetInteger("AttackNum"))
         {

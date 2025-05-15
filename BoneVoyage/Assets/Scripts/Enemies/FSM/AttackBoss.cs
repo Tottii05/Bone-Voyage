@@ -6,11 +6,13 @@ public class AttackBoss : StateSO
 {
     private Coroutine attackRoutine;
     public float attackColliderActiveTime = 0.5f;
-
+    private AudioSource attackAudioSource;
     public override void OnStateEnter(EnemyController ec)
     {
         ec.canMove = false;
         attackRoutine = ec.StartCoroutine(AttackLoop(ec));
+        attackAudioSource = ec.GetComponent<AudioSource>();
+        
     }
 
     public override void OnStateExit(EnemyController ec)
@@ -27,6 +29,7 @@ public class AttackBoss : StateSO
     public override void OnStateUpdate(EnemyController ec)
     {
         ec.transform.rotation = Quaternion.LookRotation(ec.target.transform.position - ec.transform.position);
+        
     }
 
     private IEnumerator AttackLoop(EnemyController ec)
@@ -35,6 +38,7 @@ public class AttackBoss : StateSO
         {
             yield return RotateTowardsTarget(ec);
             ec.animator.SetTrigger("attack");
+            ec.StartCoroutine(PlayAttackSound(ec));
             yield return new WaitForSeconds(0.5f);
             //ec.damageSourceL.BoxCollider.enabled = true;
             ec.damageSourceR.BoxCollider.enabled = true;
@@ -60,5 +64,10 @@ public class AttackBoss : StateSO
             ec.transform.rotation = Quaternion.Slerp(ec.transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
             yield return null;
         }
+    }
+    public IEnumerator PlayAttackSound(EnemyController ec)
+    {
+        attackAudioSource.PlayOneShot(ec.attackSound);
+        yield return new WaitForSeconds(0.5f);
     }
 }

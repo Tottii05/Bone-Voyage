@@ -35,6 +35,7 @@ public class EnemyController : MonoBehaviour, IDamageable
     public AudioClip hitSound;
     public AudioClip wakeUpSound;
     public AudioClip dieSound;
+    public AudioClip attackSound;
 
     void Start()
     {
