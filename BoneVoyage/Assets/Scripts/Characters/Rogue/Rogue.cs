@@ -237,7 +237,14 @@ public class Rogue : ACharacter
     {
         if (supportTimer >= 0)
         {
-            supportText.text = Mathf.Ceil(supportTimer).ToString();
+            if (supportTimer != 0)
+            {
+                supportText.text = Mathf.Ceil(supportTimer).ToString();
+            }
+            else
+            {
+                supportText.text = "";
+            }
         }
     }
 
@@ -245,7 +252,14 @@ public class Rogue : ACharacter
     {
         if (specialTimer >= 0)
         {
-            specialText.text = Mathf.Ceil(specialTimer).ToString();
+            if (specialTimer != 0)
+            {
+                specialText.text = Mathf.Ceil(specialTimer).ToString();
+            }
+            else
+            {
+                specialText.text = "";
+            }
         }
     }
 
