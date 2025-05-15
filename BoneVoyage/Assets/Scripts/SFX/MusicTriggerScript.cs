@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class MusicTriggerScript : MonoBehaviour
 {
-    public BackgroundMusicLoaderBehaviour musicSource; 
+    public BackgroundMusicLoaderBehaviour musicSource;
+    public AudioClip song2;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +23,16 @@ public class MusicTriggerScript : MonoBehaviour
         Debug.Log("Trigger Entered");
         if (other.CompareTag("Player"))
         {
-            musicSource.StartClip();
+            if (song2 != null)
+            {
+                musicSource.AudioSource.clip = song2;
+                musicSource.StartClip();
+            }
+            else
+            {
+                musicSource.StartClip();
+            }
+            
         }
         
         StartCoroutine(destroyer());
