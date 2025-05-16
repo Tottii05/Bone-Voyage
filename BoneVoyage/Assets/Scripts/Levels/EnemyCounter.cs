@@ -24,9 +24,9 @@ public class EnemyCounter : MonoBehaviour
         enemyKilled++;
         if (enemyKilled >= enemiesToKill)
         {
+            GameManagerScript.instance.MarkLevelCompleted(currentLevelIndex);
             if (gameObject.name == "FinalWall" || gameObject.name == "FinalFence")
             {
-                GameManagerScript.instance.MarkLevelCompleted(currentLevelIndex);
                 if (gameObject.name == "FinalWall")
                 {
                     LevelPickerBehaviour levelPicker = FindObjectOfType<LevelPickerBehaviour>();

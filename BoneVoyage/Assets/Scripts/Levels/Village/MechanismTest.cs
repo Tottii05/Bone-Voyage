@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class MechanismTest : MonoBehaviour
 {
     public VillageLVL2Manager levelManager;
+    public VillageLVL1Manager levelManager1;
 
     public GameObject objectToActivate;
     private bool playerInside = false;
@@ -50,7 +51,10 @@ public class MechanismTest : MonoBehaviour
         {
             interacted = true;
             objectToActivate.SetActive(true);
-            levelManager.activateMechanism();
+            if (levelManager != null)
+                levelManager.activateMechanism();
+            if (levelManager1 != null)
+                levelManager1.activateMechanism();
         }
     }
 }
