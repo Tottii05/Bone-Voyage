@@ -113,7 +113,7 @@ public class Kight : ACharacter
     {
         characterBehaviour.isWaiting = false;
         animator.SetTrigger("attack");
-        StartCoroutine(shieldUpSound());
+        StartCoroutine(swingSound());
         yield return new WaitForSeconds(0.2f);
         currentWeapon.GetComponent<BoxCollider>().enabled = true;
         yield return new WaitForSeconds(0.1f);

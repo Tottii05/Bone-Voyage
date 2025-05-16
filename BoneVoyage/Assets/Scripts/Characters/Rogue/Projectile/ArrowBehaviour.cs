@@ -34,8 +34,16 @@ public class ArrowBehaviour : MonoBehaviour
             rogue.ReturnArrowToPool(gameObject);
             if (other.gameObject.CompareTag("Enemy"))
             {
+                Debug.Log("Hit enemy");
                 IDamageable damageable = other.gameObject.GetComponent<IDamageable>();
-                other.gameObject.GetComponent<EnemyController>().damageRecieved = damage;
+                if (other.gameObject.TryGetComponent(out EnemyController enemyController))
+                {
+                    enemyController.damageRecieved = damage;
+                }
+                else if (other.gameObject.TryGetComponent(out VillageBoss villageBoss))
+                {
+                    villageBoss.damageRecieved = damage;
+                }
                 damageable.TakeDamage(damage);
             }
             else if (other.gameObject.CompareTag("DestroyableTree"))

@@ -47,6 +47,14 @@ public class GrenadeBehaviour : MonoBehaviour
     {
         if (other.gameObject.TryGetComponent(out IDamageable damageable))
         {
+            if (other.gameObject.TryGetComponent(out EnemyController enemyController))
+            {
+                enemyController.damageRecieved = damage;
+            }
+            else if (other.gameObject.TryGetComponent(out VillageBoss villageBoss))
+            {
+                villageBoss.damageRecieved = damage;
+            }
             damageable.TakeDamage(damage);
         }    
     }

@@ -28,8 +28,16 @@ public class DamageSource : MonoBehaviour
             {
                 if (other.gameObject.CompareTag("Enemy"))
                 {
-                    other.gameObject.GetComponent<EnemyController>().damageRecieved = damage;
-                    other.gameObject.GetComponent<EnemyController>().TakeDamage(damage);
+                    if (other.gameObject.TryGetComponent(out EnemyController enemyController))
+                    {
+                        enemyController.damageRecieved = damage;
+                    }
+                    else if (other.gameObject.TryGetComponent(out VillageBoss villageBoss))
+                    {
+                        villageBoss.damageRecieved = damage;
+                    }
+                    IDamageable damageable = other.gameObject.GetComponent<IDamageable>();
+                    damageable.TakeDamage(damage);
                 }
                 else if (other.gameObject.CompareTag("DestroyableTree"))
                 {

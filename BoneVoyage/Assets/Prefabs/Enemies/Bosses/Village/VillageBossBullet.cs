@@ -54,7 +54,6 @@ public class VillageBossBullet : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        Debug.Log($"Bullet hit {other.name} at {Time.time}, mage: {(mage != null)}");
         if (mage != null)
         {
             mage.ReturnBulletToPool(gameObject);

@@ -46,9 +46,11 @@ public class VillageBoss : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage)
     {
+        Debug.Log("Taking damage: " + damage);
         HP -= (int)damage;
         ShowFloatingText();
         if (HP <= 0) {
+            Debug.Log("Die");
 
             GameManagerScript.instance.MarkLevelCompleted(currentLevelIndex);
             if (gameObject.name == "FinalWall")
@@ -57,14 +59,14 @@ public class VillageBoss : MonoBehaviour, IDamageable
                 levelPicker.canBeShown = true;
                 finaldoor.SetActive(false);
             }
+            finaldoor.SetActive(false);
 
-            Die();
+            StartCoroutine(DieCoroutine());
         }
     }
 
     public void Die()
     {
-        StartCoroutine(DieCoroutine());
     }
 
     public void ShowFloatingText()
