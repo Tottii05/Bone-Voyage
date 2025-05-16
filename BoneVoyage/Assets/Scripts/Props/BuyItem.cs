@@ -13,13 +13,10 @@ public class BuyItem : MonoBehaviour, IInteractActions
     public CoinUI coinUI;
     public string playerPrefsKey;
     public int playerPrefsValue;
-
     public AudioSource audioSource;
-    public AudioClip boughtSound;
 
     public void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
         playerActions = new Player();
         playerActions.Interact.SetCallbacks(this);
         coinUI = GameObject.Find("CoinCounter").GetComponent<CoinUI>();
@@ -64,17 +61,12 @@ public class BuyItem : MonoBehaviour, IInteractActions
                 PlayerPrefs.SetInt("Coins", currentCoins - (int)price);
                 PlayerPrefs.SetInt(playerPrefsKey, playerPrefsValue);
                 PlayerPrefs.Save();
-                WaitForSeconds wait = new WaitForSeconds(boughtSound.length);
+                audioSource.Play();
+                audioSource.transform.SetParent(null);
                 coinUI.UpdateCoinText();
                 Destroy(gameObject);
                 Destroy(priceText);
             }
         }
-    }
-
-    public IEnumerator playBoughtSound()
-    {
-        audioSource.PlayOneShot(boughtSound);
-        yield return new WaitForSeconds(boughtSound.length);
     }
 }
