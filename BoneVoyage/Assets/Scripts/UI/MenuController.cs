@@ -55,12 +55,10 @@ public class MenuController : SceneController
     public void onSliderMusicChange(float volume)
     {
         PlayerPrefs.SetFloat("MusicVolume", volume);
-        Debug.Log("Music volume set to: " + volume);
     }
 
     public void onSliderSFXChange(float volume)
     {
         PlayerPrefs.SetFloat("SFXVolume", volume);
-        Debug.Log("SFX volume set to: " + volume);
     }
 }

@@ -23,6 +23,8 @@ public class Kight : ACharacter
         healthBar = GameObject.Find("HealthBar").GetComponent<Slider>();
         supportText = GameObject.Find("supportText").GetComponent<TextMeshProUGUI>();
         specialText = GameObject.Find("specialText").GetComponent<TextMeshProUGUI>();
+        supportImage = GameObject.Find("SupportCDColor");
+        specialImage = GameObject.Find("UltCDColor");
         characterBehaviour = GetComponent<CharacterBehaviour>();
         animator = GetComponent<Animator>();
         checkPoint = transform.position;
@@ -141,10 +143,12 @@ public class Kight : ACharacter
         {
             if (supportTimer != 0)
             {
+                supportImage.GetComponent<Image>().enabled = true;
                 supportText.text = Mathf.Ceil(supportTimer).ToString();
             }
             else
             {
+                supportImage.GetComponent<Image>().enabled = false;
                 supportText.text = "";
             }
         }
@@ -156,10 +160,12 @@ public class Kight : ACharacter
         {
             if (specialTimer != 0)
             {
+                specialImage.GetComponent<Image>().enabled = true;
                 specialText.text = Mathf.Ceil(specialTimer).ToString();
             }
             else
             {
+                specialImage.GetComponent<Image>().enabled = false;
                 specialText.text = "";
             }
         }

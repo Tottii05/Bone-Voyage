@@ -13,12 +13,10 @@ public class DamageSource : MonoBehaviour
     {
         if (other != null)
         {
-            Debug.Log("Hit");
             if (isEnemy)
             {
                 if (other.gameObject.CompareTag("Player"))
                 {
-                    Debug.Log("Player hit");
                     other.gameObject.GetComponent<ACharacter>().TakeDamage(damage);
                 }
                 else if (other.gameObject.CompareTag("DestroyableTree"))
@@ -30,7 +28,6 @@ public class DamageSource : MonoBehaviour
             {
                 if (other.gameObject.CompareTag("Enemy"))
                 {
-                    Debug.Log("Enemy hit");
                     other.gameObject.GetComponent<EnemyController>().damageRecieved = damage;
                     other.gameObject.GetComponent<EnemyController>().TakeDamage(damage);
                 }

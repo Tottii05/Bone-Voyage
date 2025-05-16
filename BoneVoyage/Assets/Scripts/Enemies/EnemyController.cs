@@ -1,13 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-// Declare the delegate for the event
 public delegate void EnemyDeathHandler();
 
 public class EnemyController : MonoBehaviour, IDamageable
 {
-    // Add the event
     public static event EnemyDeathHandler OnEnemyDeath;
 
     public int HP;
@@ -110,7 +107,6 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage)
     {
-        Debug.Log("Enemy took damage: " + damage);
         StartCoroutine(hitSoundPlay());
 
         HP -= (int)damage;
@@ -131,7 +127,6 @@ public class EnemyController : MonoBehaviour, IDamageable
         escape = false;
         StartCoroutine(dieSoundPlay());
         yield return new WaitForSeconds(1.5f);
-        // Trigger the death event before destroying
         OnEnemyDeath?.Invoke();
         Destroy(gameObject);
     }

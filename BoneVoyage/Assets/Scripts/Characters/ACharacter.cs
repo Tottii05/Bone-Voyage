@@ -17,6 +17,8 @@ public abstract class ACharacter : MonoBehaviour, IDamageable
     public Slider healthBar;
     public TextMeshProUGUI supportText;
     public TextMeshProUGUI specialText;
+    public GameObject supportImage;
+    public GameObject specialImage;
     public float supportCooldown = 5f;
     public float specialCooldown = 10f;
     public bool supportReady = true;

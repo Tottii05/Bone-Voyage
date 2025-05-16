@@ -41,13 +41,11 @@ public class BackgroundMusicLoaderBehaviour : MonoBehaviour
 
     public void StartClip()
     {
-        Debug.Log("Starting Clip");
         AudioSource.Play();
     }
 
     public void StopClip()
     {
-        Debug.Log("Stopping Clip");
         AudioSource.Stop();
     }
 }

@@ -51,7 +51,6 @@ public class RangedAttack : StateSO
         {
             if (ec.animator.GetCurrentAnimatorStateInfo(0).IsName("2H_Ranged_Aiming"))
             {
-                Debug.Log("Shooting");
                 yield return new WaitForSeconds(0.2f);
                 ec.animator.SetTrigger("shoot");
                 if (bulletStack.Count > 0)

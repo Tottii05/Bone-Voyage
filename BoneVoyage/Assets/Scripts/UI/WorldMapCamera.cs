@@ -15,7 +15,6 @@ public class WorldMapCamera : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         offset = GetOffset();
-        Debug.Log("Player found: " + player.name);
         if (player != null)
         {
             switch (player.name)
