@@ -14301,7 +14301,7 @@ GameObject:
   - component: {fileID: 777553041}
   - component: {fileID: 777553040}
   - component: {fileID: 777553039}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: Canvas (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19677,7 +19677,7 @@ GameObject:
   - component: {fileID: 1258491303}
   - component: {fileID: 1258491305}
   - component: {fileID: 1258491304}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: E
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20214,7 +20214,7 @@ GameObject:
   - component: {fileID: 1307370046}
   - component: {fileID: 1307370045}
   - component: {fileID: 1307370048}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: wall_doorway_scaffold (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28379,8 +28379,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 463461601559800777, guid: 42f263fbb36d5ac4aa24bbbc21492815, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 463461601559800777, guid: 42f263fbb36d5ac4aa24bbbc21492815, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3166511880356156684, guid: 42f263fbb36d5ac4aa24bbbc21492815, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3762413852748370048, guid: 42f263fbb36d5ac4aa24bbbc21492815, type: 3}
       propertyPath: m_Enabled
@@ -28389,6 +28397,14 @@ PrefabInstance:
     - target: {fileID: 4910476374119406857, guid: 42f263fbb36d5ac4aa24bbbc21492815, type: 3}
       propertyPath: m_Name
       value: FinalWall
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910476374119406857, guid: 42f263fbb36d5ac4aa24bbbc21492815, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5387708949546631157, guid: 42f263fbb36d5ac4aa24bbbc21492815, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6622153117736391040, guid: 42f263fbb36d5ac4aa24bbbc21492815, type: 3}
       propertyPath: canvas
