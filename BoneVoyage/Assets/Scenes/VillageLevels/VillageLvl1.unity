@@ -2612,7 +2612,7 @@ MonoBehaviour:
   enemiesToKill: 18
   enemyKilled: 0
   itemToDestroy: {fileID: 893756005}
-  currentLevelIndex: 4
+  currentLevelIndex: 3
 --- !u!114 &277111787
 MonoBehaviour:
   m_ObjectHideFlags: 0

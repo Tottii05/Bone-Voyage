@@ -3812,7 +3812,7 @@ MonoBehaviour:
   enemiesToKill: 16
   enemyKilled: 0
   itemToDestroy: {fileID: 0}
-  currentLevelIndex: 5
+  currentLevelIndex: 4
 --- !u!1001 &580275965
 PrefabInstance:
   m_ObjectHideFlags: 0
