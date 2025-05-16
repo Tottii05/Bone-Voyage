@@ -20,6 +20,7 @@ public class VillageBoss : MonoBehaviour, IDamageable
     public GameObject attackPrefab;
 
     public bool playerInRange = false;
+    public GameObject finaldoor;
     public void CreateAttackPool()
     {
         for (int i = 0; i < attackPoolSize; i++)
@@ -54,6 +55,7 @@ public class VillageBoss : MonoBehaviour, IDamageable
             {
                 LevelPickerBehaviour levelPicker = FindObjectOfType<LevelPickerBehaviour>();
                 levelPicker.canBeShown = true;
+                finaldoor.SetActive(false);
             }
 
             Die();
