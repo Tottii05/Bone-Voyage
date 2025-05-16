@@ -3,7 +3,13 @@ guid: c89b78a6cad76a34c98b3f8ab8bd2ec5
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - characterPrefab: {instanceID: 0}
+  - characterWorldMapPrefab: {instanceID: 0}
+  - animator: {instanceID: 0}
+  - gameManager: {instanceID: 0}
+  - audioSource: {instanceID: 0}
+  - selectedSound: {fileID: 8300000, guid: 0be78a7d245d6d74496afc03da46b72c, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
