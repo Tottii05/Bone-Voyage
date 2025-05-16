@@ -2527,8 +2527,8 @@ MonoBehaviour:
   price: 15
   playerInRange: 0
   coinUI: {fileID: 0}
-  playerPrefsKey: KnightCurrentShield
-  playerPrefsValue: 1
+  playerPrefsKey: BarbarianCurrentWeapon
+  playerPrefsValue: 2
   audioSource: {fileID: 1691293534}
 --- !u!135 &382362271
 SphereCollider:
@@ -12153,8 +12153,8 @@ MonoBehaviour:
   price: 20
   playerInRange: 0
   coinUI: {fileID: 0}
-  playerPrefsKey: KnightCurrentShield
-  playerPrefsValue: 1
+  playerPrefsKey: MageCurrentWeapon
+  playerPrefsValue: 2
   audioSource: {fileID: 843308587}
 --- !u!135 &1557496819
 SphereCollider:
@@ -14509,7 +14509,7 @@ MonoBehaviour:
   playerInRange: 0
   coinUI: {fileID: 0}
   playerPrefsKey: KnightCurrentShield
-  playerPrefsValue: 1
+  playerPrefsValue: 2
   audioSource: {fileID: 1907955358}
 --- !u!1001 &1765709573
 PrefabInstance:
@@ -15228,8 +15228,8 @@ MonoBehaviour:
   price: 10
   playerInRange: 0
   coinUI: {fileID: 0}
-  playerPrefsKey: BarbarianCurrentWeapon
-  playerPrefsValue: 0
+  playerPrefsKey: KnightCurrentWeapon
+  playerPrefsValue: 1
   audioSource: {fileID: 280225113}
 --- !u!135 &1863964017
 SphereCollider:
@@ -17280,8 +17280,8 @@ MonoBehaviour:
   price: 13
   playerInRange: 0
   coinUI: {fileID: 0}
-  playerPrefsKey: MageCurrentWeapon
-  playerPrefsValue: 1
+  playerPrefsKey: RogueCurrentWeapon
+  playerPrefsValue: 2
   audioSource: {fileID: 1944074617}
 --- !u!135 &3469287838164003921
 SphereCollider:
