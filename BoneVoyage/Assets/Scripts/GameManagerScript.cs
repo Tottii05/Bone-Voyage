@@ -27,23 +27,33 @@ public class GameManagerScript : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-            InitializeLevelCompletion(true);
+            InitializeLevelCompletion(false);
         }
         else
         {
             Destroy(gameObject);
         }
-        PlayerPrefs.SetInt("KnightCurrentWeapon", 0);
-        PlayerPrefs.SetInt("KnightCurrentShield", 0);
-        PlayerPrefs.SetInt("MageCurrentWeapon", 0);
-        PlayerPrefs.SetInt("ArcherCurrentWeapon", 0);
-        PlayerPrefs.SetInt("BarbarianCurrentWeapon", 0);
+
+        CheckPlayerPrefs("KnightCurrentWeapon");
+        CheckPlayerPrefs("KnightCurrentShield");
+        CheckPlayerPrefs("MageCurrentWeapon");
+        CheckPlayerPrefs("ArcherCurrentWeapon");
+        CheckPlayerPrefs("BarbarianCurrentWeapon");
+    }
+    private void CheckPlayerPrefs(string key)
+    {
+        try
+        {
+            PlayerPrefs.GetInt(key, 0);
+        }
+        catch
+        {
+            PlayerPrefs.SetInt(key, 0); 
+        }
     }
 
     private void InitializeLevelCompletion(bool resetOnStart)
     {
-        levelCompletionStatus.Clear();
-
         for (int i = 0; i < totalLevels; i++)
         {
             string key = $"Level_{i}";
@@ -91,11 +101,6 @@ public class GameManagerScript : MonoBehaviour
     public int GetTotalLevels()
     {
         return totalLevels;
-    }
-
-    public void ResetLevelCompletion()
-    {
-        InitializeLevelCompletion(true);
     }
 
     public void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
