@@ -7335,7 +7335,7 @@ MonoBehaviour:
   hitSound: {fileID: 8300000, guid: f7909ebd7472f8d4a81b907c64ead078, type: 3}
   wakeUpSound: {fileID: 8300000, guid: 067fb6ad68a802249b041b80b3538d76, type: 3}
   dieSound: {fileID: 8300000, guid: 686edc2a2b5f9a748b3ac651962a84f3, type: 3}
-  attackSound: {fileID: 0}
+  attackSound: {fileID: 8300000, guid: 00f1863f5b0cdd24696525b510d7df24, type: 3}
 --- !u!195 &1752713583
 NavMeshAgent:
   m_ObjectHideFlags: 0
