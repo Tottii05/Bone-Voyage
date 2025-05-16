@@ -11112,6 +11112,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1550806061346403022, guid: 348b46c46bb86d74895fb82912098852, type: 3}
   m_PrefabInstance: {fileID: 1465261513}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &1465261515 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8653211522467476990, guid: 348b46c46bb86d74895fb82912098852, type: 3}
+  m_PrefabInstance: {fileID: 1465261513}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1471977214 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4161408026391965839, guid: e7a0689ad8be74a4ababc0e1ae232a35, type: 3}
@@ -13608,7 +13613,7 @@ MonoBehaviour:
   coinUI: {fileID: 0}
   playerPrefsKey: KnightCurrentShield
   playerPrefsValue: 3
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 1465261515}
 --- !u!1001 &1765709573
 PrefabInstance:
   m_ObjectHideFlags: 0
