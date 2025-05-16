@@ -13,11 +13,15 @@ public class openDoor : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (animator!= null &&other.CompareTag("Player"))
         {
-            Debug.Log("Player entered the trigger zone.");
-            animator.SetTrigger("open");
-            Destroy(gameObject);
+            AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+
+           
+            if (!stateInfo.IsName("doorCastle"))
+            {
+                animator.SetTrigger("open");
+            }
         }
     }
 }

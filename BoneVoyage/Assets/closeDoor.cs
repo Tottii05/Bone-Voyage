@@ -12,10 +12,15 @@ public class closeDoor : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (animator != null && other.CompareTag("Player"))
         {
-            animator.SetTrigger("close");
-            Destroy(gameObject);
+            AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+
+            // Verifica si el estado actual NO es "Closed"
+            if (!stateInfo.IsName("doorCastleClose"))
+            {
+                animator.SetTrigger("close");
+            }
         }
     }
 }
