@@ -35,8 +35,8 @@ public class ArrowBehaviour : MonoBehaviour
             if (other.gameObject.CompareTag("Enemy"))
             {
                 IDamageable damageable = other.gameObject.GetComponent<IDamageable>();
-                damageable.TakeDamage(damage);
                 other.gameObject.GetComponent<EnemyController>().damageRecieved = damage;
+                damageable.TakeDamage(damage);
             }
             else if (other.gameObject.CompareTag("DestroyableTree"))
             {
