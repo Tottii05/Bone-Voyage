@@ -2,8 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManagerScript : MonoBehaviour
 {
@@ -18,7 +20,8 @@ public class GameManagerScript : MonoBehaviour
     public int totalLevels = 9;
     public Vector3 lastPlayerPosition;
     public bool firstTime = true;
-
+    public GameObject finalCarrier;
+    public bool hide = true;
     public void Awake()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -105,6 +108,11 @@ public class GameManagerScript : MonoBehaviour
 
     public void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
     {
+        finalCarrier = GameObject.Find("FinalCarrier");
+        if (finalCarrier != null && hide == true)
+        {
+            finalCarrier.SetActive(false);
+        }
         if (SceneManager.GetActiveScene().name != "WorldMap")
         {
             spawn = GameObject.Find("PlayerSpawn");
@@ -144,6 +152,10 @@ public class GameManagerScript : MonoBehaviour
             if (levelCompletionStatus.Take(6).All(completed => completed))
             {
                 StartCoroutine(OpenCastleGates(castleGate1, castleGate2, 2f));
+            }
+            if (levelCompletionStatus.Take(9).All(completed => completed))
+            {
+                ShowFinalText();
             }
         }
 
@@ -197,5 +209,10 @@ public class GameManagerScript : MonoBehaviour
     private void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+    public void ShowFinalText()
+    {
+        hide = false;
+        finalCarrier.SetActive(true);
     }
 }
