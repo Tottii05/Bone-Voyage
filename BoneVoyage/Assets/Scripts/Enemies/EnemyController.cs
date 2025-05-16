@@ -25,7 +25,7 @@ public class EnemyController : MonoBehaviour, IDamageable
     public GameObject spawnPoint;
     public GameObject coinPrefab;
     public GameObject potionPrefab;
-
+    public bool canBeDamaged = false;
     [Header("Sound Effects")]
     [Header("----------------------------------------")]
     public AudioSource audioSource;
@@ -36,6 +36,7 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     void Start()
     {
+        GetComponent<CapsuleCollider>().enabled = true;
         audioSource = GetComponent<AudioSource>();
         audioSource.volume = PlayerPrefs.GetFloat("SFXVolume", 1f);
         GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -107,19 +108,22 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage)
     {
-        StartCoroutine(hitSoundPlay());
+        if (canBeDamaged)
+        {
+            StartCoroutine(hitSoundPlay());
 
-        HP -= (int)damage;
-        ShowFloatingText();
-        if (HP > 0)
-        {
-            animator.SetTrigger("hit");
+            HP -= (int)damage;
+            ShowFloatingText();
+            if (HP > 0)
+            {
+                animator.SetTrigger("hit");
+            }
+            if (HP <= 25)
+            {
+                escape = true;
+            }
+            CheckEndingConditions();
         }
-        if (HP <= 25)
-        {
-            escape = true;
-        }
-        CheckEndingConditions();
     }
 
     public IEnumerator DieCoroutine()

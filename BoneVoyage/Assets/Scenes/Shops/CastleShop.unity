@@ -2610,7 +2610,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priceText: {fileID: 1213095988}
-  price: 3
+  price: 18
   playerInRange: 0
   coinUI: {fileID: 0}
   playerPrefsKey: KnightCurrentShield
@@ -4587,7 +4587,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priceText: {fileID: 1653811519}
-  price: 3
+  price: 30
   playerInRange: 0
   coinUI: {fileID: 0}
   playerPrefsKey: KnightCurrentShield
@@ -11186,79 +11186,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11b146b12290efc40a70a76ef7dcd89a, type: 3}
---- !u!1001 &1487122541
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3028077107959522604, guid: 69511a0fffdbd824ea826c9375280fca, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3665902436205353200, guid: 69511a0fffdbd824ea826c9375280fca, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -33.958965
-      objectReference: {fileID: 0}
-    - target: {fileID: 3665902436205353200, guid: 69511a0fffdbd824ea826c9375280fca, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -9.610889
-      objectReference: {fileID: 0}
-    - target: {fileID: 3665902436205353200, guid: 69511a0fffdbd824ea826c9375280fca, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 7.304288
-      objectReference: {fileID: 0}
-    - target: {fileID: 3665902436205353200, guid: 69511a0fffdbd824ea826c9375280fca, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3665902436205353200, guid: 69511a0fffdbd824ea826c9375280fca, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3665902436205353200, guid: 69511a0fffdbd824ea826c9375280fca, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3665902436205353200, guid: 69511a0fffdbd824ea826c9375280fca, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3665902436205353200, guid: 69511a0fffdbd824ea826c9375280fca, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3665902436205353200, guid: 69511a0fffdbd824ea826c9375280fca, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3665902436205353200, guid: 69511a0fffdbd824ea826c9375280fca, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4135572875208213964, guid: 69511a0fffdbd824ea826c9375280fca, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8142818020829366914, guid: 69511a0fffdbd824ea826c9375280fca, type: 3}
-      propertyPath: m_Name
-      value: Mage
-      objectReference: {fileID: 0}
-    - target: {fileID: 8355950249175318380, guid: 69511a0fffdbd824ea826c9375280fca, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9045464215495154983, guid: 69511a0fffdbd824ea826c9375280fca, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 69511a0fffdbd824ea826c9375280fca, type: 3}
 --- !u!4 &1487698413 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5af3cd0900a1b1d4d8d22672ff2813b8, type: 3}
@@ -13676,7 +13603,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priceText: {fileID: 245069244}
-  price: 3
+  price: 12
   playerInRange: 0
   coinUI: {fileID: 0}
   playerPrefsKey: KnightCurrentShield
@@ -16287,7 +16214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priceText: {fileID: 702606195}
-  price: 10
+  price: 20
   playerInRange: 0
   coinUI: {fileID: 0}
   playerPrefsKey: MageCurrentWeapon
@@ -16503,6 +16430,5 @@ SceneRoots:
   - {fileID: 549939859}
   - {fileID: 928204105}
   - {fileID: 1257637354}
-  - {fileID: 1487122541}
   - {fileID: 934229259}
   - {fileID: 539472133}

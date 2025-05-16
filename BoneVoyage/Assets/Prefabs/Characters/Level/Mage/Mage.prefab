@@ -56635,7 +56635,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 6.0933213
+  m_Radius: 3.751058
   m_Height: 15.21
   m_Direction: 1
   m_Center: {x: 0.07875395, y: 0.92424345, z: 0.051746845}
@@ -56886,6 +56886,8 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   supportText: {fileID: 0}
   specialText: {fileID: 0}
+  supportImage: {fileID: 0}
+  specialImage: {fileID: 0}
   supportCooldown: 5
   specialCooldown: 10
   supportReady: 1

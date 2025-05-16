@@ -13535,7 +13535,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priceText: {fileID: 245069244}
-  price: 3
+  price: 7
   playerInRange: 0
   coinUI: {fileID: 0}
   playerPrefsKey: KnightCurrentShield
@@ -14221,7 +14221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priceText: {fileID: 1653811519}
-  price: 5
+  price: 15
   playerInRange: 0
   coinUI: {fileID: 0}
   playerPrefsKey: BarbarianCurrentWeapon
@@ -16310,7 +16310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priceText: {fileID: 702606195}
-  price: 10
+  price: 17
   playerInRange: 0
   coinUI: {fileID: 0}
   playerPrefsKey: MageCurrentWeapon

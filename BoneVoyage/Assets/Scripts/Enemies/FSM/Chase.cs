@@ -7,6 +7,7 @@ public class Chase : StateSO
 {
     public override void OnStateEnter(EnemyController ec)
     {
+        ec.GetComponent<CapsuleCollider>().enabled = true;
         ec.gameObject.GetComponent<NavMeshAgent>().isStopped = false;
     }
 

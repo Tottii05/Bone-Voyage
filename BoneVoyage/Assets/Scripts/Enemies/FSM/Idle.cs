@@ -6,7 +6,7 @@ public class Idle : StateSO
 {
     public override void OnStateEnter(EnemyController ec)
     {
-
+        ec.GetComponent<CapsuleCollider>().enabled = false;
     }
 
     public override void OnStateExit(EnemyController ec)

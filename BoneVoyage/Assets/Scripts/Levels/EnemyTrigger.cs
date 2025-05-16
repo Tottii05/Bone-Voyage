@@ -23,6 +23,7 @@ public class EnemyTrigger : MonoBehaviour
         yield return new WaitForSeconds(2);
         foreach (GameObject enemy in enemies)
         {
+            enemy.GetComponent<EnemyController>().canBeDamaged = true;
             enemy.GetComponent<EnemyController>().chase = true;
             enemy.GetComponent<EnemyController>()._chaseB.target = player;
             enemy.GetComponent<EnemyController>().CheckEndingConditions();
