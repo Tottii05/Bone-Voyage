@@ -36,10 +36,10 @@ Feel free to check out our profiles!
 
 Here are some screenshots of our game:
 
-![Screenshot 1](images/screenshot1.png)
-![Screenshot 2](images/screenshot2.png)
-![Screenshot 3](images/screenshot3.png)
-
+![Screenshot 1](Images/MainMenu.png)
+![Screenshot 2](Images/CharacterSelect.png)
+![Screenshot 3](Images/Shop.png)
+![Screenshot 4](Images/Gameplay.png)
 ## 🚀 How to Run the Game
 
 1. Clone the repository:
